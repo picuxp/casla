@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+     <link rel="stylesheet" href="vendor.css">       
+     <link rel="stylesheet" href="style.css">   
+     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+    <script src="js/vendor/modernizr.js"></script>    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrapper">
+      <!-- header -->
+      <header class="header-main">
+        <div class="header-lower clearfix">
+      <%- include ../menu.ejs %>
+        </div>  
+</header>
+
+       <!-- banner section -->
+      <div class="innerbannerwrap">
+        <div class="content"></div>
+        <div class="innerbannergoleadores">
+          <h2 class="bannerHeadline">Administración de Torneos<span></span></h2>
+        </div>
+      </div>
+
+      <% if (resultado) { %>
+          <% if (resultado == 200) { %>
+                <div class="alert alert-success">La operacion fue realizada con exito</div>
+          <% } else { %>
+              <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+          <% } %>
+      <% } %>
+
+      <section class="innerpage_all_wrap bg-white"> 
+        <div class="container">
+			<div class="row">
+			<div class="matchSchedule_details row">
+                
+				 <div class="match_versus-wrap2">
+                  <div class="wrap_match-innerdetails">
+                    <ul class="point_table2">
+                       <li class="clearfix">
+                        <div class="subPoint_table">
+                          <div class="headline01 smallpoint">Nombre</div>
+                          <div class="headline01 smallpoint">J.x.E.</div>
+                          <div class="headline01 smallpoint">Activo</div>
+                          <div class="headline01 smallpoint">Canchas</div>
+                          <div class="headline01 smallpoint">Divisiones</div>
+                          <div class="headline01 smallpoint">Partidos</div>
+                          <div class="headline01 smallpoint row row">
+							            <div class="headline01 smallpoint1">Eliminar</div>
+                        </div>
+						          </div>
+                      </li>
+
+                      <% for(var i=0; i < torneos.length; i++) { %> 
+					               <li class="clearfix">
+
+                        <div class="subPoint_table">
+                          <div class="headline01 smallpoint"><%= torneos[i].nombre %></div>
+                          <div class="headline01 smallpoint"><%= torneos[i].jugadores_por_equipo %></div>
+                          <div class="headline01 smallpoint">
+                              <% if (torneos[i].activo) { %> Si <% } else { %> No  <% } %>  
+                          </div>
+
+                          <div class="headline01 smallpoint">
+                            <% if (!(torneos[i].canchas.length==0 )) { %>
+                            <% console.log('entre a torneos.ejs') %>
+                              <a href="/canchasDelTorneo?torneoid=<%= torneos[i]._id %>">Ver Canchas</a>
+                              <% } else { %>
+                                Ninguna
+                              <% } %>
+                              <form action="/nuevaCancha" method="post" id="formNuevaCancha">
+                                <input type="hidden" class="form-control" name="torneoid" value="<%= torneos[i]._id %>">
+                                <button type="submit" >Nueva</button>
+                              </form>
+                          </div>
+
+                          <div class="headline01 smallpoint">
+                            <% if (!(torneos[i].divisiones.length==0 )) { %>
+                              <a href="/divisionesDelTorneo?torneoid=<%= torneos[i]._id %>">Ver Divisiones</a>
+                              <% } else { %>
+                                Ninguna
+                              <% } %>
+                              <form action="/nuevaDivision" method="post" id="formNuevaDivision">
+                                <input type="hidden" class="form-control" name="torneoid" value="<%= torneos[i]._id %>">
+                                <button type="submit" >Nueva</button>
+                              </form>
+                          </div>
+
+                        <div class="headline01 smallpoint">
+                            <% if (!(torneos[i].partidos.length==0 )) { %>
+                                <form action="/partidosTorneo" method="post">
+                                  <input type="hidden" value=<%= torneos[i]._id %> name="torneoid"/>
+                                  <button  type="submit">Ver Partidos</button></span>
+                                </form>
+                              <% } else { %>
+                                Ninguno
+                              <% } %>
+                          </div>
+
+                            <div class="headline01 smallpoint row row">
+              							<div class="headline01 smallpoint1"><span>
+              								<form onsubmit="return confirm('Seguro que desea eliminar al torneo <%= torneos[i].nombre %>?');" action="/deleteTorneo" method="post">
+              					                <button type="submit">Eliminar</button>
+              					                <input type="hidden" value=<%= torneos[i]._id %> name="torneoid"/>
+              					            </form>
+              							</span></div>
+              						  </div>
+            						</div>
+                      </li>
+                      <% } %>
+
+                    </ul>
+                    </div>
+                  </div>
+ 				</div>
+            </div>
+        </div>
+		
+		
+      </section>
+    
+
+      <!-- footer -->
+      <footer ><!--class="footer-type01"-->
+	   <%- include ../footer.ejs %>
+      </footer>
+    </div>
+    
+
+      
+    <script src="js/vendor/vendor.js"></script>     
+    <script src="js/main.js"></script>
+	<script src="js/admin.js"></script> 
+        
+</body>
+</html>

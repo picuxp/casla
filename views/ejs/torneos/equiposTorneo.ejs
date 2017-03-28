@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+     <link rel="stylesheet" href="vendor.css">       
+     <link rel="stylesheet" href="style.css">   
+     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+    <script src="js/vendor/modernizr.js"></script>    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrapper">
+      <!-- header -->
+      <header class="header-main">
+        <div class="header-lower clearfix">
+      <%- include ../menu.ejs %>
+        </div>  
+</header>
+
+       <!-- banner section -->
+      <div class="innerbannerwrap">
+        <div class="content"></div>
+        <div class="innerbannergoleadores">
+          <h2 class="bannerHeadline">Equipos del torneo <%= torneo %><span></span></h2>
+        </div>
+      </div>
+
+
+      <section class="innerpage_all_wrap bg-white"> 
+        <div class="container">
+			<div class="row">
+			<div class="matchSchedule_details row">
+                
+				 <div class="match_versus-wrap2">
+                  <div class="wrap_match-innerdetails">
+                    <ul class="point_table2">
+                       <li class="clearfix">
+                        <div class="subPoint_table">
+                          <div class="headline01 largepoint1">Logo</div>
+                          <div class="headline01 largepoint1">Nombre</div>
+                      </li>
+
+                      <% for(var i=0; i < equipos.length; i++) { %> 
+					               <li class="clearfix">
+                          <div class="subPoint_table">
+                          <div class="headline01 largepoint1"><%= equipos[i].logo %></div>
+                          <div class="headline01 largepoint1"><%= equipos[i].nombre %></div>
+                      <% } %>
+
+                    </ul>
+                    </div>
+                  </div>
+ 				</div>
+            </div>
+        </div>
+		
+		  <form action="/torneos" method="get">
+             <button type="submit">VOLVER A TORNEOS</button>
+        </form>
+      </section>
+    
+
+      <!-- footer -->
+      <footer ><!--class="footer-type01"-->
+	   <%- include ../footer.ejs %>
+      </footer>
+    </div>
+    
+
+      
+    <script src="js/vendor/vendor.js"></script>     
+    <script src="js/main.js"></script>
+	<script src="js/admin.js"></script> 
+        
+</body>
+</html>

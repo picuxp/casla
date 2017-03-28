@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+     <link rel="stylesheet" href="vendor.css">       
+     <link rel="stylesheet" href="style.css">   
+     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+    <script src="js/vendor/modernizr.js"></script>    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrapper">
+      <!-- header -->
+      <header class="header-main">
+        <div class="header-lower clearfix">
+      <%- include ../menu.ejs %>
+        </div>  
+</header>
+
+       <!-- banner section -->
+      <div class="innerbannerwrap">
+        <div class="content"></div>
+        <div class="innerbannergoleadores">
+          <h2 class="bannerHeadline">Administración de Partidos<span></span></h2>
+        </div>
+      </div>
+
+      <% if (resultado) { %>
+          <% if (resultado == 200) { %>
+                <div class="alert alert-success">La operacion fue realizada con exito</div>
+          <% } else { %>
+              <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+          <% } %>
+      <% } %>
+
+      <section class="innerpage_all_wrap bg-white"> 
+        <div class="container">
+			<div class="row">
+			<div class="matchSchedule_details row">
+          
+          
+
+				 <div class="match_versus-wrap2">
+                  <div class="wrap_match-innerdetails">
+
+                    <div class="headline01 largepoint1">Ver partidos fecha:</div>
+                    <select name="fechaSelectName" id="fechaSelect">
+                          <option value="none"></option>
+                           <% for(var i=0; i < numeros_fechas.length; i++) { %> 
+                              <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
+                            <% } %>
+                    </select>
+
+                    
+
+                    <ul class="point_table2">
+                       <li class="clearfix">
+                        <div class="subPoint_table">
+                          <div class="headline01 smallpoint">Estado partido</div>
+                          <div class="headline01 smallpoint">Equipo 1</div>
+                          <div class="headline01 smallpoint">Equipo 2</div>
+                          <div class="headline01 smallpoint">N° Fecha</div>
+                          <div class="headline01 smallpoint">Fecha</div>
+                          <div class="headline01 smallpoint">Division</div>
+
+                          <div class="headline01 smallpoint row row">
+							             <div class="headline01 smallpoint1"><span>ACTUALIZAR</span></div>
+                          </div>
+					              </div>
+                      </li>
+
+                      <div id="dataPartidosConFecha">
+
+                        </div>
+
+                      <% for(var i=0; i < partidos.length; i++) { %> 
+      					     <li class="clearfix">
+                              <div class="subPoint_table">
+                                <div class="headline01 largepoint1"><%= equipos[partidos[i].equipo1] %></div>
+                                <div class="headline01 largepoint1"><%= equipos[partidos[i].equipo2] %></div>
+                                <div class="headline01 largepoint1"><%= partidos[i].fecha_numero %></div>
+                                <div class="headline01 largepoint1"><%= moment(partidos[i].fecha).format( 'DD MMM, YYYY') %></div>
+                                <div class="headline01 largepoint1"><%= divisiones[partidos[i].division] %></div>
+
+                                <div class="headline01 largepoint1 row row">
+                  							<div class="headline01 smallpoint1"><span>
+                  								<form onsubmit="return confirm('Seguro que desea eliminar al partido <%= equipos[partidos[i].equipo1] %> VS <%= equipos[partidos[i].equipo2] %>?');" action="/deletePartido" method="post">
+                  					                <button type="submit">Actualizar</button>
+                  					                <input type="hidden" value=<%= partidos[i]._id %> name="partidoid"/>
+                  					            </form>
+                  							</span></div>
+                  						  </div>
+                  						</div>
+                            </li>
+                            <% } %>
+                    </ul>
+                    </div>
+                  </div>
+ 				</div>
+            </div>
+        </div>
+		
+		
+      </section>
+    
+
+      <!-- footer -->
+      <footer ><!--class="footer-type01"-->
+	   <%- include ../footer.ejs %>
+      </footer>
+    </div>
+    
+
+      
+    <script src="js/vendor/vendor.js"></script>     
+    <script src="js/main.js"></script>
+	<script src="js/admin.js"></script> 
+    <script src="js/partidos.js"></script> 
+    <script src="js/planillero.js"></script> 
+</body>
+</html>

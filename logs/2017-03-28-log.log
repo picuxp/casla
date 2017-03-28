@@ -1,0 +1,15 @@
+{"level":"info","message":"Node server running on port 3000","timestamp":"17:58:56"}
+{"level":"info","message":"dante@superadmin.com acaba de ingresar al sistema.","timestamp":"18:03:10"}
+{"level":"info","message":"Nuevo usuario ADMIN registrado: dante@admin.com","timestamp":"18:03:39"}
+{"level":"info","message":"Nuevo usuario PLANILLERO registrado: dante@planillero.com","timestamp":"18:04:10"}
+{"level":"info","message":"dante@admin.com acaba de ingresar al sistema.","timestamp":"18:04:27"}
+{"level":"info","message":"Node server running on port 3000","timestamp":"18:15:19"}
+{"level":"info","message":"dante@admin.com acaba de ingresar al sistema.","timestamp":"18:16:31"}
+{"level":"info","message":"undefined ha agregado al torneo Recreativo CASLA 2017 una nueva division: Zona 1","timestamp":"18:17:30"}
+{"level":"info","message":"undefined ha actualizado al equipo 58a1c6a7a075c6395248f5ba. Nombre: Falcon","timestamp":"18:19:28"}
+{"level":"info","message":"undefined ha actualizado al equipo 58a1c6b1a075c6395248f5bb. Nombre: Mundo","timestamp":"18:19:37"}
+{"level":"info","message":"undefined ha agregado al partido 58dad3852fcac11bdb8526b5: 58a1c6a7a075c6395248f5ba VS 58a1c6b1a075c6395248f5bb, fecha 1, el Wed Mar 29 2017 21:00:00 GMT-0300 (ART)","timestamp":"18:20:05"}
+{"level":"info","message":"El equipo Falcon ha agregado al partido 58dad3852fcac11bdb8526b5: 58a1c6a7a075c6395248f5ba VS 58a1c6b1a075c6395248f5bb","timestamp":"18:20:06"}
+{"level":"info","message":"El equipo Mundo ha agregado al partido 58dad3852fcac11bdb8526b5: 58a1c6a7a075c6395248f5ba VS 58a1c6b1a075c6395248f5bb","timestamp":"18:20:06"}
+{"level":"info","message":"La division Zona 1 ha agregado al partido 58dad3852fcac11bdb8526b5: 58a1c6a7a075c6395248f5ba VS 58a1c6b1a075c6395248f5bb","timestamp":"18:20:06"}
+{"level":"info","message":"dante@planillero.com acaba de ingresar al sistema.","timestamp":"18:20:33"}

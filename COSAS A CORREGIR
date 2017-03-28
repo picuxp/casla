@@ -1,0 +1,13 @@
+COSAS A CORREGIR
+
+1) cuando estás logueado con un rol y pones salir, al volver para atras con el browser te deja entrar de nuevo. Habria que cerrar la sesión. 
+       SIMPLEMENTE ES LA VISTA... NO TE DEJA HACER ACCIONES. YA FUE, DEJEMOSLO, AL MENOS POR AHORA
+       
+2) Cuando te logueas como SUPERADMIN, ves en el menú la opción de delegado. Deberían estar todas las acciones posibles desde el menu "SUPERDADMIN". Lo mismo con cada rol.
+       NO SE A QUE TE REFERIS... CON SUPERADMIN VES TODAS LAS OPCIONES, TANTO DE ADMIN COMO DELEGADO, Y ES CORRECTO
+       
+3) Crear rol "PLANILLERO". En este rol, se deberia ver solamente la opcion "CARGAR PARTIDO". Al dar click en esta opcion, se despliegan todos los partidos del dia actual y al darle click al partido, te deja cargarle toda la info
+4) Implementar el cambiar password, sobre todo para delegados qe los da de alta el admin para que entren por 1era vez y se la cambien
+5) Chequeos. Que al agregar user no exista el mail, y los que correspondan
+6) DANTE: Desde la vista de division, que no se pueda agregar un equipo. Solamente se debe poder ver los equipos de esa division.
+   La relacion division-equipo se hace desde la vista de /equipos (arreglarla porque no está funcionando bien)

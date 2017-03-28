@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+     <link rel="stylesheet" href="vendor.css">       
+     <link rel="stylesheet" href="style.css">   
+     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script src="js/vendor/modernizr.js"></script>     
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrapper">
+      <!-- header -->
+      <header class="header-main">
+        <div class="header-lower clearfix">
+      <%- include ../menu.ejs %>
+        </div>  
+</header>
+
+       <!-- banner section -->
+      <div class="innerbannerwrap">
+        <div class="content"></div>
+        <div class="innerbannergoleadores">
+          <h2 class="bannerHeadline">Datos del jugador <%= jugador.nombre %> <%= jugador.apellido %> <span></span></h2>
+        </div>
+      </div>
+
+      <% if (resultado) { %>
+          <% if (resultado == 200) { %>
+                <div class="alert alert-success">La operacion fue realizada con exito</div>
+          <% } else { %>
+              <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+          <% } %>
+      <% } %>
+
+      <section class="innerpage_all_wrap bg-white"> 
+        <div class="container">
+			<div class="row">
+			<div class="matchSchedule_details row">
+          
+				      		<div class="match_versus-wrap2">
+			                  <div class="wrap_match-innerdetails">
+			                    <ul class="point_table2">
+			                       <li class="clearfix">
+			                        <div class="subPoint_table">
+			                          <div class="headline01 smallpoint">Nombre</div>
+                                <div class="headline01 smallpoint">Apellido</div>
+			                          <div class="headline01 smallpoint">Apodo</div>
+			                          <div class="headline01 smallpoint">Fecha nac</div>
+			                          <div class="headline01 smallpoint">DNI</div>
+			                          <div class="headline01 smallpoint">Pos</div>
+			                          <div class="headline01 smallpoint">Nro</div>
+			                          <div class="headline01 smallpoint">Capitan</div>
+                                	  <div class="headline01 smallpoint">SubCapitan</div>
+                                	  <div class="headline01 smallpoint">Mail</div>
+                                    </div>
+            						</div>
+                      				</li>
+            					     <li class="clearfix">
+                                     			 <div class="subPoint_table">
+                                     			 		<div class="headline01 smallpoint"><%= jugador.nombre %></div>
+                                              <div class="headline01 smallpoint"><%= jugador.apellido %></div>
+                                            			 <div class="headline01 smallpoint"><%= jugador.apodo %></div>
+                                            			 <div class="headline01 smallpoint"><%= moment(jugador.fecha_de_nacimiento).format('DD/MM/YYYY') %></div>
+                                            			 <div class="headline01 smallpoint"><%= jugador.dni %></div>
+                                            			 <div class="headline01 smallpoint"><%= jugador.posicion %></div>
+                                            			 <div class="headline01 smallpoint"><%= jugador.numero %></div>
+                                            			 
+
+                                                   <div class="headline01 smallpoint">
+                                                      <% if ( equipo.capitan == jugador._id ) { %>
+                                                        SI
+                                                      <% } else { %> NO <% } %>
+                                                    </div>
+                                                  <div class="headline01 smallpoint">
+                                                      <% if ( equipo.subcapitan == jugador._id ) { %>
+                                                        SI
+                                                      <% } else { %> NO <% } %>
+                                                    </div>
+                                            			<div class="headline01 smallpoint"><%= jugador.email %></div>
+                      				</li>
+
+                              <h2 class="bannerHeadline"> Editar Jugador </h2>
+                               <div>
+                                  <form action="/actualizarJugador" method="post" id="formActualizarJugador">
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">Nombre</div>
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value=<%= jugador.nombre %>>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">Apellido</div>
+                                        <input type="text" class="form-control" name="apellido" id="apellido" value=<%= jugador.apellido %>>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">Apodo</div>
+                                        <input type="text" class="form-control" name="apodo" id="apodo" value=<%= jugador.apodo %>>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">Fecha de nacimiento (yyyy-mm-dd)</div>
+                                        <input type="text" id="fecha_de_nacimiento" class="form-control" name="fecha_de_nacimiento" id="fecha_de_nacimiento" value=<%= moment(jugador.fecha_de_nacimiento).format('DD/MM/YYYY') %>>>
+                                    </div>
+                                     <div class="form-group">
+                                        <div class="headline01 largepoint1">DNI</div>
+                                        <input type="text" class="form-control" name="dni" id="dni" value=<%= jugador.dni %>>
+                                    </div>
+                                     <div class="form-group">
+                                        <div class="headline01 largepoint1">Posicion</div>
+                                        <select name="posicion" id="posicionSelect" value=<%= jugador.posicion %>>
+                                                  <option value="ARQUERO">ARQUERO</option>
+                                                  <option value="DEFENSOR">DEFENSOR</option>
+                                                  <option value="VOLANTE" selected>VOLANTE</option>
+                                                  <option value="DELANTERO">DELANTERO</option>
+                                         </select>
+                                    </div>
+                                     <div class="form-group">
+                                        <div class="headline01 largepoint1">Numero</div>
+                                        <input type="text" class="form-control" name="numero" id="numero" value=<%= jugador.numero %>>
+                                    </div>
+                                     <div class="form-group">
+                                        <div class="headline01 largepoint1">Capitan</div>
+                                        <select name="capitan" id="capitanSelect">
+                                              <% if (equipo.capitan == jugador._id) { %>
+                                                    <option value="false">NO</option>
+                                                  <option value="true" selected>SI</option>
+                                              <% } else { %>
+                                                  <option value="false" selected>NO</option>
+                                                  <option value="true">SI</option>
+                                              <% } %>
+                                                  
+                                                </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">SubCapitan</div>
+                                        <select name="subcapitan" id="subcapitanSelect">
+                                          <% if (equipo.subcapitan == jugador._id) { %>
+                                                    <option value="false">NO</option>
+                                                  <option value="true" selected>SI</option>
+                                              <% } else { %>
+                                                  <option value="false" selected>NO</option>
+                                                  <option value="true">SI</option>
+                                              <% } %>
+                                                </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="headline01 largepoint1">Email</div>
+                                        <input type="text" class="form-control" name="email" id="email" value=<%= jugador.email %>>
+                                    </div>
+                                    <input type="hidden" value=<%= equipo._id %> name="equipo"/>
+                                    <button type="submit" id="botonActualizarJugador" class="btn btn-warning btn-lg center-block">Actualizar</button>
+                                </form>
+                              </div>
+   
+                    </ul>
+                    </div>
+                  </div>
+ 				</div>
+            </div>
+        </div>
+				 
+		
+		<form action="/delegado" method="get">
+             <button type="submit">VOLVER A MI EQUIPO</button>
+        </form>
+      </section>
+    
+
+      <!-- footer -->
+      <footer ><!--class="footer-type01"-->
+	   <%- include ../footer.ejs %>
+      </footer>
+    </div>
+    
+
+      
+    <script src="js/vendor/vendor.js"></script>     
+    <script src="js/main.js"></script>
+	<script src="js/admin.js"></script> 
+    <script src="js/partidos.js"></script> 
+    <script src="js/actualizarJugador.js"></script>
+</body>
+</html>
