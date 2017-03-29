@@ -10,7 +10,7 @@
      <link rel="stylesheet" href="vendor.css">       
      <link rel="stylesheet" href="style.css">   
      <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-    <script src="js/vendor/modernizr.js"></script>    
+    <script src="js/vendor/modernizr.js"></script>   
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -22,16 +22,15 @@
         <div class="header-lower clearfix">
       <%- include ../menu.ejs %>
         </div>  
-</header>
+      </header>
 
        <!-- banner section -->
       <div class="innerbannerwrap">
         <div class="content"></div>
         <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Partidos del torneo <%= torneo %><span></span></h2>
+          <h2 class="bannerHeadline">Partidos del torneo <%= torneo.nombre %><span></span></h2>
         </div>
       </div>
-
 
       <section class="innerpage_all_wrap bg-white"> 
         <div class="container">
@@ -41,41 +40,26 @@
 				 <div class="match_versus-wrap2">
                   <div class="wrap_match-innerdetails">
                     <ul class="point_table2">
-                       <li class="clearfix">
-                        <div class="subPoint_table">
-                          <div class="headline01 largepoint1">Estado</div>
-                          <div class="headline01 largepoint1">Equipo 1</div>
-                          <div class="headline01 largepoint1">Marcador 1</div>
-                          <div class="headline01 largepoint1">Marcador 2</div>
-                          <div class="headline01 largepoint1">Equipo 2</div>
-                          <div class="headline01 largepoint1">N° Fecha</div>
-                          <div class="headline01 largepoint1">Fecha</div>
-                      </li>
-
-                      <% for(var i=0; i < partidos.length; i++) { %> 
-					               <li class="clearfix">
+                      <li class="clearfix">
                           <div class="subPoint_table">
-                          <div class="headline01 largepoint1"><%= partidos[i].estado %></div>
-                          <div class="headline01 largepoint1"><%= equipos[partidos[i].equipo1] %></div>
-                          <div class="headline01 largepoint1">
-                            <% if (partidos[i].marcador_equipo_1 == undefined )  { %>
-                                0
-                          <% } else { %>
-                              <%= partidos[i].marcador_equipo_1 %>
-                          <% } %>
+                              <div class="headline01 smallpoint">Estado</div>
+                              <div class="headline01 smallpoint">Equipo 1</div>
+                              <div class="headline01 smallpoint">Res 1</div>
+                              <div class="headline01 smallpoint">Res 2</div>
+                              <div class="headline01 smallpoint">Equipo 2</div>
+                              <div class="headline01 smallpoint">N° Fecha</div>
+                              <div class="headline01 smallpoint">Fecha</div>
+                              <div class="headline01 smallpoint">Division</div>
+                              <div class="headline01 smallpoint">Amonestados</div>
+                              <div class="headline01 smallpoint">Expulsados</div>
+                              <div class="headline01 smallpoint">Goles</div>
+                              <div class="headline01 smallpoint">Cambios</div>
+                              <div class="headline01 smallpoint">
+                                  <div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
+                              </div>
                           </div>
-                          <div class="headline01 largepoint1">
-                            <% if (partidos[i].marcador_equipo_2 == undefined )  { %>
-                                0
-                          <% } else { %>
-                              <%= partidos[i].marcador_equipo_2 %>
-                          <% } %>
-                          </div>
-                          <div class="headline01 largepoint1"><%= equipos[partidos[i].equipo2] %></div>
-                          <div class="headline01 largepoint1"><%= partidos[i].fecha_numero %></div>
-                          <div class="headline01 largepoint1"><%= moment(partidos[i].fecha).format( 'DD MMM, YYYY') %></div>
-                      <% } %>
-
+                      </li>
+                      <div id="dataPartidos" name=<%=torneo._id%>></div>
                     </ul>
                     </div>
                   </div>
@@ -97,9 +81,11 @@
     
 
       
-    <script src="js/vendor/vendor.js"></script>     
-    <script src="js/main.js"></script>
+  <script src="js/vendor/vendor.js"></script>     
+  <script src="js/main.js"></script>
 	<script src="js/admin.js"></script> 
+  <script src="js/partidosTorneo.js"></script>
+
         
 </body>
 </html>

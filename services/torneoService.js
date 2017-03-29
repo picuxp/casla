@@ -11,7 +11,7 @@ exports.findAllTorneos = function(req, res) {
 	Torneo.find({"activo":true}, function(err, torneos) {
     if(err) res.send(500, err.message);
 
-    console.log('GET /torneo')
+    console.log('GET /torneo');
 		res.status(200).jsonp(torneos);
 	});
 };
@@ -31,29 +31,77 @@ exports.findEquiposFromTorneo = function(req, res) {
 	Torneo.findById(req.params.id, function(err, torneo) {
     	if(err) return res.send(500, err.message);
     	if(!torneo) return res.send(404, "Torneo not found");
-		Equipo.find({ 'torneo_actual': torneo}, function(err, equipos) {
-			var data = {
-				equipos : equipos,
+
+    	var async = require('async');
+    	var calls = [];
+    	torneo.equipos.forEach(getEquipo, calls);
+
+    	async.parallel(calls, function(err, result){
+    		var equiposList = [];
+	    	result.forEach(armarRespuestaEquipos, equiposList);
+		    var data = {
+				equipos : equiposList,
 				torneo: torneo.nombre
 			};
-		    if(err) return res.send(500, err.message);
 			res.status(200).jsonp(data);
-		});
+    	});
+
 	});
 };
+
+function getEquipo(equipoId) {
+    this.push(function(callback){
+		Equipo.findById(equipoId, function(err, equipo){
+    		if(err) return res.send(500, err.message);
+    		if(!equipo) return res.send(404, "Equipo not found");
+    		callback(null, equipo);
+		});
+    });
+}
+
+function armarRespuestaEquipos(resultado){
+	this.push(resultado);
+}
+
+
+function getPartidos(division) {
+    this.push(function(callback){
+		Partido.find({ 'division': division}, function(err, partidos){
+    		if(err) return res.send(500, err.message);
+    		if(!partidos) return res.send(404, "Division's partidos not found");
+    		callback(null, partidos);
+		});
+    });
+}
+
+function armarRespuestaPartidos(resultado){
+	for(var i=0; i<resultado.length; i++){
+		this.push(resultado[i]);
+	}
+}
 
 //GET - Return partidos from a torneo
 exports.findPartidosFromTorneo = function(req, res) {
 	Torneo.findById(req.params.id, function(err, torneo) {
     	if(err) return res.send(500, err.message);
     	if(!torneo) return res.send(404, "Torneo not found");
-		Partido.find({ 'torneo': torneo}, function(err, partidos) {
-			var data = {
-				partidos : partidos,
-				torneo: torneo.nombre
-			};
+		Division.find({ 'torneo': torneo}, function(err, divisiones) {
 		    if(err) return res.send(500, err.message);
-			res.status(200).jsonp(data);
+		    if(!divisiones) return res.send(404, "Torneo's divisiones not found");
+		    var async = require('async');
+		    var calls = [];
+
+		    divisiones.forEach(getPartidos, calls);
+
+		    async.parallel(calls, function(err, result){
+		    	var partidosList = [];
+		    	result.forEach(armarRespuestaPartidos, partidosList);
+			    var data = {
+					partidos : partidosList,
+					torneo: torneo.nombre
+				};
+				res.status(200).jsonp(data);
+		    });
 		});
 	});
 };

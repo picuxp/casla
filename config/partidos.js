@@ -25,6 +25,13 @@ module.exports = function(app,isAdmin) {
 
     });
 
+    app.get('/partidosDelTorneo', isAdmin, function(req, res) {
+        console.log('estoy en /partidosDelTorneo');
+        client.get("http://localhost:3000/torneo/"+req.query.torneoid, function (torneo, response) {
+            res.render('./ejs/torneos/partidosTorneo.ejs', {user: req.user, torneo: torneo, message: req.flash('loginMessage')}); 
+        }); 
+    });
+
     app.get('/agregarPartidos', isAdmin, function(req, res) {
         client.get("http://localhost:3000/torneo", function (data, response) {
          res.render('./ejs/partidos/agregarPartidos.ejs', {user: req.user, torneos: data, message: req.flash('loginMessage')}); 

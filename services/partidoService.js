@@ -43,7 +43,6 @@ exports.findByEstado = function(req, res) {
 	});
 };
 
-
 //GET - Returns distinct fecha_numero from partidos
 exports.findNumerosFechasDisponibles = function(req, res){
 	Partido.find().distinct('fecha_numero', function(error, numeros_fechas) {
