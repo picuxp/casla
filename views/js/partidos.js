@@ -19,45 +19,61 @@ $(document).on("click", ".cargarPartido", function (e) {
 		$.get('http://localhost:3000/equipo', function (equipos) {
 			$.get('http://localhost:3000/jugador/equipo/'+partido.equipo1, function (jugadores1) {
 				$.get('http://localhost:3000/jugador/equipo/'+partido.equipo2, function (jugadores2) {
-					console.log('Entrando en cargarPartido, partido: '+id);
-					
-					var equiposMap = {};
-					for (var i = 0; i < equipos.length; i++) {
-						equiposMap[equipos[i]._id] = equipos[i].nombre;
-					};
+					$.get('http://localhost:3000/division/'+partido.division, function (division) {
+						console.log('Entrando en cargarPartido, partido: '+id);
 						
+						var equiposMap = {};
+						for (var i = 0; i < equipos.length; i++) {
+							equiposMap[equipos[i]._id] = equipos[i].nombre;
+						};
 
-					$('#myModal').modal();
-					$('#teams-header').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
-					$('#team1').html('<b>'+equiposMap[partido.equipo1]+'</b>');
-					$('#team2').html('<b>'+equiposMap[partido.equipo2]+'</b>');
-					$('#nro-fecha').val(partido.fecha_numero);
-					$('#fecha').val(formatDate2(partido.fecha));
+						console.log(division);
 
-					var lista = '<form id="form-amonestados1">';
-					for (var i = 0; i < jugadores1.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
-					};
-					$('#amonestados1').html(lista);
+						$('#myModal').modal();
+						$('#teams-header').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
+						$('#team1').html('<b>'+equiposMap[partido.equipo1]+'</b>');
+						$('#team2').html('<b>'+equiposMap[partido.equipo2]+'</b>');
+						$('#nro-fecha').val(partido.fecha_numero);
+						$('#fecha').val(formatDate2(partido.fecha));
 
-					var lista = '<form id="form-expulsados1">';
-					for (var i = 0; i < jugadores1.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
-					};
-					$('#expulsados1').html(lista);
+						var options = ['N.E.','FIN','SUSP','POST'];
+						var aux = "";
+						for(var i=0; i<options.length;i++){
+							if(options[i] == partido.estado){
+								aux+='<option value="'+options[i]+'" selected="selected">'+options[i]+'</option>';
+							}else{
+								aux+='<option value="'+options[i]+'">'+options[i]+'</option>';
+							}
+						}
+						$('#estado').html(aux);
 
-					var lista = '<form id="form-amonestados2">';
-					for (var i = 0; i < jugadores2.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
-					};
-					$('#amonestados2').html(lista);
+						$('#division').html(division.nombre);
 
-					var lista = '<form id="form-expulsados2">';
-					for (var i = 0; i < jugadores2.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
-					};
-					$('#expulsados2').html(lista);
-					
+						var lista = '<form id="form-amonestados1">';
+						for (var i = 0; i < jugadores1.length; i++) {
+							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+						};
+						$('#amonestados1').html(lista);
+
+						var lista = '<form id="form-expulsados1">';
+						for (var i = 0; i < jugadores1.length; i++) {
+							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+						};
+						$('#expulsados1').html(lista);
+
+						var lista = '<form id="form-amonestados2">';
+						for (var i = 0; i < jugadores2.length; i++) {
+							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+						};
+						$('#amonestados2').html(lista);
+
+						var lista = '<form id="form-expulsados2">';
+						for (var i = 0; i < jugadores2.length; i++) {
+							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+						};
+						$('#expulsados2').html(lista);
+						
+					});
 				});
 			});
 		});
