@@ -1,110 +1,245 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-     <link rel="stylesheet" href="vendor.css">       
-     <link rel="stylesheet" href="style.css">   
-     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-    <script src="js/vendor/modernizr.js"></script>    
-  </head>
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="wrapper">
-      <!-- header -->
-      <header class="header-main">
-        <div class="header-lower clearfix">
-      <%- include ../menu.ejs %>
-        </div>  
-</header>
-
-       <!-- banner section -->
-      <div class="innerbannerwrap">
-        <div class="content"></div>
-        <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Administración de Partidos<span></span></h2>
-        </div>
-      </div>
-
-      <% if (resultado) { %>
-          <% if (resultado == 200) { %>
-                <div class="alert alert-success">La operacion fue realizada con exito</div>
-          <% } else { %>
-              <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
-          <% } %>
-      <% } %>
-
-      <section class="innerpage_all_wrap bg-white"> 
-        <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
-          
-          
-
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-
-                    <div class="headline01 largepoint1">Ver partidos fecha:</div>
-                    <select name="fechaSelectName" id="fechaSelect">
-                          <option value="none"></option>
-                           <% for(var i=0; i < numeros_fechas.length; i++) { %> 
-                              <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
-                            <% } %>
-                    </select>
-
-                    <ul class="point_table2">
-                       <li class="clearfix">
-                        <div class="subPoint_table">
-                          <div class="headline01 smallpoint">Estado</div>
-                          <div class="headline01 smallpoint">Equipo 1</div>
-                          <div class="headline01 smallpoint">Res 1</div>
-                          <div class="headline01 smallpoint">Res 2</div>
-                          <div class="headline01 smallpoint">Equipo 2</div>
-                          <div class="headline01 smallpoint">N° Fecha</div>
-                          <div class="headline01 smallpoint">Fecha</div>
-                          <div class="headline01 smallpoint">Division</div>
-                          <div class="headline01 smallpoint">Amonestados</div>
-                          <div class="headline01 smallpoint">Expulsados</div>
-                          <div class="headline01 smallpoint">Goles</div>
-                          <div class="headline01 smallpoint">Cambios</div>
-
-                          <div class="headline01 smallpoint row row">
-							<div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
-                        </div>
-						</div>
-                      </li>
-
-                      <div id="dataPartidosConFecha">
-
-                        </div>
-                    </ul>
-                    </div>
-                  </div>
- 				</div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="vendor.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+        <script src="js/vendor/modernizr.js"></script>    
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="wrapper">
+            <!-- header -->
+            <header class="header-main">
+                <div class="header-lower clearfix">
+                    <%- include ../menu.ejs %>
+                </div>
+            </header>
+            <!-- banner section -->
+            <div class="innerbannerwrap">
+                <div class="content"></div>
+                <div class="innerbannergoleadores">
+                    <h2 class="bannerHeadline">Administración de Partidos<span></span></h2>
+                </div>
             </div>
+            <% if (resultado) { %>
+            <% if (resultado == 200) { %>
+            <div class="alert alert-success">La operacion fue realizada con exito</div>
+            <% } else { %>
+            <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+            <% } %>
+            <% } %>
+            <section class="innerpage_all_wrap bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="matchSchedule_details row">
+                            <div class="match_versus-wrap2">
+                                <div class="wrap_match-innerdetails">
+                                    <div class="headline01 largepoint1">Ver partidos fecha:</div>
+                                    <select name="fechaSelectName" id="fechaSelect">
+                                        <option value="none"></option>
+                                        <% for(var i=0; i < numeros_fechas.length; i++) { %> 
+                                        <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
+                                        <% } %>
+                                    </select>
+                                    <ul class="point_table2">
+                                        <li class="clearfix">
+                                            <div class="subPoint_table">
+                                                <div class="headline01 smallpoint">Estado</div>
+                                                <div class="headline01 smallpoint">Equipo 1</div>
+                                                <div class="headline01 smallpoint">Res 1</div>
+                                                <div class="headline01 smallpoint">Res 2</div>
+                                                <div class="headline01 smallpoint">Equipo 2</div>
+                                                <div class="headline01 smallpoint">N° Fecha</div>
+                                                <div class="headline01 smallpoint">Fecha</div>
+                                                <div class="headline01 smallpoint">Division</div>
+                                                <div class="headline01 smallpoint">Amonestados</div>
+                                                <div class="headline01 smallpoint">Expulsados</div>
+                                                <div class="headline01 smallpoint">Goles</div>
+                                                <div class="headline01 smallpoint">Cambios</div>
+                                                <div class="headline01 smallpoint">
+                                                    <div class="headline01 smallpoint1"><span>CARGAR</span></div>
+                                                </div>
+                                                <div class="headline01 smallpoint">
+                                                    <div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <div id="dataPartidosConFecha">
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- footer -->
+            <footer >
+                <!--class="footer-type01"-->
+                <%- include ../footer.ejs %>
+            </footer>
         </div>
-		
-		
-      </section>
-    
 
-      <!-- footer -->
-      <footer ><!--class="footer-type01"-->
-	   <%- include ../footer.ejs %>
-      </footer>
-    </div>
-    
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Cargar datos del partido</h4>
+                <h2 id="teams-header">Equipo1 vs Equipo2</h2>
+              </div>
+              <div class="modal-body">
+              <form>
+                <table style="width:100%">
 
-      
-    <script src="js/vendor/vendor.js"></script>     
-    <script src="js/main.js"></script>
-	<script src="js/admin.js"></script> 
-    <script src="js/partidos.js"></script> 
-</body>
+                <tr>
+                  <td>Fecha Numero:</td>
+                  <td><input id="nro-fecha" type="number" name="nro-fecha"></td>
+                  <td>Fecha:</td>
+                  <td><input id="fecha" type="date" name="fecha"></td>
+                </tr>
+
+                <tr>
+                  <td>Division:</td>
+                  <td><select id="division"></select></td>
+                  <td>Estado:</td>
+                  <td><select id="estado"></select></td>
+                </tr>
+
+                <tr>
+                  <th colspan="2" id="team1">Equipo1</th>
+                  <th colspan="2" id="team2">Equipo2</th> 
+                </tr>
+                <tr>
+                  <td>Goles: </td>
+                  <td><input type="number" id="goles1" name="goles1"></td>
+                  <td>Goles: </td>
+                  <td><input type="number" id="goles2" name="goles2"></td>
+                </tr>
+                <tr>
+
+                  <td colspan="2">
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hAmonestados1">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#amonestados1" aria-expanded="false" aria-controls="amonestados1">
+                            Amonestados
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="amonestados1" class="collapse" role="tabpanel" aria-labelledby="hAmonestados1">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hExpulsados1">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#expulsados1" aria-expanded="false" aria-controls="expulsados1">
+                            Expulsados
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="expulsados1" class="collapse" role="tabpanel" aria-labelledby="hExpulsados1">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hCambios1">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#cambios1" aria-expanded="false" aria-controls="cambios1">
+                            Cambios
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="cambios1" class="collapse" role="tabpanel" aria-labelledby="hCambios1">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td colspan="2">
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hAmonestados2">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#amonestados2" aria-expanded="false" aria-controls="amonestados2">
+                            Amonestados
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="amonestados2" class="collapse" role="tabpanel" aria-labelledby="hAmonestados2">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hExpulsados2">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#expulsados2" aria-expanded="false" aria-controls="expulsados2">
+                            Expulsados
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="expulsados2" class="collapse" role="tabpanel" aria-labelledby="hExpulsados2">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab" id="hCambios2">
+                        <h5 class="mb-0">
+                          <a class="collapsed" data-toggle="collapse" href="#cambios2" aria-expanded="false" aria-controls="cambios2">
+                            Cambios
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="cambios2" class="collapse" role="tabpanel" aria-labelledby="hCambios2">
+                          Jugador1 <br>
+                          Jugador1 <br>
+                      </div>
+                    </div>
+                  </td>
+
+                </tr>
+                </table>
+              </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="botonCancelar" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="botonGuardarCambios">Guardar cambios</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="js/vendor/vendor.js"></script>     
+        <script src="js/main.js"></script>
+        <script src="js/admin.js"></script> 
+        <script src="js/partidos.js"></script>
+        
+    </body>
 </html>

@@ -21,7 +21,7 @@ exports.findById = function(req, res) {
     if(err) return res.send(500, err.message);
     if(!partido) return res.send(404, "Partido not found");
     console.log('GET /partido/' + req.params.id);
-		res.status(200).jsonp(cancha);
+		res.status(200).jsonp(partido);
 	});
 };
 
