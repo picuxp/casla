@@ -1,3 +1,5 @@
+var partidoGlobal;
+
 $("#dataPartidosConFecha").hide();
 
 
@@ -21,20 +23,18 @@ $(document).on("click", ".cargarPartido", function (e) {
 				$.get('http://localhost:3000/jugador/equipo/'+partido.equipo2, function (jugadores2) {
 					$.get('http://localhost:3000/division/'+partido.division, function (division) {
 						console.log('Entrando en cargarPartido, partido: '+id);
-						
+						partidoGlobal = partido;						
 						var equiposMap = {};
 						for (var i = 0; i < equipos.length; i++) {
 							equiposMap[equipos[i]._id] = equipos[i].nombre;
 						};
 
-						console.log(division);
-
 						$('#myModal').modal();
-						$('#teams-header').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
-						$('#team1').html('<b>'+equiposMap[partido.equipo1]+'</b>');
-						$('#team2').html('<b>'+equiposMap[partido.equipo2]+'</b>');
-						$('#nro-fecha').val(partido.fecha_numero);
-						$('#fecha').val(formatDate2(partido.fecha));
+						$('#teams-header-id').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
+						$('#team1-id').html('<b>'+equiposMap[partido.equipo1]+'</b>');
+						$('#team2-id').html('<b>'+equiposMap[partido.equipo2]+'</b>');
+						$('#nro-fecha-id').html(partido.fecha_numero);
+						$('#fecha-id').val(formatDate2(partido.fecha));
 
 						var options = ['N.E.','FIN','SUSP','POST'];
 						var aux = "";
@@ -45,39 +45,48 @@ $(document).on("click", ".cargarPartido", function (e) {
 								aux+='<option value="'+options[i]+'">'+options[i]+'</option>';
 							}
 						}
-						$('#estado').html(aux);
+						$('#estado-id').html(aux);
 
-						$('#division').html(division.nombre);
+						$('#division-id').html(division.nombre);
 
-						var lista = '<form id="form-amonestados1">';
+						var lista = '<form id="form-amonestados1-id">';
 						for (var i = 0; i < jugadores1.length; i++) {
 							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
 						};
-						$('#amonestados1').html(lista);
+						$('#amonestados1-id').html(lista);
 
-						var lista = '<form id="form-expulsados1">';
+						var lista = '<form id="form-expulsados1-id">';
 						for (var i = 0; i < jugadores1.length; i++) {
 							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
 						};
-						$('#expulsados1').html(lista);
+						$('#expulsados1-id').html(lista);
 
-						var lista = '<form id="form-amonestados2">';
+						var lista = '<form id="form-amonestados2-id">';
 						for (var i = 0; i < jugadores2.length; i++) {
 							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
 						};
-						$('#amonestados2').html(lista);
+						$('#amonestados2-id').html(lista);
 
-						var lista = '<form id="form-expulsados2">';
+						var lista = '<form id="form-expulsados2-id">';
 						for (var i = 0; i < jugadores2.length; i++) {
 							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
 						};
-						$('#expulsados2').html(lista);
+						$('#expulsados2-id').html(lista);
 						
 					});
 				});
 			});
 		});
 	});
+});
+
+$(document).on("click", '.botonGuardarCambios-id', function(e){
+	//console.log("guardarCambios fue presionado");
+	var id = $('#botonGuardarCambios-id').attr("name");
+	var data = partidoGlobal;
+	data.fecha = new Date($('#fecha-id').val());
+	data.estado = $('#estado-id').val();
+	console.log(data);
 });
 
 $("#fechaSelect").change(function () {
@@ -160,11 +169,12 @@ $("#fechaSelect").change(function () {
 						}
 						html += '</div>';
 
+
 						html += '<div class="headline01 smallpoint row">' +
 							'<div class="headline01 smallpoint1"><span>' +
-							'<form action="/cargarPartido" method="put" id="formCargar' + partidos[i]._id + '">' +
-							'<button class="cargarPartido" id="' + partidos[i]._id + '" type="submit">Cargar</button>' +
-							'<input type="hidden" value=' + partidos[i]._id + ' name="partidoid"/>' +
+							'<form action="/cargarPartido">' +
+							'<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
+							'<button type="submit">Cargar</button>' +
 							'</form></span></div></div>';
 
 						html += '<div class="headline01 smallpoint">' +
@@ -185,18 +195,18 @@ $("#fechaSelect").change(function () {
 
 
 function formatDate(date) {
-	dteSplit = date.split("-");
+	dteSplit = date.split(/[T-]/);
 	year = dteSplit[0];
 	month = dteSplit[1];
-	day = dteSplit[2][0] + dteSplit[0][1];
+	day = dteSplit[2];
 	return day + "/" + month + "/" + year;
 }
 
 function formatDate2(date) {
-	dteSplit = date.split("-");
+	dteSplit = date.split(/[T-]/);
 	year = dteSplit[0];
 	month = dteSplit[1];
-	day = dteSplit[2][0] + dteSplit[0][1];
+	day = dteSplit[2];
 	return year + "-" + month + "-" + day;
 }
 

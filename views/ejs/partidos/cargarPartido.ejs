@@ -27,7 +27,7 @@
             <div class="innerbannerwrap">
                 <div class="content"></div>
                 <div class="innerbannergoleadores">
-                    <h2 class="bannerHeadline">Administración de Partidos<span></span></h2>
+                    <h2 class="bannerHeadline">Cargar datos del partido<span></span></h2>
                 </div>
             </div>
             <% if (resultado) { %>
@@ -37,68 +37,7 @@
             <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
             <% } %>
             <% } %>
-            <section class="innerpage_all_wrap bg-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="matchSchedule_details row">
-                            <div class="match_versus-wrap2">
-                                <div class="wrap_match-innerdetails">
-                                    <div class="headline01 largepoint1">Ver partidos fecha:</div>
-                                    <select name="fechaSelectName" id="fechaSelect">
-                                        <option value="none"></option>
-                                        <% for(var i=0; i < numeros_fechas.length; i++) { %> 
-                                        <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
-                                        <% } %>
-                                    </select>
-                                    <ul class="point_table2">
-                                        <li class="clearfix">
-                                            <div class="subPoint_table">
-                                                <div class="headline01 smallpoint">Estado</div>
-                                                <div class="headline01 smallpoint">Equipo 1</div>
-                                                <div class="headline01 smallpoint">Res 1</div>
-                                                <div class="headline01 smallpoint">Res 2</div>
-                                                <div class="headline01 smallpoint">Equipo 2</div>
-                                                <div class="headline01 smallpoint">N° Fecha</div>
-                                                <div class="headline01 smallpoint">Fecha</div>
-                                                <div class="headline01 smallpoint">Division</div>
-                                                <div class="headline01 smallpoint">Amonestados</div>
-                                                <div class="headline01 smallpoint">Expulsados</div>
-                                                <div class="headline01 smallpoint">Goles</div>
-                                                <div class="headline01 smallpoint">Cambios</div>
-                                                <div class="headline01 smallpoint">
-                                                    <div class="headline01 smallpoint1"><span>CARGAR</span></div>
-                                                </div>
-                                                <div class="headline01 smallpoint">
-                                                    <div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <div id="dataPartidosConFecha">
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- footer -->
-            <footer >
-                <!--class="footer-type01"-->
-                <%- include ../footer.ejs %>
-            </footer>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Cargar datos del partido</h4>
-                <h2 id="teams-header-id">Equipo1 vs Equipo2</h2>
-              </div>
-              <div class="modal-body">
-              <form>
+            <form>
                 <table style="width:100%">
 
                 <tr>
@@ -224,13 +163,13 @@
                 </tr>
                 </table>
               </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="botonCancelar-id" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="botonGuardarCambios-id">Guardar cambios</button>
-              </div>
-            </div>
-          </div>
+              <button type="submit" class="botonCancelar-id" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="botonGuardarCambios-id">Guardar cambios</button>
+            <!-- footer -->
+            <footer >
+                <!--class="footer-type01"-->
+                <%- include ../footer.ejs %>
+            </footer>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -239,7 +178,7 @@
         <script src="js/vendor/vendor.js"></script>     
         <script src="js/main.js"></script>
         <script src="js/admin.js"></script> 
-        <script src="js/partidos.js"></script>
+        <script src="js/cargarPartido.js"></script>
         
     </body>
 </html>
