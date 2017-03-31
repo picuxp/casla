@@ -5,8 +5,8 @@ $( "#fecha_de_nacimiento" ).datepicker({
 
 $("#botonAgregarJugador").click(function(e){
 	e.preventDefault();
-	if ( chequear("nombre") && chequear("apellido") && chequear("apodo") && chequear("fecha_de_nacimiento") 
-		&& chequear("dni") && chequear("numero") && chequear("email")) {
+	if ( chequear("nombre") && chequear("apellido") && chequear("fecha_de_nacimiento") 
+		&& chequear("dni") && chequear("numero")) {
 		$("#formAgregarJugador").submit();
 	} else {
 		return false;

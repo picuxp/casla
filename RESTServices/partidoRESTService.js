@@ -183,7 +183,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully created
 	 */
-	 // partidos.put('/:id', PartidoCtrl.updatePartido); NOT IMPLEMENTED YET 
+	 partidos.put('/:id', PartidoCtrl.updatePartido);
 
 	 /**
 	 * @swagger

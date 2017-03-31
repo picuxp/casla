@@ -66,10 +66,13 @@
                                                 <div class="headline01 smallpoint">Goles</div>
                                                 <div class="headline01 smallpoint">Cambios</div>
                                                 <div class="headline01 smallpoint">
-                                                    <div class="headline01 smallpoint1"><span>CARGAR</span></div>
+                                                  <form action="/cargarPartido" method="get" id="formCargarPartido">
+                                                    <input type="hidden" class="form-control">
+                                                    <button type="submit" >Cargar</button>
+                                                  </form>
                                                 </div>
                                                 <div class="headline01 smallpoint">
-                                                    <div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
+                                                  <div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
                                                 </div>
                                             </div>
                                         </li>
@@ -89,7 +92,7 @@
             </footer>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -232,14 +235,16 @@
             </div>
           </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+-->
+        <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>  -->
         <script src="js/vendor/vendor.js"></script>     
         <script src="js/main.js"></script>
         <script src="js/admin.js"></script> 
+        <script src="js/planillero.js"></script>
         <script src="js/partidos.js"></script>
+
         
     </body>
 </html>

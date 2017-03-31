@@ -25,13 +25,6 @@ module.exports = function(app,isAdmin) {
 
     });
 
-    app.get('/cargarPartido', isAdmin, function(req, res) {
-        console.log('estoy en /cargarPartido, partidoid='+req.query.partidoid);
-        client.get("http://localhost:3000/partido/"+req.query.partidoid, function (partido, response) {
-            res.render('./ejs/partidos/cargarPartido.ejs', {user: req.user, partido: partido, message: req.flash('loginMessage'), resultado: req.session.statusSaved}); 
-        }); 
-    });
-
     app.get('/partidosDelTorneo', isAdmin, function(req, res) {
         console.log('estoy en /partidosDelTorneo');
         client.get("http://localhost:3000/torneo/"+req.query.torneoid, function (torneo, response) {

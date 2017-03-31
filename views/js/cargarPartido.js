@@ -36,25 +36,25 @@ $.get('http://localhost:3000/partido/' + id, function (partido){
 
 					var lista = '<form id="form-amonestados1-id">';
 					for (var i = 0; i < jugadores1.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + " " + jugadores1[i].nombre +'<br>';
 					};
 					$('#amonestados1-id').html(lista);
 
 					var lista = '<form id="form-expulsados1-id">';
 					for (var i = 0; i < jugadores1.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+						lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + " " + jugadores1[i].nombre +'<br>';
 					};
 					$('#expulsados1-id').html(lista);
 
 					var lista = '<form id="form-amonestados2-id">';
 					for (var i = 0; i < jugadores2.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + " " + jugadores2[i].nombre +'<br>';
 					};
 					$('#amonestados2-id').html(lista);
 
 					var lista = '<form id="form-expulsados2-id">';
 					for (var i = 0; i < jugadores2.length; i++) {
-						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+						lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + " " + jugadores2[i].nombre +'<br>';
 					};
 					$('#expulsados2-id').html(lista);
 					
@@ -77,12 +77,15 @@ function getParameterByName(name, url) {
 }
 
 //TO-DO terminar esto ////////////////////////////////////////////////////////////////////////////////////////
-$(document).on("click", '.botonGuardarCambios-id', function(e){
-	//console.log("guardarCambios fue presionado");
+$("#botonGuardarCambios-id").click(function(e){
+	console.log("estoy adentro");
 	var id = $('#botonGuardarCambios-id').attr("name");
+	console.log("pase el id");
 	var data = partidoGlobal;
+	data.fecha_numero = $('#nro-fecha-id').val();
 	data.fecha = new Date($('#fecha-id').val());
 	data.estado = $('#estado-id').val();
+	data.division = $('#division-id').val();
 	console.log(data);
 });
 

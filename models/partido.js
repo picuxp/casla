@@ -9,6 +9,7 @@ var partidoSchema = new Schema({
   marcador_equipo_1:   {type:Number},
   marcador_equipo_2:   {type:Number},
   estado:   { type: String, enum:['N.E.','FIN','SUSP', 'POST']},
+  cancha: {type: Schema.Types.ObjectId, ref: 'Cancha'},
   division:[
       {type: Schema.Types.ObjectId, ref: 'Division'}
   ],
