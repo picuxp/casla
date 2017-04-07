@@ -80,14 +80,15 @@ $(document).on("click", ".cargarPartido", function (e) {
 	});
 });
 
-$(document).on("click", '.botonGuardarCambios-id', function(e){
-	//console.log("guardarCambios fue presionado");
-	var id = $('#botonGuardarCambios-id').attr("name");
-	var data = partidoGlobal;
-	data.fecha = new Date($('#fecha-id').val());
-	data.estado = $('#estado-id').val();
-	console.log(data);
-});
+// $(document).on("click", '.botonGuardarCambios-id', function(e){
+// 	//console.log("guardarCambios fue presionado");
+// 	var id = $(this).attr("id");
+// 	//var id = $('#botonGuardarCambios-id').attr("name");
+// 	var data = partidoGlobal;
+// 	data.fecha = new Date($('#fecha-id').val());
+// 	data.estado = $('#estado-id').val();
+// 	console.log(data);
+// });
 
 $("#fechaSelect").change(function () {
 	if ($("#fechaSelect").val() == "none") {

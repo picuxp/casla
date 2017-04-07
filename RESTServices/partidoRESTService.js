@@ -19,6 +19,8 @@ module.exports = function(express,app) {
 	 *         type: integer
 	 *       marcador_equipo_2:
 	 *         type: integer
+	 *       estado:
+	 *         type: String
 	 *       torneo:
 	 *         $ref: Torneo
 	 *       amonestados:

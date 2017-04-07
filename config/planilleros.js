@@ -30,11 +30,17 @@ module.exports = function(app) {
     });
 
     app.get('/cargarPartido', isPlanillero, function(req, res) {
-    console.log('estoy en /cargarPartido, partidoid='+req.query.partidoid);
+    console.log('estoy en GET de /cargarPartido, partidoid='+req.query.partidoid);
         client.get("http://localhost:3000/partido/"+req.query.partidoid, function (partido, response) {
-            console.log("estoy en /cargarPartido el partido id es: "+req.query.partidoid);
             res.render('./ejs/partidos/cargarPartido.ejs', {user: req.user, partido: partido, message: req.flash('loginMessage'), resultado: req.session.statusSaved}); 
         }); 
+    });
+
+    app.post('/cargarPartido', isPlanillero, function(req, res) {
+    console.log('estoy en POST de /cargarPartido, partidoid='+req.query.partidoid);
+      client.get("http://localhost:3000/partido/"+req.query.partidoid, function (partido, response) {
+        res.render('./ejs/partidos/cargarPartido.ejs', {user: req.user, partido: partido, message: req.flash('loginMessage'), resultado: req.session.statusSaved}); 
+       }); 
     });
 }
 

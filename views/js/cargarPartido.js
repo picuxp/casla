@@ -78,16 +78,34 @@ function getParameterByName(name, url) {
 
 //TO-DO terminar esto ////////////////////////////////////////////////////////////////////////////////////////
 $("#botonGuardarCambios-id").click(function(e){
-	console.log("estoy adentro");
-	var id = $('#botonGuardarCambios-id').attr("name");
-	console.log("pase el id");
-	var data = partidoGlobal;
-	data.fecha_numero = $('#nro-fecha-id').val();
-	data.fecha = new Date($('#fecha-id').val());
-	data.estado = $('#estado-id').val();
-	data.division = $('#division-id').val();
-	console.log(data);
+	e.preventDefault();
+	//if(chequear("estado-id") && chequear("goles1-id") && chequear("goles2-id")){
+		document.formCargarPartido.action = "/cargarPartido?partidoid="+id;
+		//partidoGlobal.marcador_equipo_1 = document.getElementById("goles1-id").value;
+		//console.log(partidoGlobal);
+
+		$("#formCargarPartido").submit();
+	//}else{
+	//	return false;
+	//}
+	//var id = $('#botonGuardarCambios-id').attr("name");
+	//console.log("pase el id");
+	//var data = partidoGlobal;
+	//data.fecha_numero = $('#nro-fecha-id').val();
+	//data.fecha = new Date($('#fecha-id').val());
+	//data.estado = $('#estado-id').val();
+	//data.division = $('#division-id').val();
+	//console.log(data);
 });
+
+function chequear (atributo){
+	var valor = $("#"+atributo).val();
+	if(!valor){
+		alert("Debe ingresar un "+atributo+" para el partido");
+		return false;
+	}
+	return true;
+}
 
 function formatDate(date) {
 	dteSplit = date.split(/[T-]/);

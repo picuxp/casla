@@ -140,7 +140,7 @@ exports.updatePartido = function(req, res) {
 		partido.cambios = req.body.cambios;
 
 		partido.save(function(err) {
-			if(err) return res.send(500, err.message);
+			if(err) return res.status(500).send(err.message);
 
 			logger.info(req.user+" ha actualizado al partido "+partido._id+". Equipo1: "+partido.equipo1.nombre+" vs Equipo2: "+partido.equipo2.nombre);
 			res.status(200).jsonp(partido);
