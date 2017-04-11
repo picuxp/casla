@@ -97,15 +97,16 @@
                               </form>
                           </div>
 
-                        <div class="headline01 smallpoint">
-                            <% if (!(torneos[i].partidos.length==0 )) { %>
-                                <form action="/partidosTorneo" method="post">
-                                  <input type="hidden" value=<%= torneos[i]._id %> name="torneoid"/>
-                                  <button  type="submit">Ver Partidos</button></span>
-                                </form>
-                              <% } else { %>
-                                Ninguno
-                              <% } %>
+                          <div class="headline01 smallpoint">
+                            <% var partidosNum = 0; %>
+                            <% for(var ii=0; ii< torneos[i].divisiones.length; ii++){ %>  
+                              <% partidosNum += torneos[i].divisiones[ii].length; %>
+                            <% } %>
+                            <% if (!(partidosNum==0 )) { %>
+                              <a href="/partidosDelTorneo?torneoid=<%= torneos[i]._id %>">Ver Partidos</a>
+                            <% } else { %>
+                              Ninguno
+                            <% } %>
                           </div>
 
                             <div class="headline01 smallpoint row row">

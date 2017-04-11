@@ -21,7 +21,7 @@ exports.findById = function(req, res) {
     if(err) return res.send(500, err.message);
     if(!partido) return res.send(404, "Partido not found");
     console.log('GET /partido/' + req.params.id);
-		res.status(200).jsonp(cancha);
+		res.status(200).jsonp(partido);
 	});
 };
 
@@ -42,7 +42,6 @@ exports.findByEstado = function(req, res) {
 		res.status(200).jsonp(partidos);
 	});
 };
-
 
 //GET - Returns distinct fecha_numero from partidos
 exports.findNumerosFechasDisponibles = function(req, res){
@@ -119,6 +118,35 @@ exports.addPartido = function(req, res) {
 
 //PUT - Update a register already exists
 exports.updatePartido = function(req, res) {
+	Partido.findById(req.params.id, function(err, partido) {
+
+		var idPartido = partido._id;
+
+		if(err) return res.send(500, err.message);
+		if (!partido) {return res.send(404, "Partido: "+partido._id+"not found");}
+
+		partido.equipo1 = req.body.equipo1;
+		partido.equipo2 = req.body.equipo2;
+		partido.fecha_numero = req.body.fecha_numero;
+		partido.fecha = req.body.fecha;
+		partido.marcador_equipo_1 = req.body.marcador_equipo_1;
+		partido.marcador_equipo_2 = req.body.marcador_equipo_2;
+		partido.estado = req.body.estado;
+		partido.cancha = req.body.cancha;
+		partido.division = req.body.division;
+		partido.amonestados = req.body.amonestados;
+		partido.expulsados = req.body.expulsados;
+		partido.goles = req.body.goles;
+		partido.cambios = req.body.cambios;
+
+		partido.save(function(err) {
+			if(err) return res.status(500).send(err.message);
+
+			logger.info(req.user+" ha actualizado al partido "+partido._id+". Equipo1: "+partido.equipo1.nombre+" vs Equipo2: "+partido.equipo2.nombre);
+			res.status(200).jsonp(partido);
+		});
+
+
 	// Cancha.findById(req.params.id, function(err, cancha) {
 
 	// 	if(err) return res.send(500, err.message);
@@ -141,6 +169,7 @@ exports.updatePartido = function(req, res) {
 	// 		});
 	// 	});
 	// })
+	});
 };
 
 //DELETE - Delete a partido with specified ID

@@ -1,90 +1,93 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-     <link rel="stylesheet" href="vendor.css">       
-     <link rel="stylesheet" href="style.css">   
-     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-    <script src="js/vendor/modernizr.js"></script>    
-  </head>
-  <body>
-    <!--[if lt IE 10]>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+
+<body>
+  <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="wrapper">
-      <!-- header -->
-      <header class="header-main">
-        <div class="header-lower clearfix">
-      <%- include ../menu.ejs %>
-        </div>  
-</header>
+  <div class="wrapper">
+    <!-- header -->
+    <header class="header-main">
+      <div class="header-lower clearfix">
+        <%- include ../menu.ejs %>
+      </div>
+    </header>
 
-       <!-- banner section -->
-      <div class="innerbannerwrap">
-        <div class="content"></div>
-        <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Canchas del torneo <%= torneo.nombre %><span></span></h2>
+    <!-- banner section -->
+    <div class="innerbannerwrap">
+      <div class="content"></div>
+      <div class="innerbannergoleadores">
+        <h2 class="bannerHeadline">Canchas del torneo <%= torneo.nombre %><span></span></h2>
+      </div>
+    </div>
+
+    <section class="innerpage_all_wrap bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="matchSchedule_details row">
+
+
+
+            <div class="match_versus-wrap2">
+              <div class="wrap_match-innerdetails">
+                <div class="headline01 largepoint1">Canchas</div>
+
+                <ul class="point_table2">
+
+                  <li class="clearfix">
+                    <div class="subPoint_table">
+                      <% for(var i=0; i < canchas.length; i++) { %>
+                        <div class="headline01 largepoint1">
+                          <%=canchas[i].nombre %>
+                        </div>
+                      <% } %>
+                      <div class="headline01 smallpoint row row">
+                      </div>
+                    </div>
+                  </li>
+
+                  <div id="dataCancha"></div>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-       <section class="innerpage_all_wrap bg-white"> 
-        <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
-          
-          
+      <form action="/torneos" method="get">
+        <button type="submit">VOLVER A TORNEOS</button>
+      </form>
+    </section>
 
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-                  <div class="headline01 largepoint1">Canchas</div>
+    </section>
 
-                    <ul class="point_table2">
-                        
-                        <li class="clearfix">
-                          <div class="subPoint_table">
-                            <div class="headline01 smallpoint">
-                              <% for(var i=0; i < canchas.length; i++) { %> 
-                              <%=canchas[i].nombre %>
-                              <% } %>
-                            </div>
-                          <div class="headline01 smallpoint row row">
-                          </div>
-                          </div>
-                        </li>
 
-                        <div id="dataCancha"></div>
-                    </ul>
-                  </div>
-        </div>
- 				</div>
-            </div>
-        </div>
-		
-		   <form action="/torneos" method="get">
-             <button type="submit">VOLVER A TORNEOS</button>
-        </form>
-      </section>
-    
-      </section>
-    
+    <!-- footer -->
+    <footer>
+      <!--class="footer-type01"-->
+      <%- include ../footer.ejs %>
+    </footer>
+  </div>
 
-      <!-- footer -->
-      <footer ><!--class="footer-type01"-->
-	   <%- include ../footer.ejs %>
-      </footer>
-    </div>
-    
 
-      
-    <script src="js/vendor/vendor.js"></script>     
-    <script src="js/main.js"></script>
-	<script src="js/admin.js"></script> 
-    <script src="js/canchasTorneo.js"></script> 
+
+  <script src="js/vendor/vendor.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/canchasTorneo.js"></script>
 </body>
-</html>
 
+</html>

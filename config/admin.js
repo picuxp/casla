@@ -20,9 +20,6 @@ module.exports = function(app) {
     //------------------------------CANCHAS----------------------------------------//
     require("./canchas.js")(app,isAdmin);
 
-    //------------------------------PLANILLERO----------------------------------------//
-    require("./planillero.js")(app,isAdmin);
-
 }
 
 // route middleware to make sure a user is ADMIN

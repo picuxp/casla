@@ -14,7 +14,6 @@ var torneoSchema = new Schema({
   divisiones: [
       {type: Schema.Types.ObjectId, ref: 'Division'}
   ]
-
 });
 
 module.exports = mongoose.model('Torneo', torneoSchema);

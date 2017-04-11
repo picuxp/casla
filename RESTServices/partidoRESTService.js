@@ -19,6 +19,8 @@ module.exports = function(express,app) {
 	 *         type: integer
 	 *       marcador_equipo_2:
 	 *         type: integer
+	 *       estado:
+	 *         type: String
 	 *       torneo:
 	 *         $ref: Torneo
 	 *       amonestados:
@@ -183,7 +185,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully created
 	 */
-	 // partidos.put('/:id', PartidoCtrl.updatePartido); NOT IMPLEMENTED YET 
+	 partidos.put('/:id', PartidoCtrl.updatePartido);
 
 	 /**
 	 * @swagger

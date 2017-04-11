@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="vendor.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+        <script src="js/vendor/modernizr.js"></script>    
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="wrapper">
+            <!-- header -->
+            <header class="header-main">
+                <div class="header-lower clearfix">
+                    <%- include ../menu.ejs %>
+                </div>
+            </header>
+            <!-- banner section -->
+            <div class="innerbannerwrap">
+                <div class="content"></div>
+                <div class="innerbannergoleadores">
+                    <h2 class="bannerHeadline">Cargar datos del partido<span></span></h2>
+                </div>
+            </div>
+            <% if (resultado) { %>
+            <% if (resultado == 200) { %>
+            <div class="alert alert-success">La operacion fue realizada con exito</div>
+            <% } else { %>
+            <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+            <% } %>
+            <% } %>
+
+        <div class="match_versus-wrap2">
+        <div class="wrap_match-innerdetails">
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+            <div class="alert alert-danger"><%= message %></div>
+        <% } %>
+
+            <form name="formCargarPartido" method="post" id="formCargarPartido">
+              <input type="hidden" class="form-control">
+              
+              <!--DATOS FIJOS -->
+              <div class="form-inline">
+                <div class="form-group" id="fechaNumero">
+                  <div class="headline01 largepoint1">Numero Fecha
+                  <div class="headline01 largepoint1" id="nro-fecha-id"></div>
+                  </div>
+                </div>
+
+                <div class="form-group" id="fecha">
+                    <div class="headline01 largepoint1">Fecha
+                    <div class="headline01 largepoint1" id="fecha-id" type="date" name="fecha"></div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="division">
+                    <div class="headline01 largepoint1">Division
+                    <div class="headline01 largepoint1" id="division-id"></div>
+                    </div>
+                </div>
+              </div>
+
+
+              <!-- DATOS VARIABLES -->
+              <div class="form-inline">
+                <div class="form-group" name="estadoPartido" id="estadoPartido">
+                    <div class="headline01 largepoint1">Estado partido
+                    <select id="estado-id" name="estado-id"></select>
+                    </div>
+                </div>
+
+                <div class="form-group" name="equipo1" id="equipo1">
+                    <div class="headline01 largepoint1">Equipo 1
+                    <div class="headline01 largepoint1" id="team1-id"></div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="equipo2">
+                    <div class="headline01 largepoint1" colspan=4 >Equipo 2
+                    <div class="headline01 largepoint1" id="team2-id"></div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-inline">
+                <div class="form-group" id="golesEquipo1">
+                    <div class="headline01 largepoint1" colspan=4 >Goles Equipo 1
+                    <div class="headline01 largepoint1" id="goles1-id"></div>
+                    <input type="number" name="golesEquipo1" id="goles1-id" name="goles1-id">
+                    </div>
+                </div>
+
+
+                <div class="form-group" name="golesEquipo2" id="golesEquipo2">
+                    <div class="headline01 largepoint1" colspan=4 >Goles Equipo 2
+                    <div class="headline01 largepoint1" id="goles2-id"></div>
+                    <input type="number" id="goles2-id" name="goles2-id">
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-inline">
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" name="amonestados1" id="hAmonestados1-id">
+                    <a class="collapsed" data-toggle="collapse" href="#amonestados1-id" aria-expanded="false" aria-controls="amonestados1-id">
+                      Amonestados Equipo 1
+                    </a>
+                  </div>
+                  <div name="amonestados1" id="amonestados1-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados1-id"></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" name="amonestados2" id="hAmonestados2-id">
+                    <a class="collapsed" data-toggle="collapse" href="#amonestados2-id" aria-expanded="false" aria-controls="amonestados2-id">
+                      Amonestados Equipo 2
+                    </a>
+                  </div>
+                  <div name="amonestados2" id="amonestados2-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados2-id"></div>
+                </div>
+              </div>
+
+              <div class="form-inline">
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" id="hExpulsados1-id-id">
+                    <a class="collapsed" data-toggle="collapse" href="#expulsados1-id" aria-expanded="false" aria-controls="expulsados1-id">
+                      Expulsados Equipo 1
+                    </a>
+                  </div>
+                  <div id="expulsados1-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados1-id"></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" id="hExpulsados2-id">
+                    <a class="collapsed" data-toggle="collapse" href="#expulsados2-id" aria-expanded="false" aria-controls="expulsados2-id">
+                      Expulsados Equipo 2
+                    </a>
+                  </div>
+                  <div id="expulsados2-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados2-id"></div>
+                </div>
+              </div>
+
+              <div class="form-inline">
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" id="hCambios1-id">
+                    <a class="collapsed" data-toggle="collapse" href="#cambios1-id" aria-expanded="false" aria-controls="cambios1-id">
+                      Cambios Equipo 1
+                    </a>
+                  </div>
+                  <div id="cambios1-id" class="collapse" role="tabpanel" aria-labelledby="hCambios1-id"></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="headline01 largepoint1" role="tab" id="hCambios2-id">
+                    <a class="collapsed" data-toggle="collapse" href="#cambios2-id" aria-expanded="false" aria-controls="cambios2-id">
+                      Cambios Equipo 2
+                    </a>
+                  </div>
+                  <div id="cambios2-id" class="collapse" role="tabpanel" aria-labelledby="hCambios2-id"></div>
+                </div>
+              </div>
+            <button type="submit" class="botonCancelar-id">Cancelar</button>
+            <input type="hidden" id="idPartido" value=<%= partido._id %> name="partidoId"/>
+            <button type="submit" id = "botonGuardarCambios-id" class="botonGuardarCambios-id">Guardar cambios</button>
+            </form>
+        </div>
+        </div>
+             
+        <!-- footer -->
+        <footer >
+            <!--class="footer-type01"-->
+            <%- include ../footer.ejs %>
+        </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="js/vendor/vendor.js"></script>     
+        <script src="js/main.js"></script>
+        <script src="js/admin.js"></script> 
+        <script src="js/cargarPartido.js"></script>
+        
+    </body>
+</html>
