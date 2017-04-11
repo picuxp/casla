@@ -1,4 +1,4 @@
-var moment = require('moment');
+//var moment = require('moment');
 
 module.exports = function(app) {
 	app.get('/planillero', isPlanillero, function(req, res) {
@@ -30,18 +30,28 @@ module.exports = function(app) {
     });
 
     app.get('/cargarPartido', isPlanillero, function(req, res) {
-    console.log('estoy en GET de /cargarPartido, partidoid='+req.query.partidoid);
+      console.log('estoy en GET de /cargarPartido, partidoid='+req.query.partidoid);
         client.get("http://localhost:3000/partido/"+req.query.partidoid, function (partido, response) {
             res.render('./ejs/partidos/cargarPartido.ejs', {user: req.user, partido: partido, message: req.flash('loginMessage'), resultado: req.session.statusSaved}); 
         }); 
-    });
+      });
 
     app.post('/cargarPartido', isPlanillero, function(req, res) {
-    console.log('estoy en POST de /cargarPartido, partidoid='+req.query.partidoid);
-      client.get("http://localhost:3000/partido/"+req.query.partidoid, function (partido, response) {
-        res.render('./ejs/partidos/cargarPartido.ejs', {user: req.user, partido: partido, message: req.flash('loginMessage'), resultado: req.session.statusSaved}); 
-       }); 
+      console.log('estoy en POST de /cargarPartido, partidoid='+req.query.partidoid);
+
+      var args = {
+            data:  req.body ,
+            headers: { "Content-Type": "application/json" }
+        };
+        
+        console.log(req.body);
+
+        client.put("http://localhost:3000/partido/"+req.query.partidoid, args, function (data, response) {
+            console.log("PUT /partido");
+            res.redirect('/partidos');
+        });
     });
+
 }
 
 
@@ -51,7 +61,7 @@ module.exports = function(app) {
 function isPlanillero(req, res, next) {
 
     // if user is authenticated in the session, carry on 
-    if ((req.isAuthenticated()) && ( (req.user.role == "PLANILLERO") || (req.user.role == "SUPER_ADMIN"))) 
+    if ((req.isAuthenticated()) && ( (req.user.role == "PLANILLERO") || (req.user.role == "ADMIN") ||(req.user.role == "SUPER_ADMIN"))) 
         return next();
 
     // if they aren't redirect them to the home page

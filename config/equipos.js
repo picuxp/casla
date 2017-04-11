@@ -32,6 +32,9 @@ module.exports = function(app,isAdmin) {
             data:  req.body ,
             headers: { "Content-Type": "application/json" }
         };  
+
+        console.log(args);
+
         client.put("http://localhost:3000/equipo/"+req.body.equipoid, args, function (data, response) {
             console.log("PUT /equipo");
             res.redirect('/equipos');

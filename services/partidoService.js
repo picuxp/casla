@@ -89,6 +89,8 @@ exports.addPartido = function(req, res) {
 						estado: 			'N.E.'
 					});
 
+					console.log(partido);
+
 					partido.save(function(err, partido) {
 						if(err) return res.send(500, err.message);
 						logger.info(req.user+" ha agregado al partido "+partido._id+": "+partido.equipo1+" VS "+partido.equipo2+", fecha "+partido.fecha_numero+", el "+partido.fecha);
@@ -118,6 +120,7 @@ exports.addPartido = function(req, res) {
 
 //PUT - Update a register already exists
 exports.updatePartido = function(req, res) {
+	console.log('estoy en partidoService /updatePartido');
 	Partido.findById(req.params.id, function(err, partido) {
 
 		var idPartido = partido._id;
@@ -129,9 +132,9 @@ exports.updatePartido = function(req, res) {
 		partido.equipo2 = req.body.equipo2;
 		partido.fecha_numero = req.body.fecha_numero;
 		partido.fecha = req.body.fecha;
-		partido.marcador_equipo_1 = req.body.marcador_equipo_1;
-		partido.marcador_equipo_2 = req.body.marcador_equipo_2;
-		partido.estado = req.body.estado;
+		partido.marcador_equipo_1 = req.body.goles_equipo1;
+		partido.marcador_equipo_2 = req.body.goles_equipo2;
+		partido.estado = req.body.estado_partido;
 		partido.cancha = req.body.cancha;
 		partido.division = req.body.division;
 		partido.amonestados = req.body.amonestados;
@@ -142,7 +145,7 @@ exports.updatePartido = function(req, res) {
 		partido.save(function(err) {
 			if(err) return res.status(500).send(err.message);
 
-			logger.info(req.user+" ha actualizado al partido "+partido._id+". Equipo1: "+partido.equipo1.nombre+" vs Equipo2: "+partido.equipo2.nombre);
+			//logger.info(req.user+" ha actualizado al partido "+partido._id+". Equipo1: "+partido.equipo1.nombre+" vs Equipo2: "+partido.equipo2.nombre);
 			res.status(200).jsonp(partido);
 		});
 
