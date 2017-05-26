@@ -80,6 +80,26 @@ module.exports = function(express,app) {
 	 *   put:
 	 *     tags:
 	 *       - posicionEquipoModel
+	 *     description: add equipoPosicion 
+	 *     produces:
+	 *       - application/json
+	 *     parameters:
+	 *        schema:
+	 *           $ref: '#/definitions/posicionEquipoModel'
+	 *     responses:
+	 *       200:
+	 *         description: Successfully updated
+	 */
+	posicionEquipo.post('/:id', posicionEquipoCtrl.posicionEquipoAdd);
+
+
+
+	 /**
+	 * @swagger
+	 * /posicionEquipo/:id
+	 *   put:
+	 *     tags:
+	 *       - posicionEquipoModel
 	 *     description: Updates a single equipo
 	 *     produces:
 	 *       - application/json
@@ -95,25 +115,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully created
 	 */
-	 posicionEquipo.put('/:id', posicionEquipoCtrl.updateposicionEquipo);
-
-	 /**
-	 * @swagger
-	 * /posicionEquipo/:id
-	 *   put:
-	 *     tags:
-	 *       - posicionEquipoModel
-	 *     description: add equipoPosicion 
-	 *     produces:
-	 *       - application/json
-	 *     parameters:
-	 *        schema:
-	 *           $ref: '#/definitions/posicionEquipoModel'
-	 *     responses:
-	 *       200:
-	 *         description: Successfully updated
-	 */
-	posicionEquipo.post('/:id', posicionEquipoCtrl.posicionEquipoAdd);
+	 posicionEquipo.put('/:id', posicionEquipoCtrl.updatePosicionEquipo);
 
 	 /**
 	 * @swagger

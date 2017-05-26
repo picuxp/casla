@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-var posicionEquipo  = mongoose.model('PosicionEquipo');
-var division = mongoose.model('Division');
+var PosicionEquipo  = mongoose.model('PosicionEquipo');
+var Division = mongoose.model('Division');
 var Equipo  = mongoose.model('Equipo');
 var logger = require('../logger');
 
 //GET - Return all divisiones in the DB
 exports.findAllposicionEquipo = function(req, res) {
-	posicionEquipo.find(function(err, posicionEquipos) {
+	PosicionEquipo.find(function(err, posicionEquipos) {
     if(err) res.send(500, err.message);
 
     console.log('GET /posicionEquipo');
@@ -16,7 +16,7 @@ exports.findAllposicionEquipo = function(req, res) {
 
 //GET - Return a division with specified ID
 exports.findEquiposById = function(req, res) {
-	posicionEquipo.findById(req.params.id, function(err, posicionEquipo) {
+	PosicionEquipo.findById(req.params.id, function(err, posicionEquipo) {
 	    if(err) return res.send(500, err.message);
 	    if(!posicionEquipo) return res.send(404, "posicionEquipo not found");
 	    console.log('GET /posicionEquipo/' + req.params.id);
@@ -31,7 +31,7 @@ exports.posicionEquipoAdd = function(req, res) {
 	console.log('POST');
 	console.log(req.body);
 
-	division.findById(req.body.division, function(err, division) {
+	Division.findById(req.body.division, function(err, division) {
 		if(err) return res.send(500, err.message);
 		if (!division) {return res.send(404, "division id not found");}
 		var posicionEquipo = new posicionEquipo({
@@ -60,7 +60,7 @@ exports.posicionEquipoAdd = function(req, res) {
 
 //PUT - Update a division already exists
 exports.updatePosicionEquipo = function(req, res) {
-	posicionEquipo.findById(req.params.id, function(err, posicionEquipo) {
+	PosicionEquipo.findById(req.params.id, function(err, posicionEquipo) {
 
 		if(err) return res.send(500, err.message);
 		if (!equipo) {return res.send(404, "posicionEquipo not found");}
@@ -76,11 +76,7 @@ exports.updatePosicionEquipo = function(req, res) {
 
 		posicionEquipo.save(function(err) {
 			if(err) return res.send(500, err.message);
-			division.posicionEquipo.push(posicionEquipo);
-			division.save(function(err) {
-				if(err) return res.send(500, err.message);
-				res.status(200).jsonp(division);
-			});
+				res.status(200).jsonp(posicionEquipo);
 		});
 	});
 };
@@ -88,7 +84,7 @@ exports.updatePosicionEquipo = function(req, res) {
 
 //DELETE - Delete a division with specified ID
 exports.posicionEquipoDelete = function(req, res) {
-	posicionEquipo.findById(req.params.id, function(err, division) {
+	PosicionEquipo.findById(req.params.id, function(err, posicionEquipo) {
 
 		if(err) return res.send(500, err.message);
 		if (!posicionEquipo) {return res.send(404, "posicionEquipo not found");}
@@ -98,7 +94,7 @@ exports.posicionEquipoDelete = function(req, res) {
 		posicionEquipo.remove(function(err) {
 			if(err) return res.send(500, err.message);
 			logger.info(req.user+" ha borrado la posicionEquipo "+posicionEquipo.equipo);
-      		res.status(200).jsonp(torneoDeLaDivision); //para redirigir en la vista
+      		res.status(200).jsonp(posicionEquipo); //para redirigir en la vista
 		})
 	});
 };
