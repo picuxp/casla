@@ -1,4 +1,4 @@
-var posicionEquipoCtrl = require('../services/posicionEquipoService');
+var PosicionEquipoCtrl = require('../services/posicionEquipoService');
 
 module.exports = function(express,app) {
 
