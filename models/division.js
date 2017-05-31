@@ -9,8 +9,10 @@ var divisionSchema = new Schema({
   ],
   partidos: [
       {type: Schema.Types.ObjectId, ref: 'Partido'}
+  ],
+  posicionEquipo: [
+      {type: Schema.Types.ObjectId, ref: 'PosicionEquipo'}
   ]
-  //tabla_de_posiciones,
   //sanciones,
   //acumulacion_de_amarillas,
   //goleadores,
