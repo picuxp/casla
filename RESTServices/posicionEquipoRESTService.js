@@ -50,7 +50,7 @@ module.exports = function(express,app) {
 	 
 	 /**
 	 * @swagger
-	 * /posicionEquipo/:id
+	 * /posicionEquipo/:id:
 	 *   get:
 	 *     tags:
 	 *       - posicionEquipoModel
@@ -76,7 +76,7 @@ module.exports = function(express,app) {
 
 	 /**
 	 * @swagger
-	 * /posicionEquipo/:id
+	 * /posicionEquipo/:id:
 	 *   put:
 	 *     tags:
 	 *       - posicionEquipoModel
@@ -96,7 +96,7 @@ module.exports = function(express,app) {
 
 	 /**
 	 * @swagger
-	 * /posicionEquipo/:id
+	 * /posicionEquipo/:id:
 	 *   put:
 	 *     tags:
 	 *       - posicionEquipoModel
@@ -119,7 +119,7 @@ module.exports = function(express,app) {
 
 	 /**
 	 * @swagger
-	 * /posicionEquipo/:id
+	 * /posicionEquipo/:id:
 	 *   delete:
 	 *     tags:
 	 *       - DivisionModel

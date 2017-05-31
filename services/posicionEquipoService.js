@@ -36,14 +36,14 @@ exports.posicionEquipoAdd = function(req, res) {
 		if (!division) {return res.send(404, "division id not found");}
 		var posicionEquipo = new posicionEquipo({
 			
-			posicionEquipo.equipo       = req.body.equipo,
-			posicionEquipo.puntos		= req.body.puntos,
-			posicionEquipo.ganados		= req.body.ganados,
-			posicionEquipo.empatados    = req.body.empatados,
-			posicionEquipo.perdidos		= req.body.perdidos,
-			posicionEquipo.jugados		= req.body.jugados,
-			posicionEquipo.golesFavor	= req.body.golesFavor,
-			posicionEquipo.golesContra		= req.body.golesContra
+			equipo       : req.body.equipo,
+			puntos		 : req.body.puntos,
+			ganados		 : req.body.ganados,
+			empatados    : req.body.empatados,
+			perdidos	 : req.body.perdidos,
+			jugados		 : req.body.jugados,
+			golesFavor	 : req.body.golesFavor,
+			golesContra	 : req.body.golesContra
 		});
 		
 		posicionEquipo.save(function(err, posicionEquipo) {
