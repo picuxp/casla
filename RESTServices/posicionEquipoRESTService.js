@@ -44,7 +44,7 @@ module.exports = function(express,app) {
 	 */
 
 
-	 posicionEquipo.get('/', posicionEquipoCtrl.findAllposicionEquipo);
+	 posicionEquipo.get('/', PosicionEquipoCtrl.findAllposicionEquipo);
 
 	 
 	 
@@ -70,7 +70,7 @@ module.exports = function(express,app) {
 	 *           $ref: '#/definitions/posicionEquipoModel'
 	 */
 
-	 posicionEquipo.get('/:id', posicionEquipoCtrl.findEquiposById);
+	 posicionEquipo.get('/:id', PosicionEquipoCtrl.findEquiposById);
 
 
 
@@ -90,7 +90,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully updated
 	 */
-	posicionEquipo.post('/:id', posicionEquipoCtrl.posicionEquipoAdd);
+	posicionEquipo.post('/:id', PosicionEquipoCtrl.posicionEquipoAdd);
 
 
 
@@ -115,7 +115,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully created
 	 */
-	 posicionEquipo.put('/:id', posicionEquipoCtrl.updatePosicionEquipo);
+	 posicionEquipo.put('/:id', PosicionEquipoCtrl.updatePosicionEquipo);
 
 	 /**
 	 * @swagger
@@ -136,7 +136,7 @@ module.exports = function(express,app) {
 	 *       200:
 	 *         description: Successfully deleted
 	 */
-	 posicionEquipo.delete('/:id', posicionEquipoCtrl.posicionEquipoDelete);
+	 posicionEquipo.delete('/:id', PosicionEquipoCtrl.posicionEquipoDelete);
 
 
 	app.use('/posicionEquipo', posicionEquipo);
