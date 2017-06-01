@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
     <link rel="shortcut icon" href="favicon.ico">
@@ -25,59 +26,59 @@
 </header>
 
        <!-- banner section -->
-      <div class="innerbannerwrap">
-        <div class="content"></div>
-        <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Divisiones del torneo <%= torneo.nombre %><span></span></h2>
-        </div>
-      </div>
-
-       <section class="innerpage_all_wrap bg-white"> 
+      <section class="latestResult"> 
         <div class="container">
-			<div class="row">
+
+            <h2 class="heading">Tabla de <span>Posiciones</span></h2>
+<div class="row">
 			<div class="matchSchedule_details row">
-          
-          
-
-				 <div class="match_versus-wrap2">
+                <div class="match_next">
+                  <div class="wrap_match_next right-triangle ">
+                    <div class="right-padding">
+                      <h4 class="headline03">Division <br/> <%= division.nombre %> </h4>
+                    </div>  
+                  </div>  
+                </div>
+                <div class="match_versus-wrap">
                   <div class="wrap_match-innerdetails">
-
-                    <div class="headline01 largepoint1">Ver datos division:</div>
-                    <select name="division" id="divisionSelect">
-                    		<option value="none" selected></option>
-						    <% for(var i=0; i < divisiones.length; i++) { %> 
-						    	<option value=<%= divisiones[i]._id %>> <%=divisiones[i].nombre %></option>
-						    <% } %>
-					</select>
-
- 					<ul class="point_table2">
+                    <ul class="point_table scrollable">
                        <li class="clearfix">
                         <div class="subPoint_table">
-                          <div class="headline01 smallpoint">Nombre</div>
-                          <div class="headline01 smallpoint">Equipos</div>
-                          <div class="headline01 smallpoint row row">
-							<div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
+                          <div class="headline01 smallpoint">POS</div>
+                          <div class="headline01 largepoint">EQUIPO</div>
+                          <div class="headline01 smallpoint1 row row">
+							<div class="headline01 smallpoint1"><span>PJ</span></div>
+							<div class="headline01 smallpoint1"><span>PG</span></div>
+							<div class="headline01 smallpoint1"><span>PE</span></div>
+							<div class="headline01 smallpoint1"><span>PP</span></div>
+							<div class="headline01 smallpoint1"><span>GF</span></div>
+							<div class="headline01 smallpoint1"><span>GC</span></div>
+							<div class="headline01 smallpoint1"><span>DIF</span></div>
+							<div class="headline01 smallpoint1"><span>PTS</span></div>
                         </div>
 						</div>
                       </li>
 
-                      <div id="dataDivision">
-
-                      </div>
-                    </ul>
-                    </div>
-                  </div>
- 				</div>
-            </div>
-        </div>
-		
-		   <form action="/torneos" method="get">
-             <button type="submit">VOLVER A TORNEOS</button>
-        </form>
-      </section>
-    
-      </section>
-    
+					  <% if (division.posicionEquipo.length > 0 ){ %>
+					  <% for (var ipe = 0; ipe < division.posicionEquipo.length ; ipe++ ) %>
+					  <li class="clearfix">
+                        <div class="subPoint_table">
+                          <div class="headline01 smallpoint"><%= ipe+1 %></div>
+                          <div class="headline01 largepoint"><%= division.posicionEquipo[ipe].equipo.nombre %> </div>
+                          <div class="headline01 smallpoint1 row row">
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].jugados %></span></div>
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].ganados  %></span></div>
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].empatados  %></span></div>
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].perdidos  %></span></div>
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].golesFavor  %></span></div>
+							<div class="headline01 smallpoint1"><span><%= division.posicionEquipo[ipe].golesContra  %></span></div>
+							<div class="headline01 smallpoint1"><span><%= (division.posicionEquipo[ipe].golesFavor - division.posicionEquipo[ipe].golesContra)   %></span></div>
+							<div class="headline01 smallpoint1"><%= division.posicionEquipo[ipe].puntos  %></div>
+						  </div>
+						</div>
+                      </li>
+                      <% }%>
+   
 
       <!-- footer -->
       <footer ><!--class="footer-type01"-->

@@ -111,6 +111,13 @@ module.exports = function(express,app, passport, client, logger) {
             res.render('./ejs/superadmin.ejs', {user: req.user, divisiones:divisiones})
         });
     });
+
+    app.get('/posicionesDeLaDivision', function(req, res) {
+        client.get("http://localhost:3000/division/"+req.query.divisionId, function (division, response) {
+            res.render('./ejs/divisiones/posicionesDeLaDivision.ejs', {user: req.user, division: division, message: req.flash('loginMessage')});
+        }); 
+
+    });
     
 
 }
