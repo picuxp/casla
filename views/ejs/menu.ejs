@@ -1,214 +1,224 @@
-          <div class="container">
-            <div class="row">
-              <h1 class="logo">
-                <a href="index.php">
-                  <img src="images/logo.png" alt="image">
-                </a>
-              </h1>
-              <div class="menubar">
-                 <nav class="navbar">
-                      <div class="nav-wrapper">
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle" >
+<div class="container">
+    <div class="row">
+        <h1 class="logo">
+            <a href="index.php">
+                <img src="images/logo.png" alt="image">
+            </a>
+        </h1>
+        <div class="menubar">
+            <nav class="navbar">
+                <div class="nav-wrapper">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" >
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
-                          </button>      
-                        </div>
-                        <div class="nav-menu" >
-                          <!-- <a href="#" class="close">
-                            <i class="fa fa-times"></i>
-                          </a> -->
-                          <ul class="nav navbar-nav menu-bar">
+                        </button>
+                    </div>
+                    <div class="nav-menu">
+                        <!-- <a href="#" class="close">
+                          <i class="fa fa-times"></i>
+                        </a> -->
+                        <ul class="nav navbar-nav menu-bar">
                             <li>
-                              <a href="/">
-                              Inicio
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a>
+                                <a href="/">
+                                    Inicio
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
                             </li>
                             <li>
-                              <a>Tabla de Posiciones 
-							  <span></span> 
-							  <span></span> 
-							  <span></span> 
-							  <span></span>
-							  </a>
-                            <ul class="sub-menu">
-							<li><a href="#">{{Divisiones.id}}</a></li>
-							<li><a href="#">Zona 2: HECTOR SCOTTA</a></li>
-							</ul>
+                                <a>Tabla de Posiciones
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+
+                                    <% if (divisiones.length >0) { %>
+                                    <% for(var i=0; i < divisiones.length; i++) { %>
+                                        <% if (divisiones[i].nombre) { %>
+                                            <li><a href="#"><%= divisiones[i].nombre %></a></li>
+                                        <% } else { %>
+                                    <li><a href="#">Ninguna</a></li>
+                                    <% } %>
+                                    <% } %>
+                                    <% } else { %>
+                                    <li><a href="#">Ninguna</a></li>
+                                    <% } %>
+                                </ul>
                             <li>
-                              <a href="/goleadores">
-                              Goleadores
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a>
+                                <a href="/goleadores">
+                                    Goleadores
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
                             </li>
-                             <li>
-                              <a href="/sanciones">
-                              Sanciones
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a>
+                            <li>
+                                <a href="/sanciones">
+                                    Sanciones
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
                             </li>
-                              <li> 
-							   <a href="/fairplay">
-                               Fair Play
-                               <span></span>
-                               <span></span>
-                               <span></span>
-                               <span></span>
-                               </a>
-                             </li>
-							<li>
-                              <a href="#">
-                              Notas
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a>
+                            <li>
+                                <a href="/fairplay">
+                                    Fair Play
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
                             </li>
-							 <li>
-                             <a href="https://www.facebook.com/Copa-Viejo-Gasometro-238053553016980/timeline" target="_blank" >
-                              Galeria
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a></li>
-                              <!--<ul class="sub-menu">
-                                <li><a href="gallerypage01.html">masonry</a></li>
-                                <li><a href="gallery02.html">gallery column two</a></li>
-                                <li><a href="gallery03.html">gallery column 03</a></li>
-                              </li>
-							
-							 </ul> -->
-                                 <li>
-                              <a href="#">
-                              info del Torneo
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              </a>
+                            <li>
+                                <a href="#">
+                                    Notas
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/Copa-Viejo-Gasometro-238053553016980/timeline" target="_blank" >
+                                    Galeria
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a></li>
+                            <!--<ul class="sub-menu">
+                              <li><a href="gallerypage01.html">masonry</a></li>
+                              <li><a href="gallery02.html">gallery column two</a></li>
+                              <li><a href="gallery03.html">gallery column 03</a></li>
+                            </li>
+
+                           </ul> -->
+                            <li>
+                                <a href="#">
+                                    info del Torneo
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
                             </li>
 
                             <% if (user) { %>
-                                    <% if (user.role == "SUPER_ADMIN") { %>
-                                      <li>
-                                      <a href="/superadmin">
-                                      Super Admin
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      </a>
-                                    </li>
-                                    <% } %>
-                                    <% if ((user.role == "ADMIN") || (user.role =="SUPER_ADMIN")) { %>
-                                        <li>
-                                          <a>Usuarios 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span>
-                                          </a>
-                                          <ul class="sub-menu">
-                                            <li><a href="/usuarios">Administrar</a></li>
-                                            <li><a href="/agregarUsuarios">Agregar nuevo</a></li>
-                                          </ul>
-                                        </li>
+                            <% if (user.role == "SUPER_ADMIN") { %>
+                            <li>
+                                <a href="/superadmin">
+                                    Super Admin
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </li>
+                            <% } %>
+                            <% if ((user.role == "ADMIN") || (user.role =="SUPER_ADMIN")) { %>
+                            <li>
+                                <a>Usuarios
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/usuarios">Administrar</a></li>
+                                    <li><a href="/agregarUsuarios">Agregar nuevo</a></li>
+                                </ul>
+                            </li>
 
-                                        <li>
-                                          <a>Partidos 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span>
-                                          </a>
-                                          <ul class="sub-menu">
-                                            <li><a href="/partidos">Ver partidos</a></li>
-                                            <li><a href="/agregarPartidos">Agregar nuevo</a></li>
-                                          </ul>
-                                        </li>
+                            <li>
+                                <a>Partidos
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/partidos">Ver partidos</a></li>
+                                    <li><a href="/agregarPartidos">Agregar nuevo</a></li>
+                                </ul>
+                            </li>
 
-                                        <li>
-                                          <a>Torneos 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span>
-                                          </a>
-                                          <ul class="sub-menu">
-                                            <li><a href="/torneos">Ver torneos</a></li>
-                                            <li><a href="/agregarTorneos">Agregar nuevo</a></li>
-                                          </ul>
-                                        </li>
+                            <li>
+                                <a>Torneos
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/torneos">Ver torneos</a></li>
+                                    <li><a href="/agregarTorneos">Agregar nuevo</a></li>
+                                </ul>
+                            </li>
 
-                                         <li>
-                                          <a>Equipos 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span> 
-                                            <span></span>
-                                          </a>
-                                          <ul class="sub-menu">
-                                            <li><a href="/equipos">Ver equipos</a></li>
-                                            <li><a href="/agregarEquipos">Agregar nuevo</a></li>
-                                          </ul>
-                                        </li>
+                            <li>
+                                <a>Equipos
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="/equipos">Ver equipos</a></li>
+                                    <li><a href="/agregarEquipos">Agregar nuevo</a></li>
+                                </ul>
+                            </li>
 
-                                    <% } %>
-                                    <% if ((user.role == "DELEGADO") || (user.role =="SUPER_ADMIN")) { %>
-                                     <li>
-                                      <a href="/delegado">
-                                      Mi equipo
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      </a>
-                                    </li>
-                                    <% } %>
+                            <% } %>
+                            <% if ((user.role == "DELEGADO") || (user.role =="SUPER_ADMIN")) { %>
+                            <li>
+                                <a href="/delegado">
+                                    Mi equipo
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </li>
+                            <% } %>
 
-                                    <% if ((user.role == "PLANILLERO") || (user.role =="SUPER_ADMIN")) { %>
-                                     <li>
-                                      <a href="/planillero">
-                                      Cargar Partido
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      <span></span>
-                                      </a>
-                                    </li>
-                                    <% } %>
+                            <% if ((user.role == "PLANILLERO") || (user.role =="SUPER_ADMIN")) { %>
+                            <li>
+                                <a href="/planillero">
+                                    Cargar Partido
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </li>
+                            <% } %>
 
-                                  <li>
-                                    <a href="/logout">
+                            <li>
+                                <a href="/logout">
                                     Salir
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                     <span></span>
-                                    </a>
-                                  </li>
-                            <% } else { %>
-                              <li>
-                                <a href="/login">
-                                Ingresar
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
                                 </a>
-                              </li>
+                            </li>
+                            <% } else { %>
+                            <li>
+                                <a href="/login">
+                                    Ingresar
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </li>
                             <% } %>
                             <!-- <li>
                                <a>
@@ -227,14 +237,14 @@
                                  <li><a href="503.html">503 page</a></li>
                                </ul>
                              </li>-->
-                          </ul>
-                        </div>
-                      </div>  
-                    </nav>
-              </div>
-              <div class="social">
-                <a href="https://www.facebook.com/Copa-Viejo-Gasometro-238053553016980/timeline" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="https://twitter.com/RecreativoCASLA" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
-              </div>
-            </div>  
-          </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="social">
+            <a href="https://www.facebook.com/Copa-Viejo-Gasometro-238053553016980/timeline" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/RecreativoCASLA" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
+</div>

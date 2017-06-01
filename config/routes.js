@@ -13,20 +13,29 @@ module.exports = function(express,app, passport, client, logger) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        res.render('./ejs/index.ejs', {user: req.user}); // load the index.ejs file
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/index.ejs', {user: req.user, divisiones:divisiones})
+
+        });
     });
 
      app.get('/test', function(req, res) {
-        res.render('./ejs/partidos/test.ejs', {user: req.user}); // load the index.ejs file
-    });
+         client.get("http://localhost:3000/division", function (divisiones, response) {
+             res.render('./ejs/partidos/test.ejs', {user: req.user, divisiones:divisiones})
+
+         });
+     });
 
     // =====================================
     // LOGIN ===============================
     // =====================================
     // show the login form
     app.get('/login', function(req, res) {
-        // render the page and pass in any flash data if it exists
-        res.render('./ejs/usuarios/login.ejs', {user: req.user , message: req.flash('loginMessage') }); 
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/usuarios/login.ejs', {user: req.user, divisiones:divisiones, message: req.flash('loginMessage')})
+
+        });
+
     });
 
     // =====================================
@@ -35,8 +44,9 @@ module.exports = function(express,app, passport, client, logger) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('./ejs/login/profile.ejs', {
-            user : req.user // get the user out of session and pass to template
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/login/profile.ejs', {user: req.user, divisiones:divisiones})
+
         });
     });
 
@@ -79,19 +89,27 @@ module.exports = function(express,app, passport, client, logger) {
 
     //VIEWS
     app.get('/goleadores', function(req, res) {
-        res.render('./ejs/goleadores.ejs',{user: req.user}); 
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/goleadores.ejs', {user: req.user, divisiones:divisiones})
+        });
     });
 
     app.get('/sanciones', function(req, res) {
-        res.render('./ejs/sanciones.ejs', {user: req.user}); 
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/sanciones.ejs', {user: req.user, divisiones:divisiones})
+        });
     });
 
     app.get('/fairplay', function(req, res) {
-        res.render('./ejs/fairplay.ejs', {user: req.user}); 
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/fairplay.ejs', {user: req.user, divisiones:divisiones})
+        });
     });
 
     app.get('/superadmin', isSuperAdmin, function(req, res) {
-        res.render('./ejs/superadmin.ejs'); // load the index.ejs file
+        client.get("http://localhost:3000/division", function (divisiones, response) {
+            res.render('./ejs/superadmin.ejs', {user: req.user, divisiones:divisiones})
+        });
     });
     
 
@@ -117,6 +135,10 @@ function isPlanillero(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+}
+
+function isUser(req, res, next) {
+    return next();
 }
 
 
