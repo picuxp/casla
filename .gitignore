@@ -1,0 +1,6 @@
+.project
+.classpath
+target/
+.settings
+.checkstyle
+2016-K3054-utn-09.iml
