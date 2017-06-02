@@ -36,10 +36,11 @@ module.exports = function(app,isAdmin) {
         };
 
         console.log(args);
-
-        client.put("http://localhost:3000/equipo/"+req.body.equipoid, args, function (data, response) {
-            console.log("PUT /equipo");
-            res.redirect('/equipos');
+        client.post("http://localhost:3000/posicionEquipo/", args, function (data, response) {
+            client.put("http://localhost:3000/equipo/"+req.body.equipoid, args, function (data, response) {
+                console.log("PUT /equipo");
+                res.redirect('/equipos');
+            });
         });
     });
 

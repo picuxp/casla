@@ -7521,6 +7521,12 @@ h6 {
     color: white; } }
 
 /* -------------- latest result section -----------*/
+
+.latestResultTable {
+  padding: 300px 0 100px 0;
+  background: url("images/background/latestnews.jpg") no-repeat;
+  background-size: cover;
+  background-position: center; }
 .latestResult {
   padding: 100px 0;
   background: url("images/background/latestnews.jpg") no-repeat;

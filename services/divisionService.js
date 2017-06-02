@@ -7,7 +7,9 @@ var logger = require('../logger');
 //GET - Return all divisiones in the DB
 exports.findAllDivisiones = function(req, res) {
 	Division.find(function(err, divisiones) {
-    if(err) res.send(500, err.message);
+
+        divisiones.sort(function(a,b) {return (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0);} );
+        if(err) res.send(500, err.message);
 
     console.log('GET /division')
 		res.status(200).jsonp(divisiones);

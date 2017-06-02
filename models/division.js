@@ -9,9 +9,6 @@ var divisionSchema = new Schema({
   ],
   partidos: [
       {type: Schema.Types.ObjectId, ref: 'Partido'}
-  ],
-  posicionEquipo: [
-      {type: Schema.Types.ObjectId, ref: 'PosicionEquipo'}
   ]
   //sanciones,
   //acumulacion_de_amarillas,
