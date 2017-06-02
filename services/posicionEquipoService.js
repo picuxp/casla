@@ -41,12 +41,24 @@ exports.posicionEquipoAdd = function(req, res) {
             perdidos     : 0,
             golesFavor   : 0,
             golesContra  : 0,
-            puntos       : 0
+            puntos       : 3
 		});
 
-		// PosicionEquipo.find(function(err, posicionEquipos) {
-         //    for (i = 0; i < posicionEquipos.length; i++) {
-         //        if(posicionEquipos[i].equipo._id == nuevo.equipo._id) {
+	
+	
+	//PosicionEquipo.remove(function(err){});
+
+	    
+   
+
+	PosicionEquipo.findOneAndRemove({ equipo: req.body.equipoid },function(err, posicionEquipos) {
+	
+ /*       for (i = 0; i < posicionEquipos.length; i++) {
+        
+            if(posicionEquipos[i].equipo._nombre == nuevo.equipo._nombre) {
+        			PosicionEquipo.findByIdAndRemove(posicionEquipo);
+        			var nuevo3 = posicionEquipo[i];
+*/
          //            PosicionEquipo.findById(posicionEquipos[i].id, function(err, posicionEquipo) {
         //
          //                if(err) return res.send(500, err.message);
@@ -55,14 +67,16 @@ exports.posicionEquipoAdd = function(req, res) {
         //
         //
          //                posicionEquipo.remove(function(err) {
-         //                    if(err) return res.send(500, err.message);
+           //                  if(err) return res.send(500, err.message);
          //                    logger.info(req.user+" ha borrado la posicionEquipo "+posicionEquipo.equipo);
          //                    res.status(200).jsonp(posicionEquipo); //para redirigir en la vista
-         //                })
-         //            });
-         //        }
-         //    }
-            nuevo.save(function(err, saved) {
+          //              });
+           //          });
+//                 };
+//            };
+        });
+    	
+    		nuevo.save(function(err, saved) {
                 // if(err) return res.status(500).send(err.message);
                 // division.posicionEquipo.push(posicionEquipo);
                 // division.save(function(err) {
@@ -71,6 +85,9 @@ exports.posicionEquipoAdd = function(req, res) {
                 res.status(200).jsonp(saved);
                 // });
             });
+
+
+
         // });
 };
 
