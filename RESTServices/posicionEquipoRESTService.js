@@ -75,6 +75,7 @@ module.exports = function(express,app) {
      */
 
     posicionEquipo.get('/:id', PosicionEquipoCtrl.findEquiposById);
+    posicionEquipo.get('/division/:id', PosicionEquipoCtrl.findEquiposByDivisionId);
 
 
 
@@ -95,6 +96,7 @@ module.exports = function(express,app) {
      *         description: Successfully updated
      */
     posicionEquipo.post('/', PosicionEquipoCtrl.posicionEquipoAdd);
+    posicionEquipo.post('/updatePosicionEquipo', PosicionEquipoCtrl.cargaDePartido);
 
 
 

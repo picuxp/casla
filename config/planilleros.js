@@ -50,8 +50,14 @@ module.exports = function(app) {
         console.log(req.body);
 
         client.put("http://localhost:3000/partido/"+req.query.partidoid, args, function (data, response) {
-            console.log("PUT /partido");
-            res.redirect('/partidos');
+            var args2 = {
+                data:  data ,
+                headers: { "Content-Type": "application/json" }
+            };
+            client.post("http://localhost:3000/posicionEquipo/updatePosicionEquipo/", args2, function (data, response) {
+                console.log("PUT /partido");
+                res.redirect('/partidos');
+            });
         });
     });
 
