@@ -75,7 +75,30 @@ module.exports = function(express,app) {
      */
 
     posicionEquipo.get('/:id', PosicionEquipoCtrl.findEquiposById);
-    posicionEquipo.get('/division/:id', PosicionEquipoCtrl.findEquiposByDivisionId);
+
+    /**
+     * @Swagger
+     * /posicionEquipo/division/?{id}:
+     *  get:
+     *      tags:
+     *          - posicionEquipoModel
+     *      description: Devuelve todas las posicionEquipo de una division
+     *      produces:
+     *          - application/json
+     *      parameters:
+     *          - name: id
+     *          description: Division's id
+     *          in: path
+     *          required: true
+     *          type: integer
+     *      responses:
+     *          200:
+     *              description: An array of posicionEquipo
+     *          schema:
+     *              $ref: '#/definitions/posicionEquipoModel'
+     */
+
+    posicionEquipo.get('/division/:id', PosicionEquipoCtrl.findPosicionEquiposByDivisionId);
 
 
 

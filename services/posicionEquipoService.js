@@ -24,7 +24,7 @@ exports.findEquiposById = function(req, res) {
     });
 };
 
-exports.findEquiposByDivisionId = function(req, res) {
+exports.findPosicionEquiposByDivisionId = function(req, res) {
     PosicionEquipo.find({ division: req.params.id }, function(err, posicionEquipo) {
         if(err) return res.send(500, err.message);
         if(!posicionEquipo) return res.send(404, "posicionEquipo not found");
@@ -87,8 +87,9 @@ exports.updatePosicionEquipo = function(req, res) {
 
 exports.cargaDePartido = function(req, res) {
 
-        PosicionEquipo.findOne({ equipo: req.body.equipo1}, function(err, posicion1) {
-            PosicionEquipo.findOne({ equipo: req.body.equipo2}, function(err, posicion2) {
+    PosicionEquipo.findOne({ equipo: req.body.equipo1}, function(err, posicion1) {
+        PosicionEquipo.findOne({ equipo: req.body.equipo2}, function(err, posicion2) {
+            if(posicion1 != null && posicion2 != null) {
                 posicion1.jugados = posicion1.jugados + 1;
                 posicion2.jugados = posicion2.jugados + 1;
                 posicion1.golesFavor = posicion1.golesFavor + req.body.marcador_equipo_1;
@@ -96,29 +97,30 @@ exports.cargaDePartido = function(req, res) {
                 posicion2.golesFavor = posicion2.golesFavor + req.body.marcador_equipo_2;
                 posicion2.golesContra = posicion2.golesContra + req.body.marcador_equipo_1;
 
-                if(req.body.marcador_equipo_1 > req.body.marcador_equipo_2) {
+                if (req.body.marcador_equipo_1 > req.body.marcador_equipo_2) {
                     posicion1.ganados = posicion1.ganados + 1;
-                    posicion2.perdidos = posicion2.perdidos +1;
+                    posicion2.perdidos = posicion2.perdidos + 1;
                 } else if (req.body.marcador_equipo_1 < req.body.marcador_equipo_2) {
                     posicion2.ganados = posicion1.ganados + 1;
-                    posicion1.perdidos = posicion2.perdidos +1;
+                    posicion1.perdidos = posicion2.perdidos + 1;
                 } else {
                     posicion1.empatados = posicion1.empatados + 1;
                     posicion2.empatados = posicion2.empatados + 1;
                 }
 
-                posicion1.save(function(err) {
-                    if(err) return res.send(500, err.message);
-                    res.status(200).jsonp(posicion1);
+                posicion1.save(function (err) {
+                    posicion2.save(function (err) {
+                        if (err) return res.send(500, err.message);
+                        res.status(200).jsonp(posicion2);
+                    });
                 });
 
-                posicion2.save(function(err) {
-                    if(err) return res.send(500, err.message);
-                    res.status(200).jsonp(posicion2);
-                });
-
-            });
+            } else {
+                //Todo ver que pasa
+                res.status(404);
+            }
         });
+    });
 };
 
 
