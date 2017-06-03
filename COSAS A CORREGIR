@@ -1,5 +1,10 @@
 COSAS A CORREGIR
 
-Validaciones: Que al agregar user no exista el mail.
+2) cuando eliminás un equipo, te lo sigue mostrando en posicionEquipo (ver si hacer delete en cascada o manejarlo con baja logica).
+3) agregar en /equipos, un boton que permita modificar el equipo.
+4) arreglar vista /partidos
+5) arreglar vista /posicionesDeLaDivision? (los puntos quedan en otro renglon)
+6) arreglar vista /cargarPartido?
+7) validar que en la carga de partidos los goles no puedan ser menores a 0 y ponerle un maximo de 30
 
-1) cuando cargás un partido con estado "FIN" te lo debería mostrar igual. Ahora está filtrando
+Validaciones: Que al agregar user no exista el mail.
