@@ -26,7 +26,9 @@ exports.findEquiposById = function(req, res) {
 
 exports.findPosicionEquiposByDivisionId = function(req, res) {
     PosicionEquipo.find({ division: req.params.id }, function(err, posicionEquipo) {
-        posicionEquipo.sort(function(a,b) {return (a.puntos < b.puntos) ? 1 : ((b.puntos < a.puntos) ? -1 : 0);} );
+        posicionEquipo.sort(function(a,b) {return (a.puntos < b.puntos) ? 1 : ((b.puntos < a.puntos) ? -1 :
+            ((a.golesFavor - a.golesContra)<(b.golesFavor - b.golesContra)) ? 1 : ((a.golesFavor - a.golesContra) > (b.golesFavor - b.golesContra)) ? -1 :
+            (a.golesFavor<b.golesFavor) ? 1 : (a.golesFavor > b.golesFavor) ? -1 : 0);} );
         if(err) return res.send(500, err.message);
         if(!posicionEquipo) return res.send(404, "posicionEquipo not found");
         console.log('GET /posicionEquipo/' + req.params.id);
