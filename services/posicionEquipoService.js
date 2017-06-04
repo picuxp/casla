@@ -26,6 +26,7 @@ exports.findEquiposById = function(req, res) {
 
 exports.findPosicionEquiposByDivisionId = function(req, res) {
     PosicionEquipo.find({ division: req.params.id }, function(err, posicionEquipo) {
+        posicionEquipo.sort(function(a,b) {return (a.puntos < b.puntos) ? 1 : ((b.puntos < a.puntos) ? -1 : 0);} );
         if(err) return res.send(500, err.message);
         if(!posicionEquipo) return res.send(404, "posicionEquipo not found");
         console.log('GET /posicionEquipo/' + req.params.id);
@@ -99,11 +100,15 @@ exports.cargaDePartido = function(req, res) {
 
                 if (req.body.marcador_equipo_1 > req.body.marcador_equipo_2) {
                     posicion1.ganados = posicion1.ganados + 1;
+                    posicion1.puntos = posicion1.puntos + 3;
                     posicion2.perdidos = posicion2.perdidos + 1;
                 } else if (req.body.marcador_equipo_1 < req.body.marcador_equipo_2) {
+                    posicion2.puntos = posicion2.puntos + 3;
                     posicion2.ganados = posicion1.ganados + 1;
                     posicion1.perdidos = posicion2.perdidos + 1;
                 } else {
+                    posicion1.puntos = posicion1.puntos + 1;
+                    posicion2.puntos = posicion2.puntos + 1;
                     posicion1.empatados = posicion1.empatados + 1;
                     posicion2.empatados = posicion2.empatados + 1;
                 }
@@ -140,5 +145,13 @@ exports.posicionEquipoDelete = function(req, res) {
             logger.info(req.user+" ha borrado la posicionEquipo "+posicionEquipo.equipo);
             res.status(200).jsonp(posicionEquipo); //para redirigir en la vista
         })
+    });
+};
+
+exports.posicionEquipoDeleteByEquipoId = function(req, res) {
+    PosicionEquipo.findOneAndRemove({ equipo: req.params.id },function(err) {
+        if(err) return res.send(500, err.message);
+        logger.info(req.user+" ha borrado la posicionEquipo");
+        res.status(200).jsonp(err); //para redirigir en la vista
     });
 };

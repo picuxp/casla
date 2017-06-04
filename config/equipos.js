@@ -47,9 +47,11 @@ module.exports = function(app,isAdmin) {
 
     app.post('/deleteEquipo', isAdmin, function(req, res) {
         client.delete("http://localhost:3000/equipo/"+req.body.equipoid, function (data, response) {
+            client.delete("http://localhost:3000/posicionEquipo/equipo/"+req.body.equipoid,function (info, resp) {
             console.log("DELETE /equipo/"+req.body.equipoid);
             req.session.statusDelete = response.statusCode;
             res.redirect('/equipos');
+            });
         });
     });
 }

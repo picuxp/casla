@@ -157,7 +157,7 @@ module.exports = function(express,app) {
      *       - application/json
      *     parameters:
      *       - name: id
-     *         description: Division's id
+     *         description: equipo's id
      *         in: path
      *         required: true
      *         type: integer
@@ -165,7 +165,7 @@ module.exports = function(express,app) {
      *       200:
      *         description: Successfully deleted
      */
-    posicionEquipo.delete('/:id', PosicionEquipoCtrl.posicionEquipoDelete);
+    posicionEquipo.delete('/equipo/:id', PosicionEquipoCtrl.posicionEquipoDeleteByEquipoId);
 
 
     app.use('/posicionEquipo', posicionEquipo);
