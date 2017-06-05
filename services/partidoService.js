@@ -128,6 +128,13 @@ exports.updatePartido = function(req, res) {
 		if(err) return res.send(500, err.message);
 		if (!partido) {return res.send(404, "Partido: "+partido._id+"not found");}
 
+        var response = {
+            data:  partido ,
+			equipo1Old : partido.marcador_equipo_1,
+			equipo2Old : partido.marcador_equipo_2,
+            headers: { "Content-Type": "application/json" }
+        };
+
 		partido.equipo1 = req.body.equipo1 == null ? partido.equipo1 : req.body.equipo1;
 		partido.equipo2 = req.body.equipo2 == null ? partido.equipo2 : req.body.equipo2;
 		partido.fecha_numero = req.body.fecha_numero == null ? partido.fecha_numero : req.body.fecha_numero;
@@ -144,7 +151,7 @@ exports.updatePartido = function(req, res) {
 
 		partido.save(function(err) {
 			if(err) return res.status(500).send(err.message);
-			res.status(200).jsonp(partido);
+			res.status(200).jsonp(response);
 		});
 
 

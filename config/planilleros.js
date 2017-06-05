@@ -50,8 +50,10 @@ module.exports = function(app) {
         console.log(req.body);
 
         client.put("http://localhost:3000/partido/"+req.query.partidoid, args, function (data, response) {
+            data.data["equipo1Old"] = data.equipo1Old;
+            data.data["equipo2Old"] = data.equipo2Old;
             var args2 = {
-                data:  data ,
+                data:  data.data ,
                 headers: { "Content-Type": "application/json" }
             };
             client.post("http://localhost:3000/posicionEquipo/updatePosicionEquipo/", args2, function (data, response) {
