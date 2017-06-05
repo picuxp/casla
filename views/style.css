@@ -2127,6 +2127,7 @@ th {
     border-bottom-width: 2px; }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
+  background-image: url("images/background/counterBg.jpg");
   background-color: #f9f9f9; }
 
 .table-hover > tbody > tr:hover {
@@ -6323,7 +6324,7 @@ h6 {
 /*------------  headingall ----------*/
 .headline01 {
   font-family: "Oswald", sans-serif;
-  font-size: 19px;
+  font-size: 15px;
   color: white;
   font-weight: 350;
   text-transform: uppercase; }
@@ -8746,12 +8747,13 @@ section {
 .match_versus-wrap {
   overflow: hidden;
   position: relative;
+  horiz-align: center;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
   @media (min-width: 768px) {
     .match_versus-wrap {
-      float: left;
+      float: center;
       width: 79%; } }
 
 .match_versus-wrap2 {
@@ -8911,7 +8913,7 @@ section {
   .subPoint_table .largepoint1 {
   position: relative;
   float: left;
-  width: 32.6666666667%;
+  width: 20.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
@@ -8919,7 +8921,7 @@ section {
 .subPoint_table .smallpoint {
   position: relative;
   float: left;
-  width: 13.6666666667%;
+  width: 5.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }

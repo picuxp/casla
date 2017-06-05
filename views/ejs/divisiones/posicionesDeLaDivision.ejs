@@ -28,72 +28,74 @@
     <section class="latestResultTable">
         <div class="container">
             <h2 class="heading">Tabla de <span>Posiciones</span></h2>
-            <div class="row">
-                <div class="matchSchedule_details row">
-                    <div class="match_next">
-                        <div class="wrap_match_next right-triangle ">
-                            <div class="right-padding">
-                                <h4 class="headline03">Division <br/> <%= division.nombre %> </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="match_versus-wrap">
-                        <div class="wrap_match-innerdetails">
-                            <ul class="point_table scrollable">
-                                <li class="clearfix">
-                                    <div class="subPoint_table">
-                                        
-                                        <div class="headline01 smallpoint">POS</div>
 
-                                        <div class="headline01 largepoint">EQUIPO</div>                          
-                                        
-                                        <div class="headline01 smallpoint1 row row">
-                                        	<div class="headline01 smallpoint1"><span>PJ</span></div>
-                                        	<div class="headline01 smallpoint1"><span>PG</span></div>
-                                        	<div class="headline01 smallpoint1"><span>PE</span></div>
-                                        	<div class="headline01 smallpoint1"><span>PP</span></div>
-                                        	<div class="headline01 smallpoint1"><span>GF</span></div>
-                                        	<div class="headline01 smallpoint1"><span>GC</span></div>
-                                        	<div class="headline01 smallpoint1"><span>DG</span></div>
-                                        	<div class="headline01 smallpoint1"><span>PTS</span></div>
-                                        </div>
-                                    </div>
-                                </li>
 
-                                <% if (posicionEquipo.length > 0 ){ %>
-                                <% for (var i = 0; i <posicionEquipo.length ; i++ ) {%>
-                                <li class="clearfix">
-                                    <div class="subPoint_table">
-                                        <% if (posicionEquipo[i].equipo) { %>
-                                        
-                                        <div class="headline01 smallpoint" ><%= i+1 %></div>
-                                        <div class="headline01 largepoint"><%= posicionEquipo[i].equipoNombre %> </div>
-                                        
-                                        <div class="headline01 smallpoint1 row row">
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].jugados %></span> </div>
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].ganados %></span></div>
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].empatados %></span></div>
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].perdidos %></span></div>
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].golesFavor %></span></div>
-                                            <div class="headline01 smallpoint1"><span><%= posicionEquipo[i].golesContra %></span></div>
-                                            <div class="headline01 smallpoint1"><span>  <%= (posicionEquipo[i].golesFavor - posicionEquipo[i].golesContra)   %></span></div>
-                                            <div class="headline01 smallpoint1">   <%= posicionEquipo[i].puntos  %> </div>
-                                        </div>
+
+
+
+                            <div class="table-responsive"  style="background-color: #262626">
+                                <table class=" table table-striped ">
+                                    <thead >
+                                        <tr >
+
+                                            <h4 class="headline03 " style="color:darkblue; text-align: center; background-color: red">Division  <span><%= division.nombre %> </span></h4>
+
+                                        </tr>
+
+
+                                        <tr>
+
+                                            <th scope="col" class="headline01 ">POS</th>
+
+                                            <th scope="col" class="headline01 " style="width:30%;" colspan="7">EQUIPO</th>
+
+                                            <th scope="col" class="headline01 "><span>PTS</span></th>
+                                            <th scope="col" class="headline01 "><span>PJ</span></th>
+                                            <th scope="col" class="headline01 "><span>PG</span></th>
+                                            <th scope="col" class="headline01 "><span>PE</span></th>
+                                            <th scope="col" class="headline01"><span>PP</span></th>
+                                            <th scope="col" class="headline01 "><span>GF</span></th>
+                                            <th scope="col" class="headline01 "><span>GC</span></th>
+                                            <th scope="col" class="headline01"><span>DG</span></th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody >
+                                        <% if (posicionEquipo.length > 0 ){ %>
+                                        <% for (var i = 0; i <posicionEquipo.length ; i++ ) {%>
+                                        <tr>
+                                            <% if (posicionEquipo[i].equipo) { %>
+
+                                            <th scope="row" class="headline01 " ><%= i+1 %></th>
+                                            <td class="headline01 " colspan="7"><%= posicionEquipo[i].equipoNombre %> </td>
+
+                                            <td class="headline01 ">   <%= posicionEquipo[i].puntos  %> </td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].jugados %></span> </td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].ganados %></span></td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].empatados %></span></td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].perdidos %></span></td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].golesFavor %></span></td>
+                                            <td class="headline01 "><span><%= posicionEquipo[i].golesContra %></span></td>
+                                            <td class="headline01 "><span>  <%= (posicionEquipo[i].golesFavor - posicionEquipo[i].golesContra)   %></span></td>
+
+
+                                            <% }%>
+
+                                        </tr>
                                         <% }%>
-                                    </div>
-                                </li>
-                                <% }%>
-                                <% }%>
-                            </ul>
+                                        <% }%>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <script src="js/vendor/vendor.js"></script>
                         <script src="js/main.js"></script>
                         <script src="js/admin.js"></script>
                         <script src="js/divisionesTorneo.js"></script>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
     </section>
     <!-- footer -->
     <footer ><!--class="footer-type01"-->
