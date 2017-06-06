@@ -8747,7 +8747,6 @@ section {
 .match_versus-wrap {
   overflow: hidden;
   position: relative;
-  horiz-align: center;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
@@ -8913,7 +8912,7 @@ section {
   .subPoint_table .largepoint1 {
   position: relative;
   float: left;
-  width: 20.6666666667%;
+  width: 32.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
@@ -8921,7 +8920,7 @@ section {
 .subPoint_table .smallpoint {
   position: relative;
   float: left;
-  width: 5.6666666667%;
+  width: 20.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
