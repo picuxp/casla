@@ -8947,42 +8947,45 @@ section {
 .subPoint_table .largepoint {
   position: relative;
   float: left;
-  width: 40%;
+  width: 33%;
   min-height: 1px;
   padding-left: 15px;
-  padding-right: 15px; }
+  /*padding-right: 15px;*/
+}
 
   .subPoint_table .largepoint1 {
   position: relative;
   float: left;
-  width: 32.6666666667%;
+  width: 60%;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px; }
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+  }
 
 .subPoint_table .smallpoint {
   position: relative;
   float: left;
-  width: 13.6666666667%;
+  width: 7%;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px; }
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+}
   .subPoint_table .smallpoint span:last-of-type {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     color: #979da0; }
 	
 .subPoint_table .smallpoint1 {
   position: relative;
   text-align: center;
-  display: inline-table;
-  display: inline-table;
-  min-height: 1px;
-  min-width: 37px;
-  
-  padding-left: 5px;
-  padding-right: 5px; }
+  display: flex;
+  min-height: 45px;
+  min-width: 45px;
+
+  /*padding-left: 5px;*/
+  /*padding-right: 5px; */
+}
   .subPoint_table .smallpoint1 span:last-of-type {
-    margin-left: 8px;
+    /*margin-left: 8px;*/
     color: #979da0; }
 	
 .logo-match {
