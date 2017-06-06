@@ -132,6 +132,8 @@ exports.updatePartido = function(req, res) {
             data:  partido ,
 			equipo1Old : partido.marcador_equipo_1,
 			equipo2Old : partido.marcador_equipo_2,
+			status: req.body.estado_partido,
+			statusOld: partido.estado,
             headers: { "Content-Type": "application/json" }
         };
 
@@ -148,6 +150,7 @@ exports.updatePartido = function(req, res) {
 		partido.expulsados = req.body.expulsados == null ? partido.expulsados : req.body.expulsados;
 		partido.goles = req.body.goles == null ? partido.goles : req.body.goles;
 		partido.cambios = req.body.cambios == null ? partido.cambios : req.body.cambios;
+		partido.estado = req.body.estado_partido == null ? partido.estado : req.body.estado_partido;
 
 		partido.save(function(err) {
 			if(err) return res.status(500).send(err.message);
@@ -218,10 +221,18 @@ exports.deletePartido = function(req, res) {
 			});
 		});
 
+        var response = {
+            data:  partido ,
+            equipo1Old : partido.marcador_equipo_1,
+            equipo2Old : partido.marcador_equipo_2,
+            statusOld: partido.estado,
+            headers: { "Content-Type": "application/json" }
+        };
+
 		partido.remove(function(err) {
 				if(err) return res.send(500, err.message);
 				logger.info(req.user+" ha borrado el partido "+partido.nombre);
-	      		res.status(200).jsonp("Successfully deleted");
+	      		res.status(200).jsonp(response);
 		})
 	});
 };

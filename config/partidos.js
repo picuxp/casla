@@ -41,9 +41,18 @@ module.exports = function(app,isAdmin) {
 
     app.post('/deletePartido', isAdmin, function(req, res) {
         client.delete("http://localhost:3000/partido/"+req.body.partidoid, function (data, response) {
-            console.log("DELETE /partido/"+req.body.partidoid);
-            req.session.statusDelete = response.statusCode;
-            res.redirect('/partidos');
+            data.data["equipo1Old"] = data.equipo1Old;
+            data.data["equipo2Old"] = data.equipo2Old;
+            data.data["statusOld"] = data.statusOld;
+            var args2 = {
+                data:  data.data ,
+                headers: { "Content-Type": "application/json" }
+            };
+            client.post("http://localhost:3000/posicionEquipo/updatePosicionEquipo/", args2, function (data, response) {
+                console.log("DELETE /partido/"+req.body.partidoid);
+                req.session.statusDelete = response.statusCode;
+                res.redirect('/partidos');
+            });
         });
     });
 }

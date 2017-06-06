@@ -98,6 +98,7 @@ $("#botonGuardarCambios-id").click(function(e){
 	//console.log(data);
 });
 
+
 function chequear (atributo){
 	var valor = $("#"+atributo).val();
 	if(!valor){

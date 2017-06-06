@@ -52,6 +52,8 @@ module.exports = function(app) {
         client.put("http://localhost:3000/partido/"+req.query.partidoid, args, function (data, response) {
             data.data["equipo1Old"] = data.equipo1Old;
             data.data["equipo2Old"] = data.equipo2Old;
+            data.data["status"] = data.status;
+            data.data["statusOld"] = data.statusOld;
             var args2 = {
                 data:  data.data ,
                 headers: { "Content-Type": "application/json" }

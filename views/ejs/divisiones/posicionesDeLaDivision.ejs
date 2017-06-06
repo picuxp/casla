@@ -27,7 +27,7 @@
 
     <section class="latestResultTable">
         <div class="container">
-            <h2 class="heading">Tabla de <span>Posiciones</span></h2>
+            <h2 class="heading2">Tabla de <span>Posiciones</span></h2>
 
 
 
@@ -37,26 +37,24 @@
                                 <table class=" table table-striped ">
                                     <thead >
                                         <tr >
-
-                                            <h4 class="headline03 " style="color:darkblue; text-align: center; background-color: red">Division  <span><%= division.nombre %> </span></h4>
-
+                                            <h4 class="headline04 " style="color:darkblue; text-align: center; background-color: #b81e20">Division  <span><%= division.nombre %> </span></h4>
                                         </tr>
 
 
                                         <tr>
 
-                                            <th scope="col" class="headline01 ">POS</th>
+                                            <th scope="col" class="headline05 ">POS</th>
 
-                                            <th scope="col" class="headline01 " style="width:30%;" colspan="7">EQUIPO</th>
+                                            <th scope="col" class="headline05 " style="width:30%;" colspan="7">EQUIPO</th>
 
-                                            <th scope="col" class="headline01 "><span>PTS</span></th>
-                                            <th scope="col" class="headline01 "><span>PJ</span></th>
-                                            <th scope="col" class="headline01 "><span>PG</span></th>
-                                            <th scope="col" class="headline01 "><span>PE</span></th>
-                                            <th scope="col" class="headline01"><span>PP</span></th>
-                                            <th scope="col" class="headline01 "><span>GF</span></th>
-                                            <th scope="col" class="headline01 "><span>GC</span></th>
-                                            <th scope="col" class="headline01"><span>DG</span></th>
+                                            <th scope="col" class="headline05 "><span>PTS</span></th>
+                                            <th scope="col" class="headline05 "><span>PJ</span></th>
+                                            <th scope="col" class="headline05 "><span>PG</span></th>
+                                            <th scope="col" class="headline05 "><span>PE</span></th>
+                                            <th scope="col" class="headline05"><span>PP</span></th>
+                                            <th scope="col" class="headline05 "><span>GF</span></th>
+                                            <th scope="col" class="headline05 "><span>GC</span></th>
+                                            <th scope="col" class="headline05"><span>DG</span></th>
 
                                         </tr>
                                     </thead>
@@ -67,17 +65,17 @@
                                         <tr>
                                             <% if (posicionEquipo[i].equipo) { %>
 
-                                            <th scope="row" class="headline01 " ><%= i+1 %></th>
-                                            <td class="headline01 " colspan="7"><%= posicionEquipo[i].equipoNombre %> </td>
+                                            <th scope="row" class="headline05" ><%= i+1 %></th>
+                                            <td class="headline05" colspan="7"><%= posicionEquipo[i].equipoNombre %> </td>
 
-                                            <td class="headline01 ">   <%= posicionEquipo[i].puntos  %> </td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].jugados %></span> </td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].ganados %></span></td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].empatados %></span></td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].perdidos %></span></td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].golesFavor %></span></td>
-                                            <td class="headline01 "><span><%= posicionEquipo[i].golesContra %></span></td>
-                                            <td class="headline01 "><span>  <%= (posicionEquipo[i].golesFavor - posicionEquipo[i].golesContra)   %></span></td>
+                                            <td class="headline05">   <%= posicionEquipo[i].puntos  %> </td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].jugados %></span> </td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].ganados %></span></td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].empatados %></span></td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].perdidos %></span></td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].golesFavor %></span></td>
+                                            <td class="headline05"><span><%= posicionEquipo[i].golesContra %></span></td>
+                                            <td class="headline05"><span>  <%= (posicionEquipo[i].golesFavor - posicionEquipo[i].golesContra)   %></span></td>
 
 
                                             <% }%>

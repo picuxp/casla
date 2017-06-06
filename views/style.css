@@ -6108,11 +6108,34 @@ h2.heading {
     h2.heading span:after {
       position: absolute;
       content: '';
-      background-color: red;
+      background-color: transparent;
       width: 90%;
       height: 2px;
       top: 108%;
       left: -40px; }
+
+h2.heading2 {
+  padding:0 0 100px 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 50px;
+  color: black;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center; }
+h2.heading2.small span:after {
+  width: 20%;
+  left: 0; }
+h2.heading2 span {
+  color: #b81e20;
+  position: relative; }
+h2.heading2 span:after {
+  position: absolute;
+  content: '';
+  background-color: transparent;
+  width: 90%;
+  height: 2px;
+  top: 108%;
+  left: -40px; }
 
 h4 {
   font-family: "Oswald", sans-serif;
@@ -6121,7 +6144,7 @@ h4 {
   font-weight: 400;
   text-transform: uppercase; }
   h4 span {
-    color: black; }
+    color: white; }
 
 p {
   font-family: "Open Sans", sans-serif;
@@ -6324,7 +6347,7 @@ h6 {
 /*------------  headingall ----------*/
 .headline01 {
   font-family: "Oswald", sans-serif;
-  font-size: 15px;
+  font-size: 19px;
   color: white;
   font-weight: 350;
   text-transform: uppercase; }
@@ -6335,6 +6358,13 @@ h6 {
   color: black;
   font-weight: 400;
   text-transform: uppercase; }
+
+.headline05 {
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+    color: white;
+    font-weight: 350;
+    text-transform: uppercase; }
 
 .paragraph02 {
   font-family: "Open Sans", sans-serif;
@@ -6347,10 +6377,22 @@ h6 {
 
 .headline03 {
   font-family: "Oswald", sans-serif;
-  font-size: 30px;
+  font-size: 35px;
   color: white;
   font-weight: 400;
   text-transform: uppercase; }
+
+
+.headline04 {
+    font-family: "Oswald", sans-serif;
+    font-size: 35px;
+    color: white;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    background: #b81e20;
+    font-weight: 400;
+    text-transform: uppercase; }
 
 .italic01 {
   font-style: italic; }
@@ -7979,7 +8021,7 @@ ul.videoLive {
   /* Image Credit: Unsplash.me */
   background-size: cover;
   background-attachment: fixed; }
-  
+
   .innerbannergoleadores {
   height: 600px;
   position: relative;
@@ -7988,7 +8030,7 @@ ul.videoLive {
   /* Image Credit: Unsplash.me */
   background-size: cover;
   background-attachment: fixed; }
-  
+
   .innerbannerfairplay {
   height: 600px;
   position: relative;
@@ -7997,7 +8039,7 @@ ul.videoLive {
   /* Image Credit: Unsplash.me */
   background-size: cover;
   background-attachment: fixed; }
-  
+
   .innerbannersanciones {
   height: 600px;
   position: relative;
@@ -8753,7 +8795,7 @@ section {
   padding-right: 15px; }
   @media (min-width: 768px) {
     .match_versus-wrap {
-      float: center;
+      float: left;
       width: 79%; } }
 
 .match_versus-wrap2 {
@@ -8891,7 +8933,7 @@ section {
     padding: 5px 0; }
     .point_table2 li:nth-of-type(even) {
       background: #232a32; }
-	  
+
 .point_table {
   background-image: url("images/background/counterBg.jpg");
   background-size: cover;
@@ -8909,11 +8951,11 @@ section {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
-  
+
   .subPoint_table .largepoint1 {
   position: relative;
   float: left;
-  width: 20.6666666667%;
+  width: 32.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
@@ -8921,7 +8963,7 @@ section {
 .subPoint_table .smallpoint {
   position: relative;
   float: left;
-  width: 5.6666666667%;
+  width: 13.6666666667%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
