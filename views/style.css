@@ -6359,6 +6359,14 @@ h6 {
   font-weight: 400;
   text-transform: uppercase; }
 
+.headline06 {
+  font-family: "Oswald", sans-serif;
+  font-size: 11px;
+  color: white;
+  font-weight: 200;
+  text-transform: uppercase; }
+
+
 .headline05 {
     font-family: "Oswald", sans-serif;
     font-size: 25px;

@@ -27,7 +27,7 @@
             <div class="innerbannerwrap">
                 <div class="content"></div>
                 <div class="innerbannergoleadores">
-                    <h2 class="bannerHeadline">Administración de Partidos<span></span></h2>
+                    <h2 class="bannerHeadline">Administracióniii de Partidos<span></span></h2>
                 </div>
             </div>
             <% if (resultado) { %>
@@ -39,7 +39,7 @@
             <% } %>
             <section class="innerpage_all_wrap bg-white">
                 <div class="container">
-                    <div class="row">
+     <!--               <div class="row">
                         <div class="matchSchedule_details row">
                             <div class="match_versus-wrap2">
                                 <div class="wrap_match-innerdetails">
@@ -83,6 +83,66 @@
                             </div>
                         </div>
                     </div>
+
+
+-->
+
+                    <div class="table-responsive" style="background-color: #262626">
+                        <div class="wrap_match-innerdetails">
+                        <table class="table table-striped " style="text-align: center">
+
+
+                                    <tr>
+                                    <div class="headline01 largepoint1" style="color:darkblue; text-align: center; background-color: #b81e20">Ver partidos fecha:
+                                    <select name="fechaSelectName" id="fechaSelect">
+                                        <option value="none"></option>
+                                        <% for(var i=0; i < numeros_fechas.length; i++) { %>
+                                        <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
+                                        <% } %>
+                                    </select>
+                                    </div>
+                                    </tr>
+
+                            <thead>
+                                    <tr >
+
+                                                <th scope="col" class="headline06">Estado</th>
+                                                <th scope="col" class="headline06">Equipo 1</th>
+                                                <th scope="col" class="headline06">Res 1</th>
+                                                <th scope="col" class="headline06">Res 2</th>
+                                                <th scope="col" class="headline06">Equipo 2</th>
+                                                <th scope="col" class="headline06">N° Fecha</th>
+                                                <th scope="col" class="headline06">Fecha</th>
+                                                <th scope="col" class="headline06">Division</th>
+                                                <th scope="col" class="headline06">Amonestados</th>
+                                                <th scope="col" class="headline06">Expulsados</th>
+                                                <th scope="col" class="headline06">Goles</th>
+                                                <th scope="col" class="headline06">Cambios</th>
+                                                <th scope="col" class="headline06">
+                                                    <form action="/cargarPartido" method="get" id="formCargarPartido">
+                                                        <input type="hidden" class="form-control">
+                                                        <button type="submit" > Cargar </button>
+                                                    </form>
+                                                <th scope="col" class="headline06 smallpoint">
+                                                    <div class="headline06 smallpoint1"><span>ELIMINAR</span></div>
+                                                </th>
+                                        </tr>
+                            </thead>
+
+                            <tbody id="dataPartidosConFecha">
+
+
+
+
+                            </tbody>
+
+
+
+                        </table>
+                    </div>
+                    </div>
+
+
                 </div>
             </section>
             <!-- footer -->
