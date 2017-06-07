@@ -115,77 +115,74 @@ $("#fechaSelect").change(function () {
 
 					var html = "";
 					for (var i = 0; i < partidos.length; i++) {
-						html += '<li class="clearfix">';
-						html += '<div class="subPoint_table">';
-						html += '<div class="headline01 smallpoint">' + partidos[i].estado + '</div>';
-						html += '<div class="headline01 smallpoint">' + equiposMap[partidos[i].equipo1] + '</div>';
-						html += '<div class="headline01 smallpoint">';
+
+						html += '<tr><td class="headline06">' +partidos[i].estado+ '</td>';
+						html += '<td class="headline06">' +equiposMap[partidos[i].equipo1]+ '</td>';
+						html += '<td class="headline06">';
 						if (partidos[i].marcador_equipo_1 == undefined) {
 							html += "0";
 						} else {
 							html += partidos[i].marcador_equipo_1;
 						}
-						html += "</div>";
-						html += '<div class="headline01 smallpoint">';
+						html += "</td>";
+						html += '<td class="headline06">';
 						if (partidos[i].marcador_equipo_2 == undefined) {
 							html += "0";
 						} else {
 							html += partidos[i].marcador_equipo_2;
 						}
-						html += "</div>";
-						html += '<div class="headline01 smallpoint">' + equiposMap[partidos[i].equipo2] + '</div>';
-						html += '<div class="headline01 smallpoint">' + partidos[i].fecha_numero + '</div>';
-						html += '<div class="headline01 smallpoint">' + formatDate(partidos[i].fecha) + '</div>';
-						html += '<div class="headline01 smallpoint">' + divisionesMap[partidos[i].division] + '</div>';
+						html += "</td>";
+						html += '<td class="headline06">' +equiposMap[partidos[i].equipo2]+ '</td>';
+						html += '<td class="headline06">' +partidos[i].fecha_numero + '</td>';
+						html += '<td class="headline06">' +formatDate(partidos[i].fecha)+ '</td>';
+						html += '<td class="headline06">' +divisionesMap[partidos[i].division]+ '</td>';
 
-						html += '<div class="headline01 smallpoint">';
+						html += '<td class="headline06">';
 						if (partidos[i].amonestados.length == 0) {
 							html += 'Ninguno';
 						} else {
 							html += "VER AMONESTADOS";
 						}
-						html += '</div>';
+						html += '</td>';
 
-						html += '<div class="headline01 smallpoint">';
+						html += '<td class="headline06">';
 						if (partidos[i].expulsados.length == 0) {
 							html += 'Ninguno';
 						} else {
 							html += "VER EXPULSADOS";
 						}
-						html += '</div>';
+						html += '</td>';
 
-						html += '<div class="headline01 smallpoint">';
+						html += '<td class="headline06">';
 						if (partidos[i].goles.length == 0) {
 							html += 'Ninguno';
 						} else {
 							html += "VER GOLES";
 						}
-						html += '</div>';
+						html += '</td>';
 
-						html += '<div class="headline01 smallpoint">';
+						html += '<td class="headline06">';
 						if (partidos[i].cambios.length == 0) {
 							html += 'Ninguno';
 						} else {
 							html += "VER CAMBIOS";
 						}
-						html += '</div>';
+						html += '</td>';
 
 
-						html += '<div class="headline01 smallpoint row">' +
-							'<div class="headline01 smallpoint1"><span>' +
+						html += '<td class="headline06b"><span>' +
 							'<form action="/cargarPartido">' +
 							'<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
-							'<button type="submit">Cargar</button>' +
-							'</form></span></div></div>';
+							'<button type="submit">Cargar</button>'+
+							'</form></span></td>';
 
-						html += '<div class="headline01 smallpoint">' +
-							'<div class="headline01 smallpoint"><span>' +
-							'<form action="/deletePartido" method="post" id="formDelete' + partidos[i]._id + '">' +
-							'<button class="deletePartido" id="' + partidos[i]._id + '-' + equiposMap[partidos[i].equipo1] + '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
-							'<input type="hidden" value=' + partidos[i]._id + ' name="partidoid"/>' +
-							'</form></span></div>';
+						html += '<td class="headline06b"><span>' +
+							'<form action="/deletePartido" method="post" id="formDelete'+ partidos[i]._id +'">' +
+							'<button class="deletePartido" id="' +partidos[i]._id +'-' +equiposMap[partidos[i].equipo1]+ '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
+							'<input type="hidden" value='+ partidos[i]._id +' name="partidoid"/>' +
+							'</form></span></td>';
 
-						html += '</div></li>';
+						html += '</tr>';
 					}
 					$("#dataPartidosConFecha").append(html);
 				});

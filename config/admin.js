@@ -16,6 +16,7 @@ module.exports = function(app) {
 
     //------------------------------DIVISIONES----------------------------------------//
     require("./divisiones.js")(app,isAdmin);
+    require("./posicionEquipo.js")(app,isAdmin);
 
     //------------------------------CANCHAS----------------------------------------//
     require("./canchas.js")(app,isAdmin);

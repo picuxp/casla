@@ -128,25 +128,33 @@ exports.updatePartido = function(req, res) {
 		if(err) return res.send(500, err.message);
 		if (!partido) {return res.send(404, "Partido: "+partido._id+"not found");}
 
-		partido.equipo1 = req.body.equipo1;
-		partido.equipo2 = req.body.equipo2;
-		partido.fecha_numero = req.body.fecha_numero;
-		partido.fecha = req.body.fecha;
-		partido.marcador_equipo_1 = req.body.goles_equipo1;
-		partido.marcador_equipo_2 = req.body.goles_equipo2;
-		partido.estado = req.body.estado_partido;
-		partido.cancha = req.body.cancha;
-		partido.division = req.body.division;
-		partido.amonestados = req.body.amonestados;
-		partido.expulsados = req.body.expulsados;
-		partido.goles = req.body.goles;
-		partido.cambios = req.body.cambios;
+        var response = {
+            data:  partido ,
+			equipo1Old : partido.marcador_equipo_1,
+			equipo2Old : partido.marcador_equipo_2,
+			status: req.body.estado_partido,
+			statusOld: partido.estado,
+            headers: { "Content-Type": "application/json" }
+        };
+
+		partido.equipo1 = req.body.equipo1 == null ? partido.equipo1 : req.body.equipo1;
+		partido.equipo2 = req.body.equipo2 == null ? partido.equipo2 : req.body.equipo2;
+		partido.fecha_numero = req.body.fecha_numero == null ? partido.fecha_numero : req.body.fecha_numero;
+		partido.fecha = req.body.fecha == null  ? partido.fecha : req.body.fecha;
+		partido.marcador_equipo_1 = req.body.goles_equipo1 == null ? partido.marcador_equipo_1 : req.body.goles_equipo1;
+		partido.marcador_equipo_2 = req.body.goles_equipo2 == null ? partido.marcador_equipo_2 : req.body.goles_equipo2;
+		partido.estado = req.body.estado_partido == null ? partido.estado : req.body.estado_partido;
+		partido.cancha = req.body.cancha == null ? partido.cancha : req.body.cancha;
+		partido.division = req.body.division == null ? partido.division : req.body.division;
+		partido.amonestados = req.body.amonestados == null ? partido.amonestados : req.body.amonestados;
+		partido.expulsados = req.body.expulsados == null ? partido.expulsados : req.body.expulsados;
+		partido.goles = req.body.goles == null ? partido.goles : req.body.goles;
+		partido.cambios = req.body.cambios == null ? partido.cambios : req.body.cambios;
+		partido.estado = req.body.estado_partido == null ? partido.estado : req.body.estado_partido;
 
 		partido.save(function(err) {
 			if(err) return res.status(500).send(err.message);
-
-			//logger.info(req.user+" ha actualizado al partido "+partido._id+". Equipo1: "+partido.equipo1.nombre+" vs Equipo2: "+partido.equipo2.nombre);
-			res.status(200).jsonp(partido);
+			res.status(200).jsonp(response);
 		});
 
 
@@ -213,10 +221,18 @@ exports.deletePartido = function(req, res) {
 			});
 		});
 
+        var response = {
+            data:  partido ,
+            equipo1Old : partido.marcador_equipo_1,
+            equipo2Old : partido.marcador_equipo_2,
+            statusOld: partido.estado,
+            headers: { "Content-Type": "application/json" }
+        };
+
 		partido.remove(function(err) {
 				if(err) return res.send(500, err.message);
 				logger.info(req.user+" ha borrado el partido "+partido.nombre);
-	      		res.status(200).jsonp("Successfully deleted");
+	      		res.status(200).jsonp(response);
 		})
 	});
 };
