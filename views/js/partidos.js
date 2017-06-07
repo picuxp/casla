@@ -170,13 +170,13 @@ $("#fechaSelect").change(function () {
 						html += '</td>';
 
 
-						html += '<td class="headline06"><span>' +
+						html += '<td class="headline06b"><span>' +
 							'<form action="/cargarPartido">' +
 							'<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
 							'<button type="submit">Cargar</button>'+
 							'</form></span></td>';
 
-						html += '<td class="headline06"><span>' +
+						html += '<td class="headline06b"><span>' +
 							'<form action="/deletePartido" method="post" id="formDelete'+ partidos[i]._id +'">' +
 							'<button class="deletePartido" id="' +partidos[i]._id +'-' +equiposMap[partidos[i].equipo1]+ '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
 							'<input type="hidden" value='+ partidos[i]._id +' name="partidoid"/>' +
