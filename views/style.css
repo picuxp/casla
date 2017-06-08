@@ -6324,7 +6324,8 @@ h6 {
 /*-------------- headline banner ---------------*/
 .bannerHeadline {
   font-family: "Oswald", sans-serif;
-  font-size: 80px;
+  font-size: 60px;
+  padding-top: 75px;
   color: white;
   font-weight: 400;
   text-transform: uppercase; }
@@ -6360,23 +6361,34 @@ h6 {
   font-weight: 350;
   text-transform: uppercase; }
 
+.headline09 {
+  font-family: "Oswald", sans-serif;
+  font-size: 19px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: ;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase; }
+
 .headline02 {
   font-family: "Oswald", sans-serif;
-  font-size: 27px;
+  font-size: 20px;
   color: black;
   font-weight: 400;
   text-transform: uppercase; }
 
 .headline06 {
   font-family: "Oswald", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   color: white;
   font-weight: 200;
   text-transform: uppercase; }
 
 .headline06b {
   font-family: "Oswald", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   color: red;
   font-weight: 200;
   text-transform: uppercase; }
@@ -8060,7 +8072,7 @@ ul.videoLive {
   background-attachment: fixed; }
 
   .innerbannergoleadores {
-  height: 600px;
+  height: 450px;
   position: relative;
   overflow: hidden;
   background: url(images/background/innerpageBggoleador.jpg) center no-repeat;
@@ -9007,10 +9019,7 @@ section {
   /*padding-left: 15px;*/
   /*padding-right: 15px; */
 }
-  .subPoint_table .smallpoint span:last-of-type {
-    /*margin-left: 10px;*/
-    color: #979da0; }
-	
+
 .subPoint_table .smallpoint1 {
   position: relative;
   text-align: center;
@@ -9021,10 +9030,65 @@ section {
   /*padding-left: 5px;*/
   /*padding-right: 5px; */
 }
+
+.subPoint_table .smallpoint span:last-of-type {
+  /*margin-left: 10px;*/
+  color: #979da0; }
+
+.subPoint_table2 .largepoint {
+  position: relative;
+  float: left;
+  display: inline-flex;
+  width: 33%;
+  min-height: 1px;
+  padding-left: 15px;
+  /*padding-right: 15px;*/
+}
+
+.subPoint_table2 .largepoint1 {
+  position: relative;
+  float: left;
+  display: inline-flex;
+  width: 60%;
+  min-height: 1px;
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+}
+
+
+.subPoint_table2 .smallpoint {
+  position: relative;
+  display: table;
+  float: left;
+  width: 100%;
+  min-height: 40px;
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+}
+
+
+.subPoint_table2 .smallpoint :first-of-type {
+    margin-left: 10px; }
+
+.subPoint_table2 {
+  align-items: center;
+  display: flex;}
+
+
+.subPoint_table2 .smallpoint1 {
+  position: relative;
+  text-align: left;
+  display: inline-flex;
+  min-height: 45px;
+  min-width: 45px;
+
+  /*padding-left: 5px;*/
+  /*padding-right: 5px; */
+}
   .subPoint_table .smallpoint1 span:last-of-type {
     /*margin-left: 8px;*/
     color: #979da0; }
-	
+
 .logo-match {
   position: relative;
   float: left;
@@ -9105,7 +9169,7 @@ section {
       height: 0;
       top: 0;
       z-index: 2; }
- 
+
 @media screen and (min-width: 1200px) {
   .match_timing {
     height: 400px; }

@@ -19,7 +19,7 @@ $.get('http://localhost:3000/partido/' + id, function (partido){
 					$('#team1-id').html('<b>'+equiposMap[partido.equipo1]+'</b>');
 					$('#team2-id').html('<b>'+equiposMap[partido.equipo2]+'</b>');
 					$('#nro-fecha-id').html(partido.fecha_numero);
-					$('#fecha-id').val(formatDate2(partido.fecha));
+					$('#fecha-id').html(formatDate(partido.fecha));
 
 					var options = ['N.E.','FIN','SUSP','POST'];
 					var aux = "";

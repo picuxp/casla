@@ -38,7 +38,7 @@
     <% } %>
     <% } %>
 
-    <div class="table-responsive" style="background-color: #0a0a0a; text-align: center" >
+    <div class="table-responsive" style="background-color: #0a0a0a; text-align: left" >
             <!-- show any messages that come back with authentication -->
             <% if (message.length > 0) { %>
             <div class="alert alert-danger"><%= message %></div>
@@ -48,18 +48,18 @@
                 <input type="hidden" class="form-control">
 
                 <!--DATOS FIJOS -->
-                <table class="table-responsive" style=" background-color: blue; text-align: center; margin: 0 auto;">
+                <table class="table-responsive" style=" background-color: black; text-align: left; margin: 0 auto;">
                     <thead>
                     <tr>
                     <td class="form-group headline05" id="fecha_numero">
                         Numero Fecha: <br>
                             <td class="headline08 largepoint1" id="nro-fecha-id" name="fecha_numero"></td>
-                                          <br>
                     </td>
 
                     <td class="form-group headline05" id="fecha">
                           DIA: <br>
                             <td class="headline08 largepoint1" id="fecha-id" type="date" name="fecha"></td>
+                            <br>
 
                     </td>
 
@@ -82,28 +82,32 @@
                             <select class="headline07" id="estado-id" name="estado_partido"></select>
                         </div>
                     </div>
-
-                    <div class="form-group" id="equipo1">
-                        <div class="headline01 largepoint1">Equipo 1
-                            <div class="headline01 largepoint1" id="team1-id" name="equipo1"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group" id="equipo2">
-                        <div class="headline01 largepoint1" colspan=4 >Equipo 2
-                            <div class="headline01 largepoint1" id="team2-id" name="equipo2"></div>
-                        </div>
-                    </div>
                 </div>
                 </tr>
+				
+				<tr>
+				<div class="form-inline">
+					<div class="form-group" id="equipo1">
+						<div class="headline01 largepoint1">Equipo 1
+							<div class="headline01 largepoint1" id="team1-id" name="equipo1"></div>
+						</div>
+					</div>
 
+					<div class="form-group" id="equipo2">
+						<div class="headline01 largepoint1" colspan=2 >Equipo 2
+							<div class="headline01 largepoint1" id="team2-id" name="equipo2"></div>
+						</div>
+					</div>
+				</div>
+				</tr>
+				
                 <tr>
                 <div class="form-inline">
 
                     <div class="form-group" id="goles_equipo1">
-                        <div class="headline01 largepoint1" colspan=4 >Goles Equipo 1
+                        <div class="headline01 largepoint1">Goles Equipo 1
                             <div class="headline01 largepoint1" id="goles1-id"></div>
-                            <input class="headline07" type="number" value="0" name="goles_equipo1" id="goles1-id">
+                            <input class="headline07" type="number" min="0" value="0" name="goles_equipo1" id="goles1-id">
                         </div>
                     </div>
 
@@ -111,7 +115,7 @@
                     <div class="form-group" id="goles_equipo2">
                         <div class="headline01 largepoint1" colspan=4 >Goles Equipo 2
                             <div class="headline01 largepoint1" id="goles2-id"></div>
-                            <input class="headline07" value="0" type="number" name="goles_equipo2" id="goles2-id">
+                            <input class="headline07" min="0" value="0" type="number" name="goles_equipo2" id="goles2-id">
                         </div>
                     </div>
                 </div>
@@ -119,6 +123,7 @@
                 </tr>
 
                  <tr>
+                 <!--
                 <div class="form-inline">
 
                     <div class="form-group">
@@ -162,7 +167,7 @@
                         </div>
                         <div class="headline06" id="expulsados2-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados2-id"></div>
                     </div>
-                </div>
+                </div> -->
 
                 </tr>
                  <!-- cambios , para implementar a futuro-->

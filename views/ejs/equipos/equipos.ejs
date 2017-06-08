@@ -1,148 +1,149 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-     <link rel="stylesheet" href="vendor.css">       
-     <link rel="stylesheet" href="style.css">   
-     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-    <script src="js/vendor/modernizr.js"></script>    
-  </head>
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="wrapper">
-      <!-- header -->
-      <header class="header-main">
+    <link rel="stylesheet" href="vendor.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="wrapper">
+    <!-- header -->
+    <header class="header-main">
         <div class="header-lower clearfix">
-      <%- include ../menu.ejs %>
-        </div>  
-</header>
+            <%- include ../menu.ejs %>
+        </div>
+    </header>
 
-       <!-- banner section -->
-      <div class="innerbannerwrap">
+    <!-- banner section -->
+    <div class="innerbannerwrap">
         <div class="content"></div>
         <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Administración de Equipos<span></span></h2>
+            <h2 class="bannerHeadline">Administración de Equipos<span></span></h2>
         </div>
-      </div>
+    </div>
 
-      <% if (resultado) { %>
-          <% if (resultado == 200) { %>
-                <div class="alert alert-success">La operacion fue realizada con exito</div>
-          <% } else { %>
-              <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
-          <% } %>
-      <% } %>
+    <% if (resultado) { %>
+    <% if (resultado == 200) { %>
+    <div class="alert alert-success">La operacion fue realizada con exito</div>
+    <% } else { %>
+    <div class="alert alert-danger">La operacion fallo. Inténtelo nuevamente más tarde</div>
+    <% } %>
+    <% } %>
 
-      <section class="innerpage_all_wrap bg-white"> 
+    <section class="innerpage_all_wrap bg-white">
         <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
-                
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-                    <ul class="point_table2">
-                       <li class="clearfix">
-                        <div class="subPoint_table">
-                          <div class="headline01 smallpoint">Logo</div>
-                          <div class="headline01 smallpoint">Nombre</div>
-                          <div class="headline01 smallpoint">Division</div>
-                          <div class="headline01 smallpoint">Jugadores</div>
-                          <div class="headline01 smallpoint">Partidos</div>
+            <div class="row">
+                <!--<div class="matchSchedule_details row">-->
 
-                          <div class="headline01 smallpoint row row">
-            							<div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
-                                    </div>
-            						</div>
-                      </li>
+                <!--<div class="match_versus-wrap2">-->
+                <!--<div class="wrap_match-innerdetails">-->
+                <ul class="point_table2 table-responsive">
+                    <li class="clearfix">
+                        <div class="subPoint_table2">
+                            <div class="headline09 smallpoint"><c>Logo</c></div>
+                            <div class="headline09 smallpoint">Nombre</div>
+                            <div class="headline09 smallpoint">Division</div>
+                            <div class="headline09 smallpoint">Jugadores</div>
+                            <div class="headline09 smallpoint">Partidos</div>
 
-                      <% for(var i=0; i < equipos.length; i++) { %> 
-					               <li class="clearfix">
-                          <div class="subPoint_table">
-                          <div class="headline01 smallpoint">
-                              <% if (equipos[i].logo) { %>
-                                <%= equipos[i].logo %> 
-                              <% } else { %>
-                                Ninguno
-                              <% } %>
+                            <div class="headline09 smallpoint row row">
+                                <div class="headline09 smallpoint1"><span></span></div>
                             </div>
-                          <div class="headline01 smallpoint"><%= equipos[i].nombre %></div>
-                          <div >
-                              <div class="headline01 smallpoint">
-                              <% if (divisionesMap[equipos[i].division]) { %>
-                                <%= divisionesMap[equipos[i].division] %> 
-                              <% } else { %>
-                                Ninguna
-                              <% } %>
-                              
-                              <form action="/updateEquipo" method="post" id="formUpdate" onsubmit="return confirm('Seguro que desea cambiar la division del equipo <%= equipos[i].nombre %>?');">
-                                <select name="division" id="divisionSelect">
-                                  <% for(var j=0; j < divisiones.length; j++) { %> 
-                                    <option value="<%= divisiones[j]._id %>" selected><%=divisiones[j].nombre%></option>
-                                  <% } %>
-                                </select>
-                                <input type="hidden" class="form-control" name="equipoid" value="<%= equipos[i]._id %>">
-                                <input type="hidden" class="form-control" name="nombre" value="<%= equipos[i].nombre %>">
-                                <button type="submit" >Cambiar</button>
-                              </form>
-                              </div>
-                          </div>
-                          <div class="headline01 smallpoint">
-                            <% if (equipos[i].jugadores ) { %>
-                              <button  type="submit">Ver Jugadores</button></span>
+                        </div>
+                    </li>
+
+                    <% for(var i=0; i < equipos.length; i++) { %>
+                    <li class="clearfix">
+                        <div class="subPoint_table2">
+                            <div class="headline09 smallpoint"><c>
+                                    <% if (equipos[i].logo) { %>
+                                    <%= equipos[i].logo %>
+                                    <% } else { %>
+                                    Ninguno
+                                    <% } %>
+                                </c>
+                            </div>
+                            <div class="headline09 smallpoint"><%= equipos[i].nombre %></div>
+                            <div >
+                                <div class="headline09 smallpoint">
+                                    <% if (divisionesMap[equipos[i].division]) { %>
+                                    <%= divisionesMap[equipos[i].division] %>
+                                    <% } else { %>
+                                    Ninguna
+                                    <% } %>
+
+                                    <form action="/updateEquipo" method="post" id="formUpdate" onsubmit="return confirm('Seguro que desea cambiar la division del equipo <%= equipos[i].nombre %>?');">
+                                        <select name="division" id="divisionSelect">
+                                            <% for(var j=0; j < divisiones.length; j++) { %>
+                                            <option value="<%= divisiones[j]._id %>" selected><%=divisiones[j].nombre%></option>
+                                            <% } %>
+                                        </select>
+                                        <input type="hidden" class="form-control" name="equipoid" value="<%= equipos[i]._id %>">
+                                        <input type="hidden" class="form-control" name="nombre" value="<%= equipos[i].nombre %>">
+                                        <button type="submit" >Cambiar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="headline09 smallpoint">
+                                <% if (equipos[i].jugadores ) { %>
+                                <button  type="submit">Ver Jugadores</button></span>
                                 <!-- <%= equipos[i].jugadores  %>  -->
-                              <% } else { %>
+                                <% } else { %>
                                 Ninguno
-                              <% } %>
-                          </div>
-                          <div class="headline01 smallpoint">
-                            <% if (equipos[i].partidos ) { %>
-                            <button  type="submit">Ver Partidos</button></span>
+                                <% } %>
+                            </div>
+                            <div class="headline09 smallpoint">
+                                <% if (equipos[i].partidos ) { %>
+                                <button  type="submit">Ver Partidos</button></span>
                                 <!-- <%= equipos[i].partidos  %>  -->
-                              <% } else { %>
+                                <% } else { %>
                                 Ninguno
-                              <% } %>
-                          </div>
-                          <div class="headline01 smallpoint row row">
-							<div class="headline01 smallpoint1"><span>
+                                <% } %>
+                            </div>
+                            <div class="headline09 smallpoint row row">
+                                <div class="headline09 smallpoint1"><span>
 								<form onsubmit="return confirm('Seguro que desea eliminar al equipo <%= equipos[i].nombre %>?');" action="/deleteEquipo" method="post">
 					                <button type="submit">Eliminar</button>
 					                <input type="hidden" value=<%= equipos[i]._id %> name="equipoid"/>
 					            </form>
 							</span></div>
-						  </div>
-						</div>
-                      </li>
-                      <% } %>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
 
-                    </ul>
-                    </div>
-                  </div>
- 				</div>
+                </ul>
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
-		
-		
-      </section>
-    
 
-      <!-- footer -->
-      <footer ><!--class="footer-type01"-->
-	   <%- include ../footer.ejs %>
-      </footer>
-    </div>
-    
 
-      
-    <script src="js/vendor/vendor.js"></script>     
-    <script src="js/main.js"></script>
-	<script src="js/admin.js"></script> 
-        
+    </section>
+
+
+    <!-- footer -->
+    <footer ><!--class="footer-type01"-->
+        <%- include ../footer.ejs %>
+    </footer>
+</div>
+
+
+
+<script src="js/vendor/vendor.js"></script>
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+
 </body>
 </html>
