@@ -6361,6 +6361,17 @@ h6 {
   font-weight: 350;
   text-transform: uppercase; }
 
+.headline09 {
+  font-family: "Oswald", sans-serif;
+  font-size: 19px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: ;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase; }
+
 .headline02 {
   font-family: "Oswald", sans-serif;
   font-size: 27px;
@@ -9008,10 +9019,7 @@ section {
   /*padding-left: 15px;*/
   /*padding-right: 15px; */
 }
-  .subPoint_table .smallpoint span:last-of-type {
-    /*margin-left: 10px;*/
-    color: #979da0; }
-	
+
 .subPoint_table .smallpoint1 {
   position: relative;
   text-align: center;
@@ -9022,10 +9030,65 @@ section {
   /*padding-left: 5px;*/
   /*padding-right: 5px; */
 }
+
+.subPoint_table .smallpoint span:last-of-type {
+  /*margin-left: 10px;*/
+  color: #979da0; }
+
+.subPoint_table2 .largepoint {
+  position: relative;
+  float: left;
+  display: inline-flex;
+  width: 33%;
+  min-height: 1px;
+  padding-left: 15px;
+  /*padding-right: 15px;*/
+}
+
+.subPoint_table2 .largepoint1 {
+  position: relative;
+  float: left;
+  display: inline-flex;
+  width: 60%;
+  min-height: 1px;
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+}
+
+
+.subPoint_table2 .smallpoint {
+  position: relative;
+  display: table;
+  float: left;
+  width: 100%;
+  min-height: 40px;
+  /*padding-left: 15px;*/
+  /*padding-right: 15px; */
+}
+
+
+.subPoint_table2 .smallpoint :first-of-type {
+    margin-left: 10px; }
+
+.subPoint_table2 {
+  align-items: center;
+  display: flex;}
+
+
+.subPoint_table2 .smallpoint1 {
+  position: relative;
+  text-align: left;
+  display: inline-flex;
+  min-height: 45px;
+  min-width: 45px;
+
+  /*padding-left: 5px;*/
+  /*padding-right: 5px; */
+}
   .subPoint_table .smallpoint1 span:last-of-type {
     /*margin-left: 8px;*/
     color: #979da0; }
-	
+
 .logo-match {
   position: relative;
   float: left;
@@ -9106,7 +9169,7 @@ section {
       height: 0;
       top: 0;
       z-index: 2; }
- 
+
 @media screen and (min-width: 1200px) {
   .match_timing {
     height: 400px; }
