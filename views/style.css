@@ -6324,7 +6324,8 @@ h6 {
 /*-------------- headline banner ---------------*/
 .bannerHeadline {
   font-family: "Oswald", sans-serif;
-  font-size: 80px;
+  font-size: 60px;
+  padding-top: 75px;
   color: white;
   font-weight: 400;
   text-transform: uppercase; }
@@ -8060,7 +8061,7 @@ ul.videoLive {
   background-attachment: fixed; }
 
   .innerbannergoleadores {
-  height: 600px;
+  height: 450px;
   position: relative;
   overflow: hidden;
   background: url(images/background/innerpageBggoleador.jpg) center no-repeat;

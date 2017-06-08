@@ -7,10 +7,10 @@
     <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-     <link rel="stylesheet" href="vendor.css">       
-     <link rel="stylesheet" href="style.css">   
+     <link rel="stylesheet" href="vendor.css">
+     <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-    <script src="js/vendor/modernizr.js"></script>    
+    <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -21,7 +21,7 @@
       <header class="header-main">
         <div class="header-lower clearfix">
       <%- include ../menu.ejs %>
-        </div>  
+        </div>
 </header>
 
        <!-- banner section -->
@@ -40,11 +40,11 @@
           <% } %>
       <% } %>
 
-      <section class="innerpage_all_wrap bg-white"> 
+      <section class="innerpage_all_wrap bg-white">
         <div class="container">
 			<div class="row">
 			<div class="matchSchedule_details row">
-                
+
 				 <div class="match_versus-wrap2">
                   <div class="wrap_match-innerdetails">
                     <ul class="point_table2">
@@ -61,12 +61,12 @@
             						</div>
                       </li>
 
-                      <% for(var i=0; i < equipos.length; i++) { %> 
+                      <% for(var i=0; i < equipos.length; i++) { %>
 					               <li class="clearfix">
                           <div class="subPoint_table">
                           <div class="headline01 smallpoint">
                               <% if (equipos[i].logo) { %>
-                                <%= equipos[i].logo %> 
+                                <%= equipos[i].logo %>
                               <% } else { %>
                                 Ninguno
                               <% } %>
@@ -75,14 +75,14 @@
                           <div >
                               <div class="headline01 smallpoint">
                               <% if (divisionesMap[equipos[i].division]) { %>
-                                <%= divisionesMap[equipos[i].division] %> 
+                                <%= divisionesMap[equipos[i].division] %>
                               <% } else { %>
                                 Ninguna
                               <% } %>
-                              
+
                               <form action="/updateEquipo" method="post" id="formUpdate" onsubmit="return confirm('Seguro que desea cambiar la division del equipo <%= equipos[i].nombre %>?');">
                                 <select name="division" id="divisionSelect">
-                                  <% for(var j=0; j < divisiones.length; j++) { %> 
+                                  <% for(var j=0; j < divisiones.length; j++) { %>
                                     <option value="<%= divisiones[j]._id %>" selected><%=divisiones[j].nombre%></option>
                                   <% } %>
                                 </select>
@@ -126,22 +126,22 @@
  				</div>
             </div>
         </div>
-		
-		
+
+
       </section>
-    
+
 
       <!-- footer -->
       <footer ><!--class="footer-type01"-->
 	   <%- include ../footer.ejs %>
       </footer>
     </div>
-    
 
-      
-    <script src="js/vendor/vendor.js"></script>     
+
+
+    <script src="js/vendor/vendor.js"></script>
     <script src="js/main.js"></script>
-	<script src="js/admin.js"></script> 
-        
+	<script src="js/admin.js"></script>
+
 </body>
 </html>
