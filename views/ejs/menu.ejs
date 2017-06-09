@@ -49,6 +49,28 @@
                                     <li><a href="#">Ninguna</a></li>
                                     <% } %>
                                 </ul>
+
+                            <li>
+                                <a>Fixture
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <ul class="sub-menu">
+
+                                    <% if (divisiones.length >0) { %>
+                                    <% for(var i=0; i < divisiones.length; i++) { %>
+                                    <% if (divisiones[i].nombre) { %>
+                                    <li><a href="/posicionesDeLaDivision?divisionid=<%= divisiones[i]._id%>"><%= divisiones[i].nombre %></a></li>
+                                    <% } else { %>
+                                    <li><a href="#">Ninguna</a></li>
+                                    <% } %>
+                                    <% } %>
+                                    <% } else { %>
+                                    <li><a href="#">Ninguna</a></li>
+                                    <% } %>
+                                </ul>
                            <!-- <li>
                                 <a href="/goleadores">
                                     Goleadores
