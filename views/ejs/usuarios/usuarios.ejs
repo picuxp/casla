@@ -42,38 +42,47 @@
 
       <section class="innerpage_all_wrap bg-white"> 
         <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
+
          
-         <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-              <input type="text" id="buscadorUsuario" class="form-control" placeholder="Buscar usuario">
-          </div>
-      </form>
-
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-                    <ul class="point_table2">
-                       <li class="clearfix">
-                        <div class="subPoint_table">
-                          <div class="headline01 smallpoint">EMAIL</div>
-                          <div class="headline01 smallpoint">ROL</div>
-                          <div class="headline01 smallpoint">EQUIPO QUE DELEGA</div>
-                          <div class="headline01 largepoint1 row row">
-							<div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
-                        </div>
-						</div>
-
-            </li>
 
 
-            <div id="datosUsers">
+				 <div class="table-responsive " style="text-align: center; ">
+                     <div class="wrap_match-innerdetails">
+                  <table class="table table-striped " style="background-color: #0a0a0a; text-align: center;   width: 100%" >
+                    <thead style="background-color: red">
+
+                    <tr >
+                               <form class="navbar-form navbar-left" role="search">
+                                   <td  class="form-group">
+                                       <input type="text" id="buscadorUsuario" class="form-control" placeholder="Buscar usuario">
+                                   </td>
+                               </form>
+
+                    </tr>
+
+                    <tr >
+
+                          <th scope="col" class="headline01 " style="text-align: center; color: blue ">EMAIL</th>
+                          <th scope="col" class="headline01 " style="text-align: center; color: blue">ROL</th>
+                          <th scope="col"class="headline01 " style="text-align: center; color: blue">EQUIPO QUE DELEGA</th>
+
+							<th scope="col" class="headline01 " style="text-align: center; color: blue"><span>ELIMINAR</span></th>
+
+                    </tr>
+
+
+
+
+                    </thead>
+
+
+            <tbody id="datosUsers">
               <% for(var i=0; i < users.length; i++) { %> 
-  					     <li class="clearfix">
-                            <div class="subPoint_table">
-                            <div class="headline01 smallpoint"><%= users[i].email %></div>
-                            <div class="headline01 smallpoint"><%= users[i].role %></div>
-                            <div class="headline01 smallpoint">
+  					     <tr >
+
+                            <td class="headline01 "><%= users[i].email %></td>
+                            <td class="headline01 "><%= users[i].role %></td>
+                            <td class="headline01 ">
                               <% if (users[i].role != "DELEGADO") { %>
                                   No Disponible
                                <% } else { %>
@@ -95,9 +104,9 @@
                                        <button type="submit" class="asignarEquipo" id="boton-<%=users[i].email%>-<%=users[i]._id%>">Asignar</button>
                                    </form>
                               <% } %>
-                            </div>
+                            </td>
                             <!-- <div class="headline01 largepoint1 row row"> -->
-              							<div class="headline01 smallpoint1">
+              							<td class="headline01 ">
                                <% if (users[i].role == "ADMIN") { %>
                                   No Disponible
                                <% } else { %>
@@ -106,21 +115,20 @@
                   					                <input type="hidden" value=<%= users[i]._id %> name="userid"/>
                   					     </form>
                               <% } %>
-              							</div>
+              							</td>
               						  <!-- </div> -->
-              						</div>
-                        </li>
-               <% } %>
-           </div>
 
-             </ul>
-             </div>
+                        </tr>
+               <% } %>
+           </tbody>
+
+
+             </table>
              </div>
  				</div>
-            </div>
+
+		
         </div>
-		
-		
       </section>
     
 
