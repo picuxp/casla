@@ -6,7 +6,6 @@ FUNCIONALIDADES
 * arreglar vista /cargarPartido?
 * validar que en la carga de partidos los goles sean como máximo 30.
 * eliminar la opcion SUPER ADMIN cuando estás logueado como rol super admin.
-* agregar la funcionalidad de "fixture": debe mostrar todos los partidos que haya cargados por división.
 * agregar la funcionalidad de "proxima fecha": debe mostrarse en el menú. Cuando ponés el mouse arriba te despliega las divisiones. Cuando seleccionás
     la división, te debe mostrar los partidos de la prox fecha(se filtra por fecha de calendario mas cercana al dia que se la solicita). Por ej:
     hoy es 6/6, yo cuando toco "proxima fecha" me debe mostrar todos los partidos del domingo 11/6(de la división que haya seleccionado), pero si 
