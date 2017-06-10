@@ -1,10 +1,9 @@
 ---------------------------------------------------------------------------------------------------------------------------------
 FUNCIONALIDADES
 ---------------------------------------------------------------------------------------------------------------------------------
-
+* agregar cancha y horario al partido.
 * agregar en /equipos, un boton que permita modificar el equipo.
 * arreglar vista /cargarPartido?
-* validar que en la carga de partidos los goles sean como máximo 30.
 * eliminar la opcion SUPER ADMIN cuando estás logueado como rol super admin.
 * agregar la funcionalidad de "proxima fecha": debe mostrarse en el menú. Cuando ponés el mouse arriba te despliega las divisiones. Cuando seleccionás
     la división, te debe mostrar los partidos de la prox fecha(se filtra por fecha de calendario mas cercana al dia que se la solicita). Por ej:
@@ -24,8 +23,8 @@ VALIDACIONES
 ---------------------------------------------------------------------------------------------------------------------------------
 
 * Que al agregar user no exista el mail.
-* Que un mismo equipo no pueda estar mas de una vez en una fecha(ej: equipo rojo no puede estar 2 veces en la fecha 1)
-* Fechas distintas no pueden ser igual a fechas calendario(ej: fecha 1 no puede estar el 30/6 y el 7/6)
+* Que un mismo equipo no pueda estar mas de una vez en una fecha(ej: equipo rojo no puede estar 2 veces en la fecha 1).
+* Validar que en la carga de partidos los goles sean como máximo 30.
 
 
 
