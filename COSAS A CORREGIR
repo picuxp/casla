@@ -1,14 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------------
 FUNCIONALIDADES
 ---------------------------------------------------------------------------------------------------------------------------------
-* agregar cancha y horario al partido.
-* eliminar la opcion SUPER ADMIN cuando estás logueado como rol super admin.
-* agregar la funcionalidad de "proxima fecha": debe mostrarse en el menú. Cuando ponés el mouse arriba te despliega las divisiones. Cuando seleccionás
-    la división, te debe mostrar los partidos de la prox fecha(se filtra por fecha de calendario mas cercana al dia que se la solicita). Por ej:
-    hoy es 6/6, yo cuando toco "proxima fecha" me debe mostrar todos los partidos del domingo 11/6(de la división que haya seleccionado), pero si 
-    hoy es 11/6 o 12/6, me debe mostrar la del 18/6. Si no hay partidos cargados, que muestre una tabla vacía.
-    Proxima fecha debe mostrar: equipos que se enfrentan, horario y cancha en la que se juega
-* /partidos: agregar filtro por division
 * cuando se agrega un equipo, que ademas del nombre me desplegue una lista de divisiones para asignarle directamente.
 * logueado como DELEGADO, no anda el put de actualizar jugador.
 * logueado como DELEGADO, me debe mostrar 25 jugadores para cargar
