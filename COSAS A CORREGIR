@@ -3,7 +3,6 @@ FUNCIONALIDADES
 ---------------------------------------------------------------------------------------------------------------------------------
 * agregar cancha y horario al partido.
 * agregar en /equipos, un boton que permita modificar el equipo.
-* arreglar vista /cargarPartido?
 * eliminar la opcion SUPER ADMIN cuando estás logueado como rol super admin.
 * agregar la funcionalidad de "proxima fecha": debe mostrarse en el menú. Cuando ponés el mouse arriba te despliega las divisiones. Cuando seleccionás
     la división, te debe mostrar los partidos de la prox fecha(se filtra por fecha de calendario mas cercana al dia que se la solicita). Por ej:
@@ -13,7 +12,6 @@ FUNCIONALIDADES
 * /equipos: cuando pones "ver jugadores", te debería mostrar todos los jugadores del equipo.
 * /equipos: cuando pones "ver partidos", te debería mostrar todos los partidos del equipo.
 * /partidos: agregar filtro por division
-* logueado como PLANILLERO, cuando pongo "cargar partidos" no me debe mostrar la opcion de eliminar un partido, solo de cargar
 * cuando se agrega un equipo, que ademas del nombre me desplegue una lista de divisiones para asignarle directamente.
 * logueado como DELEGADO, no anda el put de actualizar jugador.
 * logueado como DELEGADO, me debe mostrar 25 jugadores para cargar
