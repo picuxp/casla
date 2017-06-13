@@ -89,7 +89,9 @@
 
                     <div class="table-responsive" style="background-color: #262626">
                         <div class="wrap_match-innerdetails">
-                        <table class="table table-striped " style="text-align: center">
+                        <table class="table table-striped " style="text-align: center ">
+
+                             <% if ((user.role == "ADMIN") || (user.role == "SUPER_ADMIN")) { %>
 
 
                                     <tr>
@@ -102,6 +104,23 @@
                                     </select>
                                     </div>
                                     </tr>
+
+                            <% } else { %>
+
+                            <tr>
+                                <div class="headline02 largepoint1" style="color:midnightblue; text-align: center; background-color: #b81e20">Ver partidos fecha:
+                                    <select name="fechaSelectName1" id="fechaSelect1">
+                                        <option value="none"></option>
+                                        <% for(var i=0; i < numeros_fechas.length; i++) { %>
+                                        <option value="<%= numeros_fechas[i] %>"><%= numeros_fechas[i] %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </tr>
+
+                            <% } %>
+
+
 
                             <thead>
                                     <tr >
@@ -120,14 +139,7 @@
                                                 <th scope="col" class="headline06">Cambios</th>
                                                 <th scope="col" class="headline06"></th>
                                                 <th scope="col" class="headline06"></th>
-                                                <!--<th scope="col" class="headline06b">-->
-                                                    <!--<form action="/cargarPartido" method="get" id="formCargarPartido">-->
-                                                        <!--<input type="hidden" class="form-control">-->
-                                                        <!--<button type="submit" > Cargar </button>-->
-                                                    <!--</form>-->
-                                                <!--<th scope="col" class="headline06b smallpoint">-->
-                                                    <!--<div class="headline08 smallpoint1"><span>ELIMINAR</span></div>-->
-                                                <!--</th>-->
+
                                         </tr>
                             </thead>
 
