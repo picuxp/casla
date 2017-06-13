@@ -114,6 +114,7 @@ $("#fechaSelect").change(function () {
 					};
 
 					var html = "";
+					//var htmlAdmin = "";
 					for (var i = 0; i < partidos.length; i++) {
 
 						html += '<tr><td class="headline06">' +partidos[i].estado+ '</td>';
@@ -176,12 +177,16 @@ $("#fechaSelect").change(function () {
 							'<button type="submit">Cargar</button>'+
 							'</form></span></td>';
 
+						//html += ' <% if (users[i].role == "ADMIN") { %>';
+                       // htmlAdmin +=
+
 						html += '<td class="headline06b"><span>' +
 							'<form action="/deletePartido" method="post" id="formDelete'+ partidos[i]._id +'">' +
 							'<button class="deletePartido" id="' +partidos[i]._id +'-' +equiposMap[partidos[i].equipo1]+ '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
 							'<input type="hidden" value='+ partidos[i]._id +' name="partidoid"/>' +
 							'</form></span></td>';
 
+						//html += '<% } %>';
 						html += '</tr>';
 					}
 					$("#dataPartidosConFecha").append(html);
@@ -189,6 +194,102 @@ $("#fechaSelect").change(function () {
 			});
 		});
 	}
+});
+
+$("#fechaSelect1").change(function () {
+    if ($("#fechaSelect1").val() == "none") {
+        $("#dataPartidosConFecha").hide();
+        $("#dataPartidosConFecha").empty();
+    } else {
+        $("#dataPartidosConFecha").show();
+        $("#dataPartidosConFecha").css("visibility", "visible");
+        $("#dataPartidosConFecha").empty();
+
+        var fecha_numero = $("#fechaSelect1").val();
+        $.get('http://localhost:3000/partido/fecha_numero/' + fecha_numero, function (partidos) {
+            $.get('http://localhost:3000/equipo', function (equipos) {
+                $.get('http://localhost:3000/division', function (divisiones) {
+
+                    var equiposMap = {};
+                    for (var i = 0; i < equipos.length; i++) {
+                        equiposMap[equipos[i]._id] = equipos[i].nombre;
+                    };
+                    var divisionesMap = {};
+                    for (var i = 0; i < divisiones.length; i++) {
+                        divisionesMap[divisiones[i]._id] = divisiones[i].nombre;
+                    };
+
+                    var html = "";
+                    for (var i = 0; i < partidos.length; i++) {
+
+                        html += '<tr><td class="headline06">' +partidos[i].estado+ '</td>';
+                        html += '<td class="headline06">' +equiposMap[partidos[i].equipo1]+ '</td>';
+                        html += '<td class="headline06">';
+                        if (partidos[i].marcador_equipo_1 == undefined) {
+                            html += "0";
+                        } else {
+                            html += partidos[i].marcador_equipo_1;
+                        }
+                        html += "</td>";
+                        html += '<td class="headline06">';
+                        if (partidos[i].marcador_equipo_2 == undefined) {
+                            html += "0";
+                        } else {
+                            html += partidos[i].marcador_equipo_2;
+                        }
+                        html += "</td>";
+                        html += '<td class="headline06">' +equiposMap[partidos[i].equipo2]+ '</td>';
+                        html += '<td class="headline06">' +partidos[i].fecha_numero + '</td>';
+                        html += '<td class="headline06">' +formatDate(partidos[i].fecha)+ '</td>';
+                        html += '<td class="headline06">' +divisionesMap[partidos[i].division]+ '</td>';
+
+                        html += '<td class="headline06">';
+                        if (partidos[i].amonestados.length == 0) {
+                            html += 'Ninguno';
+                        } else {
+                            html += "VER AMONESTADOS";
+                        }
+                        html += '</td>';
+
+                        html += '<td class="headline06">';
+                        if (partidos[i].expulsados.length == 0) {
+                            html += 'Ninguno';
+                        } else {
+                            html += "VER EXPULSADOS";
+                        }
+                        html += '</td>';
+
+                        html += '<td class="headline06">';
+                        if (partidos[i].goles.length == 0) {
+                            html += 'Ninguno';
+                        } else {
+                            html += "VER GOLES";
+                        }
+                        html += '</td>';
+
+                        html += '<td class="headline06">';
+                        if (partidos[i].cambios.length == 0) {
+                            html += 'Ninguno';
+                        } else {
+                            html += "VER CAMBIOS";
+                        }
+                        html += '</td>';
+
+
+                        html += '<td class="headline06b"><span>' +
+                            '<form action="/cargarPartido">' +
+                            '<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
+                            '<button type="submit">Cargar</button>'+
+                            '</form></span></td>';
+
+
+                        html += '</tr>';
+                    }
+                    $("#dataPartidosConFecha").append(html);
+                });
+            });
+        });
+    }
 });
 
 

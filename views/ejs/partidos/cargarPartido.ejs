@@ -38,7 +38,7 @@
     <% } %>
     <% } %>
 
-    <div class="table-responsive" style="background-color: #0a0a0a; text-align: left" >
+    <div class="table-responsive" style="background-color: red; text-align: center" >
             <!-- show any messages that come back with authentication -->
             <% if (message.length > 0) { %>
             <div class="alert alert-danger"><%= message %></div>
@@ -48,77 +48,86 @@
                 <input type="hidden" class="form-control">
 
                 <!--DATOS FIJOS -->
-                <table class="table-responsive" style=" background-color: black; text-align: left; margin: 0 auto;">
+                <table class="table-bordered table-striped " style=" background-color: black; text-align: center; margin: 0 auto;">
                     <thead>
-                    <tr>
+                    <tr style="background-color: darkblue">
+
                     <td class="form-group headline05" id="fecha_numero">
-                        Numero Fecha: <br>
-                            <td class="headline08 largepoint1" id="nro-fecha-id" name="fecha_numero"></td>
+                        Numero Fecha:
+                            <a class="headline08 largepoint1" id="nro-fecha-id" name="fecha_numero"></a>
                     </td>
 
                     <td class="form-group headline05" id="fecha">
-                          DIA: <br>
-                            <td class="headline08 largepoint1" id="fecha-id" type="date" name="fecha"></td>
-                            <br>
+                          DIA:
+                            <a class="headline08 largepoint1" id="fecha-id" type="date" name="fecha"></a>
+
 
                     </td>
 
                     <td class="form-group headline05" id="division">
-                        División: <br>
-                            <td class="headline08 largepoint1" id="division-id" name="division"></td>
+                        División:
+                            <a class="headline08 largepoint1" id="division-id" name="division"></a>
 
                     </td>
+
                     </tr>
                     </thead>
-                </table>
-                <table class="table-striped table-bordered" >
+
             <tbody>
                 <tr>
                 <!-- DATOS VARIABLES -->
-                <div class="form-inline">
 
-                    <div class="form-group" id="estado_partido">
+
+                    <td class="form-group" id="estado_partido" colspan="3" >
+                        <br>
                         <div class="headline01 largepoint1">Estado partido
                             <select class="headline07" id="estado-id" name="estado_partido"></select>
                         </div>
-                    </div>
-                </div>
+                        <br>
+                    </td>
+
                 </tr>
 				
 				<tr>
-				<div class="form-inline">
-					<div class="form-group" id="equipo1">
-						<div class="headline01 largepoint1">Equipo 1
+
+                    <td class="form-group headline08" rowspan="2" style="text-decoration-color: red">
+
+                        RESULTADO:
+
+                    </td>
+
+					<td class="form-group" id="equipo1" >
+						<div class="headline01 largepoint1">
 							<div class="headline01 largepoint1" id="team1-id" name="equipo1"></div>
 						</div>
-					</div>
+					</td>
 
-					<div class="form-group" id="equipo2">
-						<div class="headline01 largepoint1" colspan=2 >Equipo 2
+					<td class="form-group" id="equipo2" >
+						<div class="headline01 largepoint1"  >
 							<div class="headline01 largepoint1" id="team2-id" name="equipo2"></div>
 						</div>
-					</div>
-				</div>
+					</td>
+
 				</tr>
 				
                 <tr>
-                <div class="form-inline">
 
-                    <div class="form-group" id="goles_equipo1">
-                        <div class="headline01 largepoint1">Goles Equipo 1
+
+                    <td class="form-group" id="goles_equipo1" >
+                        <div class="headline01 largepoint1">
                             <div class="headline01 largepoint1" id="goles1-id"></div>
                             <input class="headline07" type="number" min="0" value="0" name="goles_equipo1" id="goles1-id">
                         </div>
-                    </div>
+                    </td>
 
 
-                    <div class="form-group" id="goles_equipo2">
-                        <div class="headline01 largepoint1" colspan=4 >Goles Equipo 2
+                    <td class="form-group" id="goles_equipo2" >
+                        <div class="headline01 largepoint1"  >
                             <div class="headline01 largepoint1" id="goles2-id"></div>
                             <input class="headline07" min="0" value="0" type="number" name="goles_equipo2" id="goles2-id">
                         </div>
-                    </div>
-                </div>
+                    </td>
+
 
                 </tr>
 
@@ -196,9 +205,14 @@
 
                 <tr>
 
+                    <td colspan="3">
+                        <br>
                     <a href="/planillero"><input type="button" class="botonCancelar-id" value="Cancelar" /></a>
                 <input type="hidden" id="idPartido" value=<%= partido._id %> name="partidoId"/>
                 <button type="submit" id = "botonGuardarCambios-id" class="botonGuardarCambios-id">Guardar cambios</button>
+
+                        <br>
+                    </td>
 
                 </tr>
 
@@ -224,6 +238,7 @@
 <script src="js/main.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/cargarPartido.js"></script>
+
 
 </body>
 </html>
