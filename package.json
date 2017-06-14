@@ -3,18 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "4.3.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilanrosenfeld7/casla.git"
+    "url": "git+https://github.com/d4victory/casla.git"
   },
   "author": "lancha-dante",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ilanrosenfeld7/casla/issues"
+    "url": "https://github.com/d4victory/casla/issues"
   },
   "dependencies": {
     "autoloader": "^2.1.0",
