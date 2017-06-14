@@ -18,7 +18,14 @@ var logger = require('./logger');
 
 
 // Connection to DB
-mongoose.connect('mongodb://localhost/casla', function(err, res) {
+///////////////////////LOCAL/////////////////////////////////////////////
+//mongoose.connect('mongodb://localhost/casla', function(err, res) {
+//  if(err) throw err;
+//  console.log('Connected to Database');
+//});
+
+/////////////////////PRODUCCION//////////////////////////////////////////
+mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla', function(err, res) {
   if(err) throw err;
   console.log('Connected to Database');
 });
