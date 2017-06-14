@@ -1,17 +1,4 @@
----------------------------------------------------------------------------------------------------------------------------------
-FUNCIONALIDADES
----------------------------------------------------------------------------------------------------------------------------------
-* cuando se agrega un equipo, que ademas del nombre me desplegue una lista de divisiones para asignarle directamente.
-* logueado como DELEGADO, no anda el put de actualizar jugador.
-* logueado como DELEGADO, me debe mostrar 25 jugadores para cargar
 
----------------------------------------------------------------------------------------------------------------------------------
-VALIDACIONES
----------------------------------------------------------------------------------------------------------------------------------
-
-* Que al agregar user no exista el mail.
-* Que un mismo equipo no pueda estar mas de una vez en una fecha(ej: equipo rojo no puede estar 2 veces en la fecha 1).
-* Validar que en la carga de partidos los goles sean como máximo 30.
 
 
 
