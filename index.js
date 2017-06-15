@@ -18,18 +18,17 @@ var logger = require('./logger');
 
 
 // Connection to DB
-
 ///////////////////////LOCAL/////////////////////////////////////////////
-mongoose.connect('mongodb://localhost/casla', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
-});
-
-/////////////////////PRODUCCION//////////////////////////////////////////
-//mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla', function(err, res) {
+//mongoose.connect('mongodb://localhost/casla', function(err, res) {
 //  if(err) throw err;
 //  console.log('Connected to Database');
 //});
+
+/////////////////////PRODUCCION//////////////////////////////////////////
+mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla', function(err, res) {
+  if(err) throw err;
+  console.log('Connected to Database');
+});
 
 
 require('./config/passport')(passport,logger); // pass passport for configuration
