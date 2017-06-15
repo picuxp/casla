@@ -103,93 +103,106 @@ $("#fechaSelect").change(function () {
 		$.get('http://localhost:3000/partido/fecha_numero/' + fecha_numero, function (partidos) {
 			$.get('http://localhost:3000/equipo', function (equipos) {
 				$.get('http://localhost:3000/division', function (divisiones) {
+                    $.get('http://localhost:3000/cancha', function (cancha) {
 
-					var equiposMap = {};
-					for (var i = 0; i < equipos.length; i++) {
-						equiposMap[equipos[i]._id] = equipos[i].nombre;
-					};
-					var divisionesMap = {};
-					for (var i = 0; i < divisiones.length; i++) {
-						divisionesMap[divisiones[i]._id] = divisiones[i].nombre;
-					};
+                        var equiposMap = {};
+                        for (var i = 0; i < equipos.length; i++) {
+                            equiposMap[equipos[i]._id] = equipos[i].nombre;
+                        }
+                        ;
+                        var divisionesMap = {};
+                        for (var i = 0; i < divisiones.length; i++) {
+                            divisionesMap[divisiones[i]._id] = divisiones[i].nombre;
+                        }
+                        ;
 
-					var html = "";
-					//var htmlAdmin = "";
-					for (var i = 0; i < partidos.length; i++) {
+                        var canchaMap = {};
+                        for (var i = 0; i < cancha.length; i++) {
+                            canchaMap[cancha[i]._id] = cancha[i].nombre;
+                        }
+                        ;
 
-						html += '<tr><td class="headline06">' +partidos[i].estado+ '</td>';
-						html += '<td class="headline06">' +equiposMap[partidos[i].equipo1]+ '</td>';
-						html += '<td class="headline06">';
-						if (partidos[i].marcador_equipo_1 == undefined) {
-							html += "0";
-						} else {
-							html += partidos[i].marcador_equipo_1;
-						}
-						html += "</td>";
-						html += '<td class="headline06">';
-						if (partidos[i].marcador_equipo_2 == undefined) {
-							html += "0";
-						} else {
-							html += partidos[i].marcador_equipo_2;
-						}
-						html += "</td>";
-						html += '<td class="headline06">' +equiposMap[partidos[i].equipo2]+ '</td>';
-						html += '<td class="headline06">' +partidos[i].fecha_numero + '</td>';
-						html += '<td class="headline06">' +formatDate(partidos[i].fecha)+ '</td>';
-						html += '<td class="headline06">' +divisionesMap[partidos[i].division]+ '</td>';
+                        var html = "";
+                        //var htmlAdmin = "";
+                        for (var i = 0; i < partidos.length; i++) {
 
-						html += '<td class="headline06">';
-						if (partidos[i].amonestados.length == 0) {
-							html += 'Ninguno';
-						} else {
-							html += "VER AMONESTADOS";
-						}
-						html += '</td>';
+                            html += '<tr><td class="headline06">' + partidos[i].estado + '</td>';
+                            html += '<td class="headline06">' + equiposMap[partidos[i].equipo1] + '</td>';
+                            html += '<td class="headline06">';
+                            if (partidos[i].marcador_equipo_1 == undefined) {
+                                html += "X";
+                            } else {
+                                html += partidos[i].marcador_equipo_1;
+                            }
+                            html += "</td>";
+                            html += '<td class="headline06">';
+                            if (partidos[i].marcador_equipo_2 == undefined) {
+                                html += "X";
+                            } else {
+                                html += partidos[i].marcador_equipo_2;
+                            }
+                            html += "</td>";
+                            html += '<td class="headline06">' + equiposMap[partidos[i].equipo2] + '</td>';
 
-						html += '<td class="headline06">';
-						if (partidos[i].expulsados.length == 0) {
-							html += 'Ninguno';
-						} else {
-							html += "VER EXPULSADOS";
-						}
-						html += '</td>';
+                            html += '<td class="headline06">' + formatDate(partidos[i].fecha) + '</td>';
+                            html += '<td class="headline06">' + formatDate2(partidos[i].fecha) + '</td>';
+                            html += '<td class="headline06">' + divisionesMap[partidos[i].division] + '</td>';
+                            html += '<td class="headline06">' + canchaMap[partidos[i].cancha] + '</td>';
 
-						html += '<td class="headline06">';
-						if (partidos[i].goles.length == 0) {
-							html += 'Ninguno';
-						} else {
-							html += "VER GOLES";
-						}
-						html += '</td>';
+                            html += '<td class="headline06">';
+                            if (partidos[i].amonestados.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER AMONESTADOS";
+                            }
+                            html += '</td>';
 
-						html += '<td class="headline06">';
-						if (partidos[i].cambios.length == 0) {
-							html += 'Ninguno';
-						} else {
-							html += "VER CAMBIOS";
-						}
-						html += '</td>';
+                            html += '<td class="headline06">';
+                            if (partidos[i].expulsados.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER EXPULSADOS";
+                            }
+                            html += '</td>';
+
+                            html += '<td class="headline06">';
+                            if (partidos[i].goles.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER GOLES";
+                            }
+                            html += '</td>';
+
+                            //html += '<td class="headline06">';
+                            //if (partidos[i].cambios.length == 0) {
+                            //	html += 'Ninguno';
+                            //} else {
+                            //	html += "VER CAMBIOS";
+                            //}
+                            //html += '</td>';
 
 
-						html += '<td class="headline06b"><span>' +
-							'<form action="/cargarPartido">' +
-							'<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
-							'<button type="submit">Cargar</button>'+
-							'</form></span></td>';
+                            html += '<td class="headline06b"><span>' +
+                                '<form action="/cargarPartido">' +
+                                '<input type="hidden" name="partidoid" value="' + partidos[i]._id + '" />' +
+                                '<button type="submit">Cargar</button>' +
+                                '</form></span></td>';
 
-						//html += ' <% if (users[i].role == "ADMIN") { %>';
-                       // htmlAdmin +=
+                            //html += ' <% if (users[i].role == "ADMIN") { %>';
+                            // htmlAdmin +=
 
-						html += '<td class="headline06b"><span>' +
-							'<form action="/deletePartido" method="post" id="formDelete'+ partidos[i]._id +'">' +
-							'<button class="deletePartido" id="' +partidos[i]._id +'-' +equiposMap[partidos[i].equipo1]+ '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
-							'<input type="hidden" value='+ partidos[i]._id +' name="partidoid"/>' +
-							'</form></span></td>';
+                            html += '<td class="headline06b"><span>' +
+                                '<form action="/deletePartido" method="post" id="formDelete' + partidos[i]._id + '">' +
+                                '<button class="deletePartido" id="' + partidos[i]._id + '-' + equiposMap[partidos[i].equipo1] + '-' + equiposMap[partidos[i].equipo2] + '" type="submit">Eliminar</button>' +
+                                '<input type="hidden" value=' + partidos[i]._id + ' name="partidoid"/>' +
+                                '</form></span></td>';
 
-						//html += '<% } %>';
-						html += '</tr>';
-					}
-					$("#dataPartidosConFecha").append(html);
+                            //html += '<% } %>';
+                            html += '</tr>';
+                        }
+                        $("#dataPartidosConFecha").append(html);
+
+                    });
 				});
 			});
 		});
@@ -209,83 +222,96 @@ $("#fechaSelect1").change(function () {
         $.get('http://localhost:3000/partido/fecha_numero/' + fecha_numero, function (partidos) {
             $.get('http://localhost:3000/equipo', function (equipos) {
                 $.get('http://localhost:3000/division', function (divisiones) {
+                    $.get('http://localhost:3000/cancha', function (cancha) {
 
-                    var equiposMap = {};
-                    for (var i = 0; i < equipos.length; i++) {
-                        equiposMap[equipos[i]._id] = equipos[i].nombre;
-                    };
-                    var divisionesMap = {};
-                    for (var i = 0; i < divisiones.length; i++) {
-                        divisionesMap[divisiones[i]._id] = divisiones[i].nombre;
-                    };
-
-                    var html = "";
-                    for (var i = 0; i < partidos.length; i++) {
-
-                        html += '<tr><td class="headline06">' +partidos[i].estado+ '</td>';
-                        html += '<td class="headline06">' +equiposMap[partidos[i].equipo1]+ '</td>';
-                        html += '<td class="headline06">';
-                        if (partidos[i].marcador_equipo_1 == undefined) {
-                            html += "0";
-                        } else {
-                            html += partidos[i].marcador_equipo_1;
+                        var equiposMap = {};
+                        for (var i = 0; i < equipos.length; i++) {
+                            equiposMap[equipos[i]._id] = equipos[i].nombre;
                         }
-                        html += "</td>";
-                        html += '<td class="headline06">';
-                        if (partidos[i].marcador_equipo_2 == undefined) {
-                            html += "0";
-                        } else {
-                            html += partidos[i].marcador_equipo_2;
+                        ;
+                        var divisionesMap = {};
+                        for (var i = 0; i < divisiones.length; i++) {
+                            divisionesMap[divisiones[i]._id] = divisiones[i].nombre;
                         }
-                        html += "</td>";
-                        html += '<td class="headline06">' +equiposMap[partidos[i].equipo2]+ '</td>';
-                        html += '<td class="headline06">' +partidos[i].fecha_numero + '</td>';
-                        html += '<td class="headline06">' +formatDate(partidos[i].fecha)+ '</td>';
-                        html += '<td class="headline06">' +divisionesMap[partidos[i].division]+ '</td>';
+                        ;
 
-                        html += '<td class="headline06">';
-                        if (partidos[i].amonestados.length == 0) {
-                            html += 'Ninguno';
-                        } else {
-                            html += "VER AMONESTADOS";
+                        var canchaMap = {};
+                        for (var i = 0; i < cancha.length; i++) {
+                            canchaMap[cancha[i]._id] = cancha[i].nombre;
                         }
-                        html += '</td>';
+                        ;
 
-                        html += '<td class="headline06">';
-                        if (partidos[i].expulsados.length == 0) {
-                            html += 'Ninguno';
-                        } else {
-                            html += "VER EXPULSADOS";
+                        var html = "";
+                        for (var i = 0; i < partidos.length; i++) {
+
+                            html += '<tr><td class="headline06">' + partidos[i].estado + '</td>';
+                            html += '<td class="headline06">' + equiposMap[partidos[i].equipo1] + '</td>';
+                            html += '<td class="headline06">';
+                            if (partidos[i].marcador_equipo_1 == undefined) {
+                                html += "X";
+                            } else {
+                                html += partidos[i].marcador_equipo_1;
+                            }
+                            html += "</td>";
+                            html += '<td class="headline06">';
+                            if (partidos[i].marcador_equipo_2 == undefined) {
+                                html += "X";
+                            } else {
+                                html += partidos[i].marcador_equipo_2;
+                            }
+                            html += "</td>";
+                            html += '<td class="headline06">' + equiposMap[partidos[i].equipo2] + '</td>';
+
+                            html += '<td class="headline06">' + formatDate(partidos[i].fecha) + '</td>';
+                            html += '<td class="headline06">' + formatDate2(partidos[i].fecha) + '</td>';
+                            html += '<td class="headline06">' + divisionesMap[partidos[i].division] + '</td>';
+                            html += '<td class="headline06">' + canchaMap[partidos[i].cancha] + '</td>';
+
+                            html += '<td class="headline06">';
+                            if (partidos[i].amonestados.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER AMONESTADOS";
+                            }
+                            html += '</td>';
+
+                            html += '<td class="headline06">';
+                            if (partidos[i].expulsados.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER EXPULSADOS";
+                            }
+                            html += '</td>';
+
+                            html += '<td class="headline06">';
+                            if (partidos[i].goles.length == 0) {
+                                html += 'Ninguno';
+                            } else {
+                                html += "VER GOLES";
+                            }
+                            html += '</td>';
+
+//                        html += '<td class="headline06">';
+//                        if (partidos[i].cambios.length == 0) {
+//                            html += 'Ninguno';
+//                        } else {
+//                            html += "VER CAMBIOS";
+//                        }
+//                        html += '</td>';
+
+
+                            html += '<td class="headline06b"><span>' +
+                                '<form action="/cargarPartido">' +
+                                '<input type="hidden" name="partidoid" value="' + partidos[i]._id + '" />' +
+                                '<button type="submit">Cargar</button>' +
+                                '</form></span></td>';
+
+
+                            html += '</tr>';
                         }
-                        html += '</td>';
+                        $("#dataPartidosConFecha").append(html);
 
-                        html += '<td class="headline06">';
-                        if (partidos[i].goles.length == 0) {
-                            html += 'Ninguno';
-                        } else {
-                            html += "VER GOLES";
-                        }
-                        html += '</td>';
-
-                        html += '<td class="headline06">';
-                        if (partidos[i].cambios.length == 0) {
-                            html += 'Ninguno';
-                        } else {
-                            html += "VER CAMBIOS";
-                        }
-                        html += '</td>';
-
-
-                        html += '<td class="headline06b"><span>' +
-                            '<form action="/cargarPartido">' +
-                            '<input type="hidden" name="partidoid" value="'+partidos[i]._id+'" />'+
-                            '<button type="submit">Cargar</button>'+
-                            '</form></span></td>';
-
-
-                        html += '</tr>';
-                    }
-                    $("#dataPartidosConFecha").append(html);
+                    });
                 });
             });
         });
@@ -306,8 +332,12 @@ function formatDate2(date) {
 	year = dteSplit[0];
 	month = dteSplit[1];
 	day = dteSplit[2];
-	return year + "-" + month + "-" + day;
+	hour = dteSplit[3];
+
+	return hour.substr(0,5) ;
 }
+
+
 
 //CODIGO QUE IRIA SI LA LOGICA FUERA EN LA VISTA
 // <% for(var i=0; i < partidos.length; i++) { %> 

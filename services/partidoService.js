@@ -77,7 +77,8 @@ exports.addPartido = function(req, res) {
 					var partido = new Partido({
 						equipo1:    		req.body.equipo1,
 						equipo2:    		req.body.equipo2,
-						fecha: 				req.body.fecha,
+						fecha: 				req.body.fecha + " " + req.body.hora,
+						cancha:				req.body.cancha,
 						fecha_numero: 		req.body.fecha_numero,
 						division: 			req.body.division,
 						marcador_equipo_1: 	req.body.marcador_equipo_1,

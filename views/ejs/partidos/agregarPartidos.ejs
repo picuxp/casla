@@ -1,117 +1,128 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Torneo de Fútbol Para Socios del Club Atlético San Lorenzo de Almagro</title>
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-     <link rel="stylesheet" href="vendor.css">       
-     <link rel="stylesheet" href="style.css">   
-     <link rel="stylesheet" type="text/css" href="css/layerslider.css">
+    <link rel="stylesheet" href="vendor.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/layerslider.css">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-     <script src="js/vendor/modernizr.js"></script>    
-     <script>
-  </script>
-  </head>
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="wrapper">
-      <!-- header -->
-      <header class="header-main">
+    <script src="js/vendor/modernizr.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="wrapper">
+    <!-- header -->
+    <header class="header-main">
         <div class="header-lower clearfix">
-      <%- include ../menu.ejs %>
-        </div>  
-</header>
+            <%- include ../menu.ejs %>
+        </div>
+    </header>
 
-       <!-- banner section -->
-      <div class="innerbannerwrap">
+    <!-- banner section -->
+    <div class="innerbannerwrap">
         <div class="content"></div>
         <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Agregar Partido<span></span></h2>
+            <h2 class="bannerHeadline">Agregar Partido<span></span></h2>
         </div>
-      </div>
-
-      <section class="innerpage_all_wrap bg-white"> 
-        <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
-                
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-                    <!-- show any messages that come back with authentication -->
-					    <% if (message.length > 0) { %>
-					        <div class="alert alert-danger"><%= message %></div>
-					    <% } %>
-
-					    <!-- LOGIN FORM -->
-					    <form action="/agregarPartido" method="post" id="formAgregarPartido">
-  					    	
-                  <div class="form-group" id="elegirFechaNumero">
-                      <div class="headline01 largepoint1">Numero fecha</div>
-                      <input type="number" name="fecha_numero" min="1" value="1">
-                  </div>
-
-                  <div class="form-group" id="elegirFecha">
-                      <div class="headline01 largepoint1">Fecha</div>
-                      <input type="text" id="fecha" name="fecha">
-                  </div>
-
-                  <div class="form-group">
-                      <div class="headline01 largepoint1">Torneo</div>
-                        <select name="torneo" id="torneoSelect">
-                            <option value="none" selected></option>
-                          <% for(var i=0; i < torneos.length; i++) { %> 
-                            <option value="<%=torneos[i]._id%>"><%=torneos[i].nombre%></option>
-                          <% } %>
-                        </select>
-                  </div>
-
-                  <div class="form-group" id="divisionesTorneo">
-                      <div class="headline01 largepoint1">Division</div>
-                        <select name="division" id="divisionSelect">
-                        </select>
-                      </div>
-                  </div>
-
-                  <div class="form-group" id="elegirEquipo1">
-                      <div class="headline01 largepoint1">Equipo 1</div>
-                        <select name="equipo1" id="equipo1Select"></select>
-                  </div>
-
-                  <div class="form-group" id="elegirEquipo2">
-                      <div class="headline01 largepoint1">Equipo 2</div>
-                        <select name="equipo2" id="equipo2Select"></select>
-                  </div>
-
-					        <button type="submit" class="btn btn-warning btn-lg center-block" id="submitForm" disabled>Agregar Partido</button>
-					    </form>
-                    </div>
-                  </div>
- 				</div>
-            </div>
-        </div>
-		
-		
-      </section>
-      
-
-      <!-- footer -->
-      <footer ><!--class="footer-type01"-->
-	   <%- include ../footer.ejs %>
-      </footer>
     </div>
 
-  
-    <script src="js/main.js"></script>
-    <script src="js/admin.js"></script>
-    <script src="js/equiposPorTorneo.js"></script>
+    <section class="innerpage_all_wrap bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="matchSchedule_details row">
+
+                    <div class="match_versus-wrap2">
+                        <div class="wrap_match-innerdetails">
+                            <!-- show any messages that come back with authentication -->
+                            <% if (message.length > 0) { %>
+                            <div class="alert alert-danger"><%= message %></div>
+                            <% } %>
+
+                            <!-- LOGIN FORM -->
+                            <form action="/agregarPartido" method="post" id="formAgregarPartido">
+
+                                <div class="form-group" id="elegirFechaNumero">
+                                    <div class="headline01 largepoint1">Numero fecha</div>
+                                    <input type="number" name="fecha_numero" min="1" value="1">
+                                </div>
+
+                                <div class="form-group" id="elegirFecha">
+                                    <div class="headline01 largepoint1">Fecha</div>
+                                    <input type="datetime" id="fecha" name="fecha">
+                                </div>
+
+                                <div class="form-group" id="elegirHora">
+                                    <div class="headline01 largepoint1">Hora</div>
+                                    <input type="time" id="hora" name="hora">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="headline01 largepoint1">Torneo</div>
+                                    <select name="torneo" id="torneoSelect">
+                                        <option value="none" selected></option>
+                                        <% for(var i=0; i < torneos.length; i++) { %>
+                                        <option value="<%=torneos[i]._id%>"><%=torneos[i].nombre%></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="divisionesTorneo">
+                                    <div class="headline01 largepoint1">Division</div>
+                                    <select name="division" id="divisionSelect">
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group" id="canchaTorneo">
+                                    <div class="headline01 largepoint1">Cancha</div>
+                                    <select name="cancha" id="canchaSelect"></select>
+                                </div>
+
+                                <div class="form-group" id="elegirEquipo1">
+                                    <div class="headline01 largepoint1">Equipo 1</div>
+                                    <select name="equipo1" id="equipo1Select"></select>
+                                </div>
+
+                                <div class="form-group" id="elegirEquipo2">
+                                    <div class="headline01 largepoint1">Equipo 2</div>
+                                    <select name="equipo2" id="equipo2Select"></select>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-warning btn-lg center-block" id="submitForm" disabled>Agregar Partido</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- footer -->
+    <footer ><!--class="footer-type01"-->
+        <%- include ../footer.ejs %>
+    </footer>
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/equiposPorTorneo.js"></script>
 
 </body>
 </html>
