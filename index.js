@@ -18,18 +18,10 @@ var logger = require('./logger');
 
 
 // Connection to DB
-
-///////////////////////LOCAL/////////////////////////////////////////////
 mongoose.connect('mongodb://localhost/casla', function(err, res) {
   if(err) throw err;
   console.log('Connected to Database');
 });
-
-/////////////////////PRODUCCION//////////////////////////////////////////
-//mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla', function(err, res) {
-//  if(err) throw err;
-//  console.log('Connected to Database');
-//});
 
 
 require('./config/passport')(passport,logger); // pass passport for configuration
@@ -59,7 +51,7 @@ require('./config/planilleros')(app);
 // require('./config/jugadorRoutes')(express,app);
 
 // Start server
-app.listen(process.env.PORT || 3000, function() {
+app.listen(3000, function() {
   console.log(process.version)
   logger.info("Node server running on port 3000");
   logger.debug('Debugging info');
