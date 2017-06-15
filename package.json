@@ -1,19 +1,29 @@
 {
   "name": "casla",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web para el torneo de socios de SL",
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongodb",
+    "passport",
+    "demo"
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilanrosenfeld7/casla.git"
+    "url": "https://github.com/d4victory/casla.git"
   },
-  "author": "lancha-dante",
+  "author": "Dante Salamone <dante.gs92@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ilanrosenfeld7/casla/issues"
+    "url": "https://github.com/d4victory/casla/issues"
+  },
+  "engines": {
+    "node": ">=6.x"
   },
   "dependencies": {
     "autoloader": "^2.1.0",
@@ -22,11 +32,14 @@
     "bootstrap": "^4.0.0-alpha.6",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
+    "cross-env": "~5.0.0",
+    "dotenv": "~4.0.0",
     "ejs": "~0.8.5",
     "express": "^4.7.1",
     "express-paginate": "^0.2.2",
     "express-session": "~1.0.0",
     "fs": "0.0.1-security",
+    "forever": "~0.15.1",
     "gridfs-stream": "^1.1.1",
     "jquery": "^3.1.1",
     "method-override": "^2.1.2",
@@ -38,11 +51,15 @@
     "node-rest-client": "^2.0.1",
     "passport": "~0.1.17",
     "passport-local": "~0.1.6",
+    "passport-github": "~1.1.0",
     "passport-local-roles": "^1.0.1",
     "socket.io": "^1.7.2",
     "swagger-jsdoc": "^1.3.0",
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.3"
   },
-  "homepage": "https://github.com/ilanrosenfeld7/casla#readme"
+  "devDependencies": {
+    "nodemon": "1.11.0"
+  },
+  "homepage": "https://github.com/d4victory/casla#readme"
 }

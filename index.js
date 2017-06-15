@@ -9,6 +9,9 @@ var express         = require("express"),
     session         = require('express-session'),
     bodyParser      = require('body-parser'),
     port            = process.env.PORT || 8080,
+    config          = require('./config');
+    db_server       = process.env.DB_ENV || 'primary',
+    options         = require("options"),
     Client          = require('node-rest-client').Client;
     // paginate        = require('express-paginate');
 
@@ -18,10 +21,28 @@ var logger = require('./logger');
 
 
 // Connection to DB
-mongoose.connect('mongodb://localhost/casla', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
-});
+
+//db options
+var options = {
+                server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+              };
+
+//db connection
+mongoose.connect(config.db, options);
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+//don't show the log when it is test
+//if(config.util.getEnv('NODE_ENV') !== 'test') {
+//    //use morgan to log at command line
+//    app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
+//}
+
+//mongoose.connect('mongodb://localhost/casla', function(err, res) {
+//  if(err) throw err;
+//  console.log('Connected to Database');
+//});
 
 
 require('./config/passport')(passport,logger); // pass passport for configuration
