@@ -14,14 +14,14 @@ module.exports = function(express,app, passport, client, logger) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/index.ejs', {user: req.user, divisiones:divisiones})
 
         });
     });
 
      app.get('/test', function(req, res) {
-         client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+         client.get("http://localhost:3000/division", function (divisiones, response) {
              res.render('./ejs/partidos/test.ejs', {user: req.user, divisiones:divisiones})
 
          });
@@ -32,7 +32,7 @@ module.exports = function(express,app, passport, client, logger) {
     // =====================================
     // show the login form
     app.get('/login', function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/usuarios/login.ejs', {user: req.user, divisiones:divisiones, message: req.flash('loginMessage')})
 
         });
@@ -45,7 +45,7 @@ module.exports = function(express,app, passport, client, logger) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/login/profile.ejs', {user: req.user, divisiones:divisiones})
 
         });
@@ -90,25 +90,25 @@ module.exports = function(express,app, passport, client, logger) {
 
     //VIEWS
     app.get('/goleadores', function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/goleadores.ejs', {user: req.user, divisiones:divisiones})
         });
     });
 
     app.get('/sanciones', function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/sanciones.ejs', {user: req.user, divisiones:divisiones})
         });
     });
 
     app.get('/fairplay', function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/fairplay.ejs', {user: req.user, divisiones:divisiones})
         });
     });
 
     app.get('/superadmin', isSuperAdmin, function(req, res) {
-        client.get("mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/division", function (divisiones, response) {
+        client.get("http://localhost:3000/division", function (divisiones, response) {
             res.render('./ejs/superadmin.ejs', {user: req.user, divisiones:divisiones})
         });
     });
