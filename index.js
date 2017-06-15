@@ -25,7 +25,7 @@ var logger = require('./logger');
 //});
 
 /////////////////////PRODUCCION//////////////////////////////////////////
-mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla', function(err, res) {
+mongoose.connect('mongodb://copaviejogasometro:Ka1438657@ds123182.mlab.com:23182/casla?authSource=admin', function(err, res) {
   if(err) throw err;
   console.log('Connected to Database');
 });
