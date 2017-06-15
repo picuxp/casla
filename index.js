@@ -58,7 +58,7 @@ require('./config/planilleros')(app);
 // require('./config/jugadorRoutes')(express,app);
 
 // Start server
-app.listen(process.env.PORT || 3000, function() {
+app.listen(3000, function() {
   console.log(process.version)
   logger.info("Node server running on port 3000");
   logger.debug('Debugging info');
