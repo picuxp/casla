@@ -39,36 +39,35 @@
     </div>
 
     <section class="innerpage_all_wrap bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="matchSchedule_details row">
+        <div class="table-responsive" style="text-align: center; background-color: #4b5257" align="center">
 
-                    <div class="match_versus-wrap2">
-                        <div class="wrap_match-innerdetails">
-                            <!-- show any messages that come back with authentication -->
-                            <% if (message.length > 0) { %>
+                                <!-- show any messages that come back with authentication -->
+                                <% if (message.length > 0) { %>
                             <div class="alert alert-danger"><%= message %></div>
                             <% } %>
 
+            <table class="table-striped" style=" width: 85%; text-align: center" align="center">
                             <!-- LOGIN FORM -->
+
+                <tbody>
                             <form action="/agregarPartido" method="post" id="formAgregarPartido">
 
-                                <div class="form-group" id="elegirFechaNumero">
+                                <tr class="form-group" id="elegirFechaNumero">
                                     <div class="headline01 largepoint1">Numero fecha</div>
                                     <input type="number" name="fecha_numero" min="1" value="1">
-                                </div>
+                                </tr>
 
-                                <div class="form-group" id="elegirFecha">
+                                <tr class="form-group" id="elegirFecha">
                                     <div class="headline01 largepoint1">Fecha</div>
                                     <input type="datetime" id="fecha" name="fecha">
-                                </div>
+                                </tr>
 
-                                <div class="form-group" id="elegirHora">
+                                <tr class="form-group" id="elegirHora">
                                     <div class="headline01 largepoint1">Hora</div>
                                     <input type="time" id="hora" name="hora">
-                                </div>
+                                </tr>
 
-                                <div class="form-group">
+                                <tr class="form-group">
                                     <div class="headline01 largepoint1">Torneo</div>
                                     <select name="torneo" id="torneoSelect">
                                         <option value="none" selected></option>
@@ -76,40 +75,40 @@
                                         <option value="<%=torneos[i]._id%>"><%=torneos[i].nombre%></option>
                                         <% } %>
                                     </select>
-                                </div>
+                                </tr>
 
-                                <div class="form-group" id="divisionesTorneo">
+                                <tr class="form-group" id="divisionesTorneo">
                                     <div class="headline01 largepoint1">Division</div>
                                     <select name="division" id="divisionSelect">
                                     </select>
-                                </div>
+                                </tr>
 
 
-                                <div class="form-group" id="canchaTorneo">
+                                <tr class="form-group" id="canchaTorneo">
                                     <div class="headline01 largepoint1">Cancha</div>
                                     <select name="cancha" id="canchaSelect"></select>
-                                </div>
+                                </tr>
 
-                                <div class="form-group" id="elegirEquipo1">
+                                <tr class="form-group" id="elegirEquipo1">
                                     <div class="headline01 largepoint1">Equipo 1</div>
                                     <select name="equipo1" id="equipo1Select"></select>
-                                </div>
+                                </tr>
 
-                                <div class="form-group" id="elegirEquipo2">
+                                <tr class="form-group" id="elegirEquipo2">
                                     <div class="headline01 largepoint1">Equipo 2</div>
                                     <select name="equipo2" id="equipo2Select"></select>
-                                </div>
+                                </tr>
 
 
+                                <tr>
                                 <button type="submit" class="btn btn-warning btn-lg center-block" id="submitForm" disabled>Agregar Partido</button>
+                                </tr>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                </tbody>
+
+        </table>
         </div>
-
-
     </section>
 
 
