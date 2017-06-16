@@ -28,52 +28,51 @@
       <div class="innerbannerwrap">
         <div class="content"></div>
         <div class="innerbannergoleadores">
-          <h2 class="bannerHeadline">Divisiones del torneo <%= torneo.nombre %><span></span></h2>
+          <h2 class="bannerHeadline">Divisiones del torneo <span style="color: blue"><%= torneo.nombre %></span></h2>
         </div>
       </div>
 
-       <section class="innerpage_all_wrap bg-white"> 
-        <div class="container">
-			<div class="row">
-			<div class="matchSchedule_details row">
-          
-          
+       <section class="innerpage_all_wrap bg-white" >
+            <div class="table-responsive" style="text-align: center" align="center" >
+                <table class=" table-striped" style="background-color: #4b5257; width: 85%; text-align: center" align="center">
+                    <thead>
 
-				 <div class="match_versus-wrap2">
-                  <div class="wrap_match-innerdetails">
-
-                    <div class="headline01 largepoint1">Ver datos division:</div>
-                    <select name="division" id="divisionSelect">
+                    <tr style="background-color: red">
+                    <td class="headline01 largepoint1">Ver equipos de:
+                     <select name="division" id="divisionSelect">
                     		<option value="none" selected></option>
 						    <% for(var i=0; i < divisiones.length; i++) { %> 
 						    	<option value=<%= divisiones[i]._id %>> <%=divisiones[i].nombre %></option>
 						    <% } %>
 					</select>
+                    </td>
+                    </tr>
 
- 					<ul class="point_table2">
-                       <li class="clearfix">
-                        <div class="subPoint_table">
-                          <div class="headline01 smallpoint">Nombre</div>
-                          <div class="headline01 smallpoint">Equipos</div>
-                          <div class="headline01 smallpoint row row">
-							<div class="headline01 smallpoint1"><span>ELIMINAR</span></div>
-                        </div>
-						</div>
-                      </li>
 
-                      <div id="dataDivision">
 
-                      </div>
-                    </ul>
-                    </div>
-                  </div>
- 				</div>
+                    </thead>
+                      <tbody id="dataDivision">
+
+
+
+
+
+
+
+
+
+                      </tbody>
+
+
+                    <td style="background-color: darkblue"><br>
+                        <form action="/torneos" method="get">
+                            <button type="submit">VOLVER A TORNEOS</button>
+                        </form>
+                        <br>
+                    </td>
+
+                </table>
             </div>
-        </div>
-		
-		   <form action="/torneos" method="get">
-             <button type="submit">VOLVER A TORNEOS</button>
-        </form>
       </section>
     
       </section>
