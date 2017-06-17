@@ -328,13 +328,15 @@ function formatDate(date) {
 }
 
 function formatDate2(date) {
-	dteSplit = date.split(/[T-]/);
-	year = dteSplit[0];
-	month = dteSplit[1];
-	day = dteSplit[2];
-	hour = dteSplit[3];
 
-	return hour.substr(0,5) ;
+	dteSplit = date.split(/[T-]/);
+	salida = dteSplit[3];
+	minute = salida.substr(3,5);
+	hour =salida.substr(0,2);
+    hour= hour-3;
+
+
+	return hour+':'+minute ;
 }
 
 
