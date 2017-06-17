@@ -71,9 +71,13 @@ exports.addJugador = function(req, res) {
 				}
 			}
 			equipo.save(function(err, equipo) {
+			try{
 				if(err) return res.send(500, err.message);
 				logger.info("El equipo "+equipo.nombre+" ha agregado al jugador "+jugador.apellido+", "+jugador.nombre);
 	    		res.status(200).jsonp(jugador);
+				}catch (err){
+				console.log(err)
+			}
 	    	});
 		});
 	});

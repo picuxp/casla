@@ -29,11 +29,26 @@ module.exports = function(app) {
     app.post('/datosJugador', isDelegado, function(req, res) {
         client.get("http://localhost:3000/jugador/"+req.body.jugadorid, function (jugador, response) {
             client.get("http://localhost:3000/division", function (divisiones, response) {
-            client.get("http://localhost:3000/equipo/"+req.user.equipo, function (equipo, response) {
-                res.render('./ejs/delegados/datosJugador.ejs', {user: req.user, equipo:equipo, jugador:jugador, message: req.flash('loginMessage'),
-                    resultado: req.session.statusDelete, divisiones:divisiones, moment:moment});
+                client.get("http://localhost:3000/equipo/"+req.user.equipo, function (equipo, response) {
+                    res.render('./ejs/delegados/datosJugador.ejs', {user: req.user, equipo:equipo, jugador:jugador, message: req.flash('loginMessage'),
+                        resultado: req.session.statusDelete, divisiones:divisiones, moment:moment});
+                });
             });
         });
+
+    });
+
+    app.post('/actualizarDatosJugador', isDelegado, function(req, res) {
+        var args = {
+            data:  req.body ,
+            headers: { "Content-Type": "application/json" }
+        };
+        client.put("http://localhost:3000/jugador/"+req.body.jugadorid,args, function (jugador, response) {
+            client.get("http://localhost:3000/division", function (divisiones, response) {
+                client.get("http://localhost:3000/equipo/"+req.user.equipo, function (equipo, response) {
+                    res.redirect("/delegado")
+                });
+            });
         });
 
     });
