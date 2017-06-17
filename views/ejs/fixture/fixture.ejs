@@ -47,26 +47,44 @@
                         <% for (var n = 0; n < (partidos[Object.keys(partidos)[i]]).length;n++ ) {%>
                                         <tr href="#">
 
+                                           <% if (partidos[Object.keys(partidos)[i]][n].estado == "FIN"){ %>
 
-                                                    <% if (partidos[Object.keys(partidos)[i]][n].estado == "FIN"){ %>
+                                               <% if (partidos[Object.keys(partidos)[i]][n].fecha != undefined){ %>
                                                     <td class="headline01"><%=partidos[Object.keys(partidos)[i]][n].fecha%></td>
-                                                    <td class="headline03" style="color: red"><%=partidos[Object.keys(partidos)[i]][n].marcador1 %></td>
+                                               <% } else { %>
 
-                                            <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo1 %></span></td>
-                                            <td class="headline01" style="color: blue">vs</td>
-                                            <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo2 %></span></td>
+                                                    <td></td>
+                                                <% } %>
 
-                                                    <td class="headline03" style="color: red"><%=partidos[Object.keys(partidos)[i]][n].marcador2 %></td>
-                                                    <% } else { %>
+                                                <td class="headline03" style="color: red"><%=partidos[Object.keys(partidos)[i]][n].marcador1 %></td>
 
+                                                <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo1 %></span></td>
+                                                <td class="headline01" style="color: blue">vs</td>
+                                                <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo2 %></span></td>
+
+
+                                                <td class="headline03" style="color: red"><%=partidos[Object.keys(partidos)[i]][n].marcador2 %></td>
+
+                                            <% } else { %>
+                                                <% if (partidos[Object.keys(partidos)[i]][n].fecha != undefined){ %>
                                                     <td class="headline01"><%=partidos[Object.keys(partidos)[i]][n].fecha%></td>
-                                            <td></td>
+                                                <% } else { %>
+
+                                                <td></td>
+
+                                                <% } %>
+
+                                                <td></td>
+
                                                     <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo1 %></span></td>
                                                     <td class="headline01" style="color: blue">vs</td>
                                                     <td class="headline03"><span><%=partidos[Object.keys(partidos)[i]][n].equipo2 %></span></td>
                                                     <td></td>
-                                                    <% }%>
-                                                        <td class="headline06">
+                                            <% }%>
+
+                                            <% if (partidos[Object.keys(partidos)[i]][n].cancha != undefined){ %>
+
+                                            <td class="headline06">
                                                             en
                                                             <span><%=partidos[Object.keys(partidos)[i]][n].cancha %></span>
                                                             <br>
@@ -75,6 +93,20 @@
                                                             <span></span>
                                                         </td>
 
+
+                                            <% } else  { %>
+
+
+                                            <td class="headline06">
+
+                                                <br>
+                                                estado:
+                                                <span><%=partidos[Object.keys(partidos)[i]][n].estado %></span>
+                                                <span></span>
+                                            </td>
+
+
+                                            <% } %>
 
 
                                         </tr>

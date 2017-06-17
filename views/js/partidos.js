@@ -262,10 +262,31 @@ $("#fechaSelect1").change(function () {
                             html += "</td>";
                             html += '<td class="headline06">' + equiposMap[partidos[i].equipo2] + '</td>';
 
-                            html += '<td class="headline06">' + formatDate(partidos[i].fecha) + '</td>';
-                            html += '<td class="headline06">' + formatDate2(partidos[i].fecha) + '</td>';
+                            if (partidos[i].fecha == undefined){
+
+                                html += '<td></td><td></td>';
+
+                            } else {
+
+                                html += '<td class="headline06">' + formatDate(partidos[i].fecha) + '</td>';
+                                html += '<td class="headline06">' + formatDate2(partidos[i].fecha) + '</td>';
+
+                            }
+
                             html += '<td class="headline06">' + divisionesMap[partidos[i].division] + '</td>';
-                            html += '<td class="headline06">' + canchaMap[partidos[i].cancha] + '</td>';
+                            html += '<td class="headline06">';
+                            if (canchaMap[partidos[i].cancha] == undefined) {
+
+                                html += 'S/Def';
+
+                            } else {
+
+                                html  +=  canchaMap[partidos[i].cancha];
+
+                            }
+
+                            html += "</td>";
+
 
                             html += '<td class="headline06">';
                             if (partidos[i].amonestados.length == 0) {

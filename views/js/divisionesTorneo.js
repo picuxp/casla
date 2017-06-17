@@ -26,7 +26,7 @@ $("#divisionSelect").change(function(){
 
 
 				if(equipos.length==0){
-					html += '<tr class="headline06"> <td> Ninguno </td></tr>';
+					html += '<tr class="headline05"> <td> Ninguno </td></tr>';
 				} else {
 					for (var i = 0; i< equipos.length ; i++) {
 						html+= '<tr class="headline05"><td>'+equipos[i].nombre+'</td></tr>';
