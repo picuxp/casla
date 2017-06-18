@@ -78,17 +78,18 @@ exports.addPartido = function(req, res) {
 						equipo1:    		req.body.equipo1,
 						equipo2:    		req.body.equipo2,
 						fecha: 				req.body.fecha + " " + req.body.hora,
-						cancha:				req.body.cancha,
 						fecha_numero: 		req.body.fecha_numero,
 						division: 			req.body.division,
-						marcador_equipo_1: 	req.body.marcador_equipo_1,
-						marcador_equipo_2: 	req.body.marcador_equipo_2,
 						amonestados: 		req.body.amonestados,
 						expulsados: 		req.body.expulsados,
 						goles: 				req.body.goles,
 						cambios: 			req.body.cambios,
 						estado: 			'N.E.'
 					});
+
+					if (req.body.cancha != "") {
+                        (partido["cancha"] = req.body.cancha)
+					}
 
 					console.log(partido);
 

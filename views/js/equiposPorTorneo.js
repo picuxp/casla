@@ -39,7 +39,7 @@ $("#torneoSelect").change(function(){
                 if ( canchas.length == 0 ){
                     $("#canchaTorneo").hide();
                 } else {
-                    $("#canchaSelect").append('<option value="none" selected></option>');
+                    $("#canchaSelect").append('<option value="" selected></option>');
                     for (var n = 0; n < canchas.length; n++) {
                         $("#canchaSelect").append('<option value='+canchas[n]._id+'>'+canchas[n].nombre+'</option>');
                     };
@@ -93,16 +93,16 @@ $( "#submitForm" ).click(function(e){
         alert("Debe ingresar la fecha del partido");
         return false;
     }
-    var hora = $("#hora").val();
-    if (!hora){
-        alert("Debe ingresar la hora del partido");
-        return false;
-    }
-    var cancha = $("#canchaSelect").val();
-    if(!cancha){
-        alert("Debe ingresar la cancha donde se juegará el partido");
-        return false;
-    }
+    // var hora = $("#hora").val();
+    // if (!hora){
+    //     alert("Debe ingresar la hora del partido");
+    //     return false;
+    // }
+    // var cancha = $("#canchaSelect").val();
+    // if(!cancha){
+    //     alert("Debe ingresar la cancha donde se juegará el partido");
+    //     return false;
+    // }
     $( "#formAgregarPartido" ).submit();
 });
 

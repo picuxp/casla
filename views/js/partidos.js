@@ -348,16 +348,23 @@ function formatDate(date) {
 	return day + "/" + month + "/" + year;
 }
 
-function formatDate2(date) {
+function formatDate2(fechaS) {
+    var date = new Date(fechaS);
+    var fecha = ('0' + (date.getDate())).slice(-2)
+    + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + "\n"+
+    ('0' + (date.getHours())).slice(-2) + ":" +
+    ('0' + (date.getMinutes())).slice(-2);
+    return fecha;
 
-	dteSplit = date.split(/[T-]/);
-	salida = dteSplit[3];
-	minute = salida.substr(3,5);
-	hour =salida.substr(0,2);
-    hour= hour-3;
 
-
-	return hour+':'+minute ;
+	// dteSplit = date.split(/[T-]/);
+	// salida = dteSplit[3];
+	// minute = salida.substr(3,5);
+	// hour =salida.substr(0,2);
+    // hour= hour-3;
+    //
+    //
+	// return hour+':'+minute ;
 }
 
 
