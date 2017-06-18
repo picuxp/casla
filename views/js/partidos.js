@@ -4,80 +4,81 @@ $("#dataPartidosConFecha").hide();
 
 
 $(document).on("click", ".deletePartido", function (e) {
-	e.preventDefault();
-	var id = $(this).attr("id");
-	var partidoId = id.split("-")[0];
-	var team1 = id.split("-")[1];
-	var team2 = id.split("-")[2];
-	if (confirm("Seguro que desea eliminar al partido " + team1 + " VS " + team2 + "?")) {
-		$("#formDelete" + partidoId).submit();
-	}
+    e.preventDefault();
+    var id = $(this).attr("id");
+    var partidoId = id.split("-")[0];
+    var team1 = id.split("-")[1];
+    var team2 = id.split("-")[2];
+    if (confirm("Seguro que desea eliminar al partido " + team1 + " VS " + team2 + "?")) {
+        $("#formDelete" + partidoId).submit();
+    }
 });
 
 $(document).on("click", ".cargarPartido", function (e) {
-	e.preventDefault();
-	var id = $(this).attr("id");
-	$.get('http://localhost:3000/partido/' + id, function (partido){
-		$.get('http://localhost:3000/equipo', function (equipos) {
-			$.get('http://localhost:3000/jugador/equipo/'+partido.equipo1, function (jugadores1) {
-				$.get('http://localhost:3000/jugador/equipo/'+partido.equipo2, function (jugadores2) {
-					$.get('http://localhost:3000/division/'+partido.division, function (division) {
-						console.log('Entrando en cargarPartido, partido: '+id);
-						partidoGlobal = partido;						
-						var equiposMap = {};
-						for (var i = 0; i < equipos.length; i++) {
-							equiposMap[equipos[i]._id] = equipos[i].nombre;
-						};
+    e.preventDefault();
+    var id = $(this).attr("id");
+    $.get('http://localhost:3000/partido/' + id, function (partido){
+        $.get('http://localhost:3000/equipo', function (equipos) {
+            $.get('http://localhost:3000/jugador/equipo/'+partido.equipo1, function (jugadores1) {
+                $.get('http://localhost:3000/jugador/equipo/'+partido.equipo2, function (jugadores2) {
+                    $.get('http://localhost:3000/division/'+partido.division, function (division) {
 
-						$('#myModal').modal();
-						$('#teams-header-id').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
-						$('#team1-id').html('<b>'+equiposMap[partido.equipo1]+'</b>');
-						$('#team2-id').html('<b>'+equiposMap[partido.equipo2]+'</b>');
-						$('#nro-fecha-id').html(partido.fecha_numero);
-						$('#fecha-id').val(formatDate2(partido.fecha));
+                            console.log('Entrando en cargarPartido, partido: '+id);
+                            partidoGlobal = partido;
+                            var equiposMap = {};
+                            for (var i = 0; i < equipos.length; i++) {
+                                equiposMap[equipos[i]._id] = equipos[i].nombre;
+                            };
 
-						var options = ['N.E.','FIN','SUSP','POST'];
-						var aux = "";
-						for(var i=0; i<options.length;i++){
-							if(options[i] == partido.estado){
-								aux+='<option value="'+options[i]+'" selected="selected">'+options[i]+'</option>';
-							}else{
-								aux+='<option value="'+options[i]+'">'+options[i]+'</option>';
-							}
-						}
-						$('#estado-id').html(aux);
+                            $('#myModal').modal();
+                            $('#teams-header-id').html(equiposMap[partido.equipo1]+' vs '+equiposMap[partido.equipo2]);
+                            $('#team1-id').html('<b>'+equiposMap[partido.equipo1]+'</b>');
+                            $('#team2-id').html('<b>'+equiposMap[partido.equipo2]+'</b>');
+                            $('#nro-fecha-id').html(partido.fecha_numero);
+                            $('#fecha-id').val(formatDate2(partido.fecha));
 
-						$('#division-id').html(division.nombre);
+                            var options = ['N.E.','FIN','SUSP','POST'];
+                            var aux = "";
+                            for(var i=0; i<options.length;i++){
+                                if(options[i] == partido.estado){
+                                    aux+='<option value="'+options[i]+'" selected="selected">'+options[i]+'</option>';
+                                }else{
+                                    aux+='<option value="'+options[i]+'">'+options[i]+'</option>';
+                                }
+                            }
+                            $('#estado-id').html(aux);
 
-						var lista = '<form id="form-amonestados1-id">';
-						for (var i = 0; i < jugadores1.length; i++) {
-							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
-						};
-						$('#amonestados1-id').html(lista);
+                            $('#division-id').html(division.nombre);
 
-						var lista = '<form id="form-expulsados1-id">';
-						for (var i = 0; i < jugadores1.length; i++) {
-							lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
-						};
-						$('#expulsados1-id').html(lista);
+                            var lista = '<form id="form-amonestados1-id">';
+                            for (var i = 0; i < jugadores1.length; i++) {
+                                lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+                            };
+                            $('#amonestados1-id').html(lista);
 
-						var lista = '<form id="form-amonestados2-id">';
-						for (var i = 0; i < jugadores2.length; i++) {
-							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
-						};
-						$('#amonestados2-id').html(lista);
+                            var lista = '<form id="form-expulsados1-id">';
+                            for (var i = 0; i < jugadores1.length; i++) {
+                                lista += '<input type="checkbox" value="' + jugadores1[i].numero + '">' + jugadores1[i].numero + ' - ' + jugadores1[i].apellido + '<br>';
+                            };
+                            $('#expulsados1-id').html(lista);
 
-						var lista = '<form id="form-expulsados2-id">';
-						for (var i = 0; i < jugadores2.length; i++) {
-							lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
-						};
-						$('#expulsados2-id').html(lista);
-						
-					});
-				});
-			});
-		});
-	});
+                            var lista = '<form id="form-amonestados2-id">';
+                            for (var i = 0; i < jugadores2.length; i++) {
+                                lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+                            };
+                            $('#amonestados2-id').html(lista);
+
+                            var lista = '<form id="form-expulsados2-id">';
+                            for (var i = 0; i < jugadores2.length; i++) {
+                                lista += '<input type="checkbox" value="' + jugadores2[i].numero + '">' + jugadores2[i].numero + ' - ' + jugadores2[i].apellido + '<br>';
+                            };
+                            $('#expulsados2-id').html(lista);
+
+                    });
+                });
+            });
+        });
+    });
 });
 
 // $(document).on("click", '.botonGuardarCambios-id', function(e){
@@ -91,18 +92,18 @@ $(document).on("click", ".cargarPartido", function (e) {
 // });
 
 $("#fechaSelect").change(function () {
-	if ($("#fechaSelect").val() == "none") {
-		$("#dataPartidosConFecha").hide();
-		$("#dataPartidosConFecha").empty();
-	} else {
-		$("#dataPartidosConFecha").show();
-		$("#dataPartidosConFecha").css("visibility", "visible");
-		$("#dataPartidosConFecha").empty();
+    if ($("#fechaSelect").val() == "none") {
+        $("#dataPartidosConFecha").hide();
+        $("#dataPartidosConFecha").empty();
+    } else {
+        $("#dataPartidosConFecha").show();
+        $("#dataPartidosConFecha").css("visibility", "visible");
+        $("#dataPartidosConFecha").empty();
 
-		var fecha_numero = $("#fechaSelect").val();
-		$.get('http://localhost:3000/partido/fecha_numero/' + fecha_numero, function (partidos) {
-			$.get('http://localhost:3000/equipo', function (equipos) {
-				$.get('http://localhost:3000/division', function (divisiones) {
+        var fecha_numero = $("#fechaSelect").val();
+        $.get('http://localhost:3000/partido/fecha_numero/' + fecha_numero, function (partidos) {
+            $.get('http://localhost:3000/equipo', function (equipos) {
+                $.get('http://localhost:3000/division', function (divisiones) {
                     $.get('http://localhost:3000/cancha', function (cancha) {
 
                         var equiposMap = {};
@@ -203,10 +204,10 @@ $("#fechaSelect").change(function () {
                         $("#dataPartidosConFecha").append(html);
 
                     });
-				});
-			});
-		});
-	}
+                });
+            });
+        });
+    }
 });
 
 $("#fechaSelect1").change(function () {
@@ -341,30 +342,30 @@ $("#fechaSelect1").change(function () {
 
 
 function formatDate(date) {
-	dteSplit = date.split(/[T-]/);
-	year = dteSplit[0];
-	month = dteSplit[1];
-	day = dteSplit[2];
-	return day + "/" + month + "/" + year;
+    dteSplit = date.split(/[T-]/);
+    year = dteSplit[0];
+    month = dteSplit[1];
+    day = dteSplit[2];
+    return day + "/" + month + "/" + year;
 }
 
 function formatDate2(fechaS) {
     var date = new Date(fechaS);
     var fecha =
-    ('0' + (date.getHours())).slice(-2) + ":" +
-    ('0' + (date.getMinutes())).slice(-2);
+        ('0' + (date.getHours())).slice(-2) + ":" +
+        ('0' + (date.getMinutes())).slice(-2);
 
     return fecha == ("00:00") ? "-" : fecha;
 
 
-	// dteSplit = date.split(/[T-]/);
-	// salida = dteSplit[3];
-	// minute = salida.substr(3,5);
-	// hour =salida.substr(0,2);
+    // dteSplit = date.split(/[T-]/);
+    // salida = dteSplit[3];
+    // minute = salida.substr(3,5);
+    // hour =salida.substr(0,2);
     // hour= hour-3;
     //
     //
-	// return hour+':'+minute ;
+    // return hour+':'+minute ;
 }
 
 

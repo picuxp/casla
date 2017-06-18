@@ -142,11 +142,25 @@ exports.updatePartido = function(req, res) {
 		partido.equipo1 = req.body.equipo1 == null ? partido.equipo1 : req.body.equipo1;
 		partido.equipo2 = req.body.equipo2 == null ? partido.equipo2 : req.body.equipo2;
 		partido.fecha_numero = req.body.fecha_numero == null ? partido.fecha_numero : req.body.fecha_numero;
-		partido.fecha = req.body.fecha == null  ? partido.fecha : req.body.fecha;
+        partido.fecha = req.body.fecha == null ? partido.fecha : req.body.fecha;
+		    var date = new Date(partido.fecha)
+		if(req.body.horario != "") {
+            date.setHours((req.body.horario).split(':')[0])
+            date.setMinutes((req.body.horario).split(':')[1])
+		}else{
+            date.setHours(0)
+            date.setMinutes(0)
+        }
+        partido.fecha = date
 		partido.marcador_equipo_1 = req.body.goles_equipo1 == null ? partido.marcador_equipo_1 : req.body.goles_equipo1;
 		partido.marcador_equipo_2 = req.body.goles_equipo2 == null ? partido.marcador_equipo_2 : req.body.goles_equipo2;
 		partido.estado = req.body.estado_partido == null ? partido.estado : req.body.estado_partido;
 		partido.cancha = req.body.cancha == null ? partido.cancha : req.body.cancha;
+        if(req.body.cancha == ""){
+		    partido.cancha = null
+        }
+
+
 		partido.division = req.body.division == null ? partido.division : req.body.division;
 		partido.amonestados = req.body.amonestados == null ? partido.amonestados : req.body.amonestados;
 		partido.expulsados = req.body.expulsados == null ? partido.expulsados : req.body.expulsados;

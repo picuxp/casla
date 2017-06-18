@@ -39,56 +39,67 @@
     <% } %>
 
     <div class="table-responsive" style="background-color: #b81e20; text-align: center" >
-            <!-- show any messages that come back with authentication -->
-            <% if (message.length > 0) { %>
-            <div class="alert alert-danger"><%= message %></div>
-            <% } %>
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+        <% } %>
 
-            <form name="formCargarPartido" method="post" id="formCargarPartido">
-                <input type="hidden" class="form-control">
+        <form name="formCargarPartido" method="post" id="formCargarPartido">
+            <input type="hidden" class="form-control">
 
-                <!--DATOS FIJOS -->
-                <table class="table-bordered table-striped " style=" background-color: black; text-align: center; margin: 0 auto;">
-                    <thead>
-                    <tr style="background-color: darkblue">
+            <!--DATOS FIJOS -->
+            <table class="table-bordered table-striped " style=" background-color: black; text-align: center; margin: 0 auto;">
+                <thead>
+                <tr style="background-color: #b81e20">
 
                     <td class="form-group headline05" id="fecha_numero">
                         Numero Fecha:
-                            <a class="headline08 largepoint1" id="nro-fecha-id" name="fecha_numero"></a>
+                        <a class="headline05 largepoint1" style="color: darkblue" id="nro-fecha-id" name="fecha_numero"></a>
                     </td>
 
                     <td class="form-group headline05" id="fecha">
-                          DIA:
-                            <a class="headline08 largepoint1" id="fecha-id" type="date" name="fecha"></a>
+                        DIA:
+                        <a class="headline05 largepoint1" style="color: darkblue" id="fecha-id" type="date" name="fecha"></a>
 
 
                     </td>
 
                     <td class="form-group headline05" id="division">
                         División:
-                            <a class="headline08 largepoint1" id="division-id" name="division"></a>
+                        <a class="headline05 largepoint1" style="color: darkblue" id="division-id" name="division"></a>
 
                     </td>
 
-                    </tr>
-                    </thead>
+                </tr>
+                </thead>
 
-            <tbody>
+                <tbody>
                 <tr>
-                <!-- DATOS VARIABLES -->
+                    <!-- DATOS VARIABLES -->
 
 
-                    <td class="form-group" id="estado_partido" colspan="3" >
+                    <td class="form-group" colspan="3" >
                         <br>
                         <div class="headline01 largepoint1">Estado partido
                             <select class="headline07" id="estado-id" name="estado_partido"></select>
+                        </div>
+
+                        <br>
+                        <div class="headline01 largepoint1" id="horario-div">Horario
+                            <input type="time" class="headline07" id="horario-id" name="horario">
+
+                        </div>
+
+                        <br>
+                        <div class="headline01 largepoint1" id="cancha-div">Cancha
+                            <select class="headline07" id="cancha-id" name="cancha"></select>
                         </div>
                         <br>
                     </td>
 
                 </tr>
-				
-				<tr>
+
+                <tr>
 
                     <td class="form-group headline08" rowspan="2" style="text-decoration-color: #b81e20">
 
@@ -96,20 +107,20 @@
 
                     </td>
 
-					<td class="form-group" id="equipo1" >
-						<div class="headline01 largepoint1">
-							<div class="headline01 largepoint1" id="team1-id" name="equipo1"></div>
-						</div>
-					</td>
+                    <td class="form-group" id="equipo1" >
+                        <div class="headline01 largepoint1">
+                            <div class="headline01 largepoint1" id="team1-id" name="equipo1"></div>
+                        </div>
+                    </td>
 
-					<td class="form-group" id="equipo2" >
-						<div class="headline01 largepoint1"  >
-							<div class="headline01 largepoint1" id="team2-id" name="equipo2"></div>
-						</div>
-					</td>
+                    <td class="form-group" id="equipo2" >
+                        <div class="headline01 largepoint1"  >
+                            <div class="headline01 largepoint1" id="team2-id" name="equipo2"></div>
+                        </div>
+                    </td>
 
-				</tr>
-				
+                </tr>
+
                 <tr>
 
 
@@ -131,74 +142,75 @@
 
                 </tr>
 
-                 <tr>
-                 <!--
-                <div class="form-inline">
-
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" id="hAmonestados1-id">
-                            <a class="collapsed" data-toggle="collapse" href="#amonestados1-id" aria-expanded="false" aria-controls="amonestados1-id">
-                                Amonestados Equipo 1
-                            </a>
-                        </div>
-                        <div class="headline06" name="amonestados1" id="amonestados1-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados1-id"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" name="amonestados2" id="hAmonestados2-id">
-                            <a class="collapsed" data-toggle="collapse" href="#amonestados2-id" aria-expanded="false" aria-controls="amonestados2-id">
-                                Amonestados Equipo 2
-                            </a>
-                        </div>
-                        <div class="headline06" name="amonestados2" id="amonestados2-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados2-id"></div>
-                    </div>
-                </div>
-
-                 </tr>
-
-
                 <tr>
-                <div class="form-inline">
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" id="hExpulsados1-id-id">
-                            <a class="collapsed" data-toggle="collapse" href="#expulsados1-id" aria-expanded="false" aria-controls="expulsados1-id">
-                                Expulsados Equipo 1
-                            </a>
-                        </div>
-                        <div class="headline06" id="expulsados1-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados1-id"></div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" id="hExpulsados2-id">
-                            <a class="collapsed" data-toggle="collapse" href="#expulsados2-id" aria-expanded="false" aria-controls="expulsados2-id">
-                                Expulsados Equipo 2
-                            </a>
-                        </div>
-                        <div class="headline06" id="expulsados2-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados2-id"></div>
-                    </div>
-                </div> -->
+                    <!--
+                   <div class="form-inline">
+
+                       <div class="form-group">
+                           <div class="headline01 largepoint1" role="tab" id="hAmonestados1-id">
+                               <a class="collapsed" data-toggle="collapse" href="#amonestados1-id" aria-expanded="false" aria-controls="amonestados1-id">
+                                   Amonestados Equipo 1
+                               </a>
+                           </div>
+                           <div class="headline06" name="amonestados1" id="amonestados1-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados1-id"></div>
+                       </div>
+
+                       <div class="form-group">
+                           <div class="headline01 largepoint1" role="tab" name="amonestados2" id="hAmonestados2-id">
+                               <a class="collapsed" data-toggle="collapse" href="#amonestados2-id" aria-expanded="false" aria-controls="amonestados2-id">
+                                   Amonestados Equipo 2
+                               </a>
+                           </div>
+                           <div class="headline06" name="amonestados2" id="amonestados2-id" class="collapse" role="tabpanel" aria-labelledby="hAmonestados2-id"></div>
+                       </div>
+                   </div>
+
+                    </tr>
+
+
+                   <tr>
+                   <div class="form-inline">
+                       <div class="form-group">
+                           <div class="headline01 largepoint1" role="tab" id="hExpulsados1-id-id">
+                               <a class="collapsed" data-toggle="collapse" href="#expulsados1-id" aria-expanded="false" aria-controls="expulsados1-id">
+                                   Expulsados Equipo 1
+                               </a>
+                           </div>
+                           <div class="headline06" id="expulsados1-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados1-id"></div>
+                       </div>
+
+                       <div class="form-group">
+                           <div class="headline01 largepoint1" role="tab" id="hExpulsados2-id">
+                               <a class="collapsed" data-toggle="collapse" href="#expulsados2-id" aria-expanded="false" aria-controls="expulsados2-id">
+                                   Expulsados Equipo 2
+                               </a>
+                           </div>
+                           <div class="headline06" id="expulsados2-id" class="collapse" role="tabpanel" aria-labelledby="hExpulsados2-id"></div>
+                       </div>
+                   </div> -->
 
                 </tr>
-                 <!-- cambios , para implementar a futuro-->
-  <!--              <div class="form-inline">
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" id="hCambios1-id">
-                            <a class="collapsed" data-toggle="collapse" href="#cambios1-id" aria-expanded="false" aria-controls="cambios1-id">
-                                Cambios Equipo 1
-                            </a>
-                        </div>
-                        <div id="cambios1-id" class="collapse" role="tabpanel" aria-labelledby="hCambios1-id"></div>
-                    </div>
+                <!-- cambios , para implementar a futuro-->
+                <!--              <div class="form-inline">
+                                  <div class="form-group">
+                                      <div class="headline01 largepoint1" role="tab" id="hCambios1-id">
+                                          <a class="collapsed" data-toggle="collapse" href="#cambios1-id" aria-expanded="false" aria-controls="cambios1-id">
+                                              Cambios Equipo 1
+                                          </a>
+                                      </div>
+                                      <div id="cambios1-id" class="collapse" role="tabpanel" aria-labelledby="hCambios1-id"></div>
+                                  </div>
 
-                    <div class="form-group">
-                        <div class="headline01 largepoint1" role="tab" id="hCambios2-id">
-                            <a class="collapsed" data-toggle="collapse" href="#cambios2-id" aria-expanded="false" aria-controls="cambios2-id">
-                                Cambios Equipo 2
-                            </a>
-                        </div>
-                        <div id="cambios2-id" class="collapse" role="tabpanel" aria-labelledby="hCambios2-id"></div>
-                    </div>
-                </div>   -->
+                                  <div class="form-group">
+                                      <div class="headline01 largepoint1" role="tab" id="hCambios2-id">
+                                          <a class="collapsed" data-toggle="collapse" href="#cambios2-id" aria-expanded="false" aria-controls="cambios2-id">
+                                              Cambios Equipo 2
+                                          </a>
+                                      </div>
+                                      <div id="cambios2-id" class="collapse" role="tabpanel" aria-labelledby="hCambios2-id"></div>
+                                  </div>
+                              </div>   -->
 
 
                 <!--<button type="button" class="botonCancelar-id" href="/cargarPartido">Cancelar</button>-->
@@ -207,9 +219,9 @@
 
                     <td colspan="3">
                         <br>
-                    <a href="/planillero"><input type="button" class="botonCancelar-id" value="Cancelar" /></a>
-                <input type="hidden" id="idPartido" value=<%= partido._id %> name="partidoId"/>
-                <button type="submit" id = "botonGuardarCambios-id" class="botonGuardarCambios-id">Guardar cambios</button>
+                        <a href="/planillero"><input type="button" class="botonCancelar-id" value="Cancelar" /></a>
+                        <input type="hidden" id="idPartido" value=<%= partido._id %> name="partidoId"/>
+                        <button type="submit" id = "botonGuardarCambios-id" class="botonGuardarCambios-id">Guardar cambios</button>
 
                         <br>
                     </td>
@@ -217,9 +229,9 @@
                 </tr>
 
 
-            </tbody>
-                </table>
-            </form>
+                </tbody>
+            </table>
+        </form>
 
 
     </div>
