@@ -85,6 +85,9 @@
                         </div>
 
                         <br>
+                        <% if ((user.role !="SUPER_ADMIN")) { %>
+                        <div hidden>
+                            <%}%>
                         <div class="headline01 largepoint1" id="horario-div">Horario
                             <input type="time" class="headline07" id="horario-id" name="horario">
 
@@ -94,6 +97,9 @@
                         <div class="headline01 largepoint1" id="cancha-div">Cancha
                             <select class="headline07" id="cancha-id" name="cancha"></select>
                         </div>
+                            <% if ((user.role =="SUPER_ADMIN")) { %>
+                        </div>
+                        <%}%>
                         <br>
                     </td>
 
