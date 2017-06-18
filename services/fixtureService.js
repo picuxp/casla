@@ -26,10 +26,16 @@ exports.getPartidos = function(req, res) {
                     var fecha =  partidos[i].fecha;
 
                     obj["fecha"] = (('0' + (fecha.getDate())).slice(-2)
-                        + '/' + ('0' + (fecha.getMonth() + 1)).slice(-2) + "\n"+
-                        ('0' + (fecha.getHours())).slice(-2) + ":" +
-                        ('0' + (fecha.getMinutes())).slice(-2)
+                        + '/' + ('0' + (fecha.getMonth() + 1)).slice(-2)
                     );
+
+                    var hora = ('0' + (fecha.getHours())).slice(-2) + ":" +
+                        ('0' + (fecha.getMinutes())).slice(-2);
+
+                    if(hora != ("00:00")) {
+                        obj["fecha"] = obj["fecha"]  + "\n"+ hora
+                    }
+
                     obj["estado"] = partidos[i].estado;
                     obj["cancha"] = "";
                     if(partidos[i].cancha != null) {

@@ -350,11 +350,11 @@ function formatDate(date) {
 
 function formatDate2(fechaS) {
     var date = new Date(fechaS);
-    var fecha = ('0' + (date.getDate())).slice(-2)
-    + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + "\n"+
+    var fecha =
     ('0' + (date.getHours())).slice(-2) + ":" +
     ('0' + (date.getMinutes())).slice(-2);
-    return fecha;
+
+    return fecha == ("00:00") ? "-" : fecha;
 
 
 	// dteSplit = date.split(/[T-]/);
