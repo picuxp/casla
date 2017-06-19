@@ -65,11 +65,11 @@ function showUsers(users, equipos){
 
 			var html = "";
 			for (var i = 0; i < users.length; i++) {
-				html += '<li class="clearfix">'+
-					'<div class="subPoint_table">'+
-	                   '<div class="headline01 smallpoint1">'+users[i].email+'</div>'+
-	                   '<div class="headline01 smallpoint1">'+users[i].role+'</div>'+
-	                   '<div class="headline01 smallpoint1">';
+				html +=
+					'<tr>'+
+	                   '<td class="headline01">'+users[i].email+'</td>'+
+	                   '<td class="headline01">'+users[i].role+'</td>'+
+	                   '<td class="headline01">';
 
 	            if (users[i].role != "DELEGADO") {
 	            	html += "No disponible";
@@ -81,20 +81,20 @@ function showUsers(users, equipos){
 	            	}
 
                     html += '<form action="/delegarEquipo" method="post" id="formDelegar'+users[i]._id+'">'
-                    	html += '<input type="hidden" value='+users[i]._id+' name="userid"/>';
 		            	html += '<select name="equipo" id="equipo">';
 		            	html += '<option value="none">Ninguno</option>';
 		            	for (var j = 0; j < equipos.length; j++) {
 		            		if (equiposSinDelegado[equipos[j]._id]) {
                                   html+='<option value="'+equipos[j]._id+'">'+equipos[j].nombre+'</option>';
-                            } 
+                            }
 		            	};
 		            	html += '</select>';
+                    	html += '<input type="hidden" value='+users[i]._id+' name="userid"/>';
 	            	html += '<button type="submit" class="asignarEquipo" id="boton-'+users[i].email+'-'+users[i]._id+'">Asignar</button></form>'
 	            }
-	            html += '</div>';
+	            html += '</td>';
 
-	            html += '<div class="headline01 smallpoint1">';
+	            html += '<td class="headline01">';
 	            if (users[i].role == "ADMIN") {
 	            	html += "No disponible";
 	            } else {
@@ -102,7 +102,7 @@ function showUsers(users, equipos){
 	                		  	'<button type="submit" id='+users[i]._id+'>Eliminar</button>'+
 	                			'<input type="hidden" value='+users[i]._id+' name="userid"/></form>';
 	            }
-	            html += '</div></div></li>';
+	            html += '</td>';
 			};
 			$("#datosUsers").append(html);
 }
